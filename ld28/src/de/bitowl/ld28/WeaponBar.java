@@ -17,6 +17,8 @@ public class WeaponBar extends Image{
 	Image ui_bomb;
 	Image ui_sword;
 	
+	boolean open;
+	
 	OrderedMap<IngameScreen.Weapon, Image> weapons;
 	public WeaponBar(IngameScreen pScreen){
 		super(pScreen.atlas.findRegion("ui_bg"));
@@ -60,6 +62,7 @@ public class WeaponBar extends Image{
 				y-=64;
 			}
 		}
+		open=true;
 	}
 	
 	public void close(){
@@ -69,6 +72,7 @@ public class WeaponBar extends Image{
 			}
 			weapon.value.addAction(Actions.moveTo(0,0,0.5f));
 		}
+		open=false;
 	}
 	
 	@Override
@@ -99,5 +103,30 @@ public class WeaponBar extends Image{
 			}
 		}
 		return;
+	}
+	public void selectId(int nr) {
+		
+		if(open){
+			close();
+		}
+		
+		System.out.println("SELECT "+nr);
+		int i=0;
+		for(Entry<Weapon, Image> weapon: weapons.entries()){
+			if(i==nr && weapon.key!=screen.weapon){
+				
+				for(Entry<Weapon, Image> weapon2: weapons.entries()){
+					if(weapon2.key==screen.weapon){
+						weapon2.value.addAction(Actions.alpha(0,0.5f));
+						break;
+					}
+				}
+				
+				screen.weapon=weapon.key;
+				weapon.value.addAction(Actions.alpha(1,0.5f));
+				break;
+			}
+			i++;
+		}
 	}
 }

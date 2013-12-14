@@ -3,12 +3,14 @@ package de.bitowl.ld28;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class Player extends GameObject{
 	public final static float JUMP_CONST=4f;
 	AnimAction walking;
 	AnimAction sword;
 	AnimAction dig;
+	AnimAction bow;
 	boolean isWalking;
 	boolean isFlipped;
 	public int max_life=10;
@@ -26,8 +28,9 @@ public class Player extends GameObject{
 		
 		sword = new AnimAction(new Animation(0.05f,screen.atlas.findRegions("sword")));
 		dig = new AnimAction(new Animation(0.05f,screen.atlas.findRegions("dig")));
+		bow = new AnimAction(new Animation(0.05f,screen.atlas.findRegions("bow")));
 		
-		setOriginX(getWidth()/2); // center point for flipping
+		setOriginX(7); // center point for flipping
 	}
 	
 	@Override
@@ -103,10 +106,11 @@ public class Player extends GameObject{
 		}
 		
 	}
-	public void sword(){
+	public void sword(boolean side){
 		if(sword.getActor()==null){
 			sword.reset();
-			addAction(sword);
+			//addAction(sword);
+			addAction(Actions.sequence(Actions.scaleTo(side?-1:1, 1),sword,Actions.scaleTo(isFlipped?-1:1, 1)));
 			
 			// hit anything?
 			for(Actor actor:screen.enemies.getChildren().items){
@@ -115,14 +119,20 @@ public class Player extends GameObject{
 					// this enemy is already deaaaad
 					continue;
 				}
-				if(enemy.getRectangle().overlaps(getSwordRectangle())){
+				if(enemy.getRectangle().overlaps(getSwordRectangle(side))){
 					enemy.addDamage(SWORD_DAMAGE);
 				}
 			}
 		}
 	}
-	private Rectangle getSwordRectangle() {
-		if(isFlipped){
+	public void bow(boolean side){
+		if(bow.getActor()==null){
+			bow.reset();
+			addAction(Actions.sequence(Actions.scaleTo(side?-1:1, 1),bow,Actions.scaleTo(isFlipped?-1:1, 1)));
+		}
+	}
+	private Rectangle getSwordRectangle(boolean side) {
+		if(side){
 			return new Rectangle(getX()-7,getY(),15,getHeight());
 		}else{
 			return new Rectangle(getX()+13,getY(),15,getHeight());

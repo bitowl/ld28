@@ -15,6 +15,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -235,10 +236,7 @@ public class IngameScreen extends AbstractScreen{
 	}
 	
 	class GameInputProcessor extends InputAdapter{
-		
-		// is the weaponbar openend
-		boolean weaponBarOpen;
-		
+				
 		@Override
 		public boolean keyDown(int keycode) {
 			switch(keycode){
@@ -278,7 +276,7 @@ public class IngameScreen extends AbstractScreen{
 	*/
 				case Keys.E:
 					// swing your sword, mighty hero!
-					player.sword();
+					player.sword(player.isFlipped);
 					break;
 				case Keys.Y:
 					if(player.onGround || player.onLadder){
@@ -290,6 +288,22 @@ public class IngameScreen extends AbstractScreen{
 							ladders.addActor(ladder);
 						}
 					}
+					
+				case Keys.NUM_1:
+					weaponbar.selectId(0);
+					break;
+				case Keys.NUM_2:
+					weaponbar.selectId(1);
+					break;
+				case Keys.NUM_3:
+					weaponbar.selectId(2);
+					break;
+				case Keys.NUM_4:
+					weaponbar.selectId(3);
+					break;
+				case Keys.NUM_5:
+					weaponbar.selectId(4);
+					break;
 			}
 			
 			return super.keyDown(keycode);
@@ -327,19 +341,16 @@ public class IngameScreen extends AbstractScreen{
 				
 				
 				if(touchPos.x>stage.getCamera().position.x + stage.getWidth()/2 - 64){
-					if(weaponBarOpen){
+					if(weaponbar.open){
 						weaponbar.select(touchPos.y-stage.getCamera().position.y-stage.getHeight()/2);
 						weaponbar.close();
-						weaponBarOpen=false;
 					}else{
 						weaponbar.open();
-						weaponBarOpen=true;
 					}
 					return false;
 				}
-				if(weaponBarOpen){ // the user clicked somewhere else
+				if(weaponbar.open){ // the user clicked somewhere else
 					weaponbar.close();
-					weaponBarOpen=false;
 				}
 				
 				
@@ -392,7 +403,24 @@ public class IngameScreen extends AbstractScreen{
 						stage.addActor(bomb);
 						break;
 					case SWORD:
-						player.sword();
+						player.sword(touchPos.x<player.getX()+player.getWidth()/2);
+						break;
+					case BOW:
+						player.bow(touchPos.x<player.getX()+player.getWidth()/2);
+						
+						// arrow
+						float xdiff = touchPos.x - player.getX()+player.getHeight()/2;
+						float ydiff =touchPos.y - player.getY()+player.getHeight()/2;
+						
+						float degree = MathUtils.atan2(ydiff, xdiff);
+						float dist=(float) Math.sqrt(xdiff*xdiff + ydiff*ydiff);
+						
+						Arrow arrow= new Arrow(IngameScreen.this);
+						arrow.setPosition(player.getX()+player.getOriginX()-arrow.getWidth()/2, player.getY()+player.getHeight()/2 -arrow.getHeight()/2);
+						float ARROW_SPEED=Math.min(dist/32,5);
+						arrow.speedX = MathUtils.cos(degree)*ARROW_SPEED;
+						arrow.speedY = MathUtils.sin(degree)*ARROW_SPEED;
+						stage.addActor(arrow);
 						break;
 				
 				}

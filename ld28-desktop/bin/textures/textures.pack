@@ -5,421 +5,463 @@ filter: Linear,Linear
 repeat: none
 ui_sword
   rotate: false
-  xy: 1, 56
+  xy: 1, 61
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 ui_pickaxe
   rotate: false
-  xy: 67, 56
+  xy: 67, 61
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 ui_shovel
   rotate: false
-  xy: 133, 56
+  xy: 133, 61
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 ui_bomb
   rotate: false
-  xy: 199, 56
+  xy: 199, 61
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 ui_bg
   rotate: false
-  xy: 265, 56
+  xy: 265, 61
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 ui_bow
   rotate: false
-  xy: 331, 56
+  xy: 331, 61
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 expl
   rotate: false
-  xy: 1, 4
+  xy: 1, 9
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 5
 expl
   rotate: false
-  xy: 397, 70
+  xy: 397, 75
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 6
 expl
   rotate: false
-  xy: 53, 4
+  xy: 53, 9
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 0
 expl
   rotate: false
-  xy: 449, 70
+  xy: 449, 75
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 2
 expl
   rotate: false
-  xy: 105, 4
+  xy: 105, 9
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 1
 expl
   rotate: false
-  xy: 501, 70
+  xy: 501, 75
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 3
 expl
   rotate: false
-  xy: 157, 4
+  xy: 157, 9
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 4
 chest
   rotate: false
-  xy: 553, 88
+  xy: 553, 93
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 ladder
   rotate: false
-  xy: 209, 22
+  xy: 209, 27
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 heart_empty
   rotate: false
-  xy: 587, 88
+  xy: 587, 93
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 chest
   rotate: false
-  xy: 243, 22
+  xy: 243, 27
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 jug
   rotate: false
-  xy: 621, 88
+  xy: 621, 93
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 jug
   rotate: false
-  xy: 277, 22
+  xy: 277, 27
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 heart_full
   rotate: false
-  xy: 655, 88
+  xy: 655, 93
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 heart_half
   rotate: false
-  xy: 311, 22
+  xy: 311, 27
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 player
   rotate: false
-  xy: 689, 80
+  xy: 689, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 player
   rotate: false
-  xy: 711, 80
+  xy: 711, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 sword
   rotate: false
-  xy: 733, 80
+  xy: 733, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
 sword
   rotate: false
-  xy: 755, 80
+  xy: 755, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 4
 sword
   rotate: false
-  xy: 755, 80
+  xy: 755, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 dig
   rotate: false
-  xy: 777, 80
+  xy: 777, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
+bow
+  rotate: false
+  xy: 799, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 3
+bow
+  rotate: false
+  xy: 799, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 1
 dig
   rotate: false
-  xy: 799, 80
+  xy: 821, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 4
 dig
   rotate: false
-  xy: 821, 80
+  xy: 843, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 sword
   rotate: false
-  xy: 843, 80
+  xy: 865, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
-player
+bow
   rotate: false
-  xy: 865, 80
+  xy: 887, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
-  index: 3
+  index: 2
+bow
+  rotate: false
+  xy: 909, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 0
+bow
+  rotate: false
+  xy: 909, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 4
 sword
   rotate: false
-  xy: 887, 80
+  xy: 909, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 5
 player
   rotate: false
-  xy: 887, 80
+  xy: 909, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
+player
+  rotate: false
+  xy: 931, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 3
 sword
   rotate: false
-  xy: 909, 80
+  xy: 953, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
 dig
   rotate: false
-  xy: 931, 80
+  xy: 975, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 5
 dig
   rotate: false
-  xy: 953, 80
+  xy: 997, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
 dig
   rotate: false
-  xy: 975, 80
+  xy: 345, 19
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
-spikes
-  rotate: false
-  xy: 997, 105
-  size: 26, 15
-  orig: 26, 15
-  offset: 0, 0
-  index: -1
-enem
-  rotate: false
-  xy: 345, 37
-  size: 30, 17
-  orig: 30, 17
-  offset: 0, 0
-  index: 0
 worm
   rotate: false
-  xy: 209, 5
+  xy: 553, 76
   size: 32, 15
   orig: 32, 15
   offset: 0, 0
   index: 3
 worm
   rotate: false
-  xy: 553, 71
+  xy: 209, 10
   size: 32, 15
   orig: 32, 15
   offset: 0, 0
   index: 0
 worm
   rotate: false
-  xy: 553, 71
+  xy: 209, 10
   size: 32, 15
   orig: 32, 15
   offset: 0, 0
   index: 2
 worm
   rotate: false
-  xy: 243, 5
+  xy: 587, 76
   size: 32, 15
   orig: 32, 15
   offset: 0, 0
   index: 1
 healthbottle
   rotate: false
-  xy: 997, 76
+  xy: 367, 32
   size: 20, 27
   orig: 20, 27
   offset: 0, 0
   index: -1
+enem
+  rotate: false
+  xy: 243, 8
+  size: 30, 17
+  orig: 30, 17
+  offset: 0, 0
+  index: 0
+spikes
+  rotate: false
+  xy: 621, 76
+  size: 26, 15
+  orig: 26, 15
+  offset: 0, 0
+  index: -1
 spider
   rotate: false
-  xy: 587, 70
+  xy: 275, 9
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 8
 spider
   rotate: false
-  xy: 587, 70
+  xy: 275, 9
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 6
 spider
   rotate: false
-  xy: 587, 70
+  xy: 275, 9
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 4
 spider
   rotate: false
-  xy: 587, 70
+  xy: 275, 9
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 3
 spider
   rotate: false
-  xy: 587, 70
+  xy: 275, 9
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 5
 spider
   rotate: false
-  xy: 587, 70
+  xy: 275, 9
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 7
 spider
   rotate: false
-  xy: 610, 70
+  xy: 298, 9
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 2
 spider
   rotate: false
-  xy: 633, 70
+  xy: 321, 9
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 1
 spider
   rotate: false
-  xy: 656, 70
+  xy: 649, 75
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 0
+web
+  rotate: false
+  xy: 397, 72
+  size: 32, 1
+  orig: 32, 1
+  offset: 0, 0
+  index: -1
 slime
   rotate: false
-  xy: 277, 4
+  xy: 367, 14
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
   index: 1
 slime
   rotate: false
-  xy: 299, 4
+  xy: 397, 54
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
   index: 2
 slime
   rotate: false
-  xy: 321, 4
+  xy: 389, 36
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
   index: 3
 slime
   rotate: false
-  xy: 377, 38
+  xy: 389, 18
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
   index: 0
-web
-  rotate: false
-  xy: 1, 1
-  size: 32, 1
-  orig: 32, 1
-  offset: 0, 0
-  index: -1
 bomb
   rotate: false
-  xy: 345, 22
+  xy: 672, 78
   size: 13, 13
   orig: 13, 13
   offset: 0, 0
   index: 0
 bomb
   rotate: false
-  xy: 343, 7
+  xy: 419, 57
   size: 13, 13
   orig: 13, 13
   offset: 0, 0
   index: 1
+arrow
+  rotate: false
+  xy: 1, 1
+  size: 10, 6
+  orig: 10, 6
+  offset: 0, 0
+  index: -1
