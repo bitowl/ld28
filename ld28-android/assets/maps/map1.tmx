@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="20" orientation="orthogonal" tileheight="32" tilewidth="32" version="1.0" width="30"><properties><property name="atlas" value="tileset/packed.atlas"/><property name="blended tiles" value=""/></properties>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="200" orientation="orthogonal" tileheight="32" tilewidth="32" version="1.0" width="300"><properties><property name="atlas" value="tileset/packed.atlas"/><property name="blended tiles" value=""/></properties>
  <tileset firstgid="1" name="collision" tileheight="32" tilewidth="32">
   <image height="32" source="collision.png" width="32"/>
  </tileset>
- <tileset firstgid="2" name="tileset" tileheight="32" tilewidth="32">
+ <tileset firstgid="2" name="enemies" tileheight="32" tilewidth="32">
+  <image height="128" source="enemies.png" width="128"/>
+ </tileset>
+ <tileset firstgid="18" name="tileset" tileheight="32" tilewidth="32">
   <image height="256" source="tileset.png" width="256"/>
   <tile id="0">
    <properties>
@@ -14,25 +17,65 @@
     <property name="dst" value="true"/>
    </properties>
   </tile>
+  <tile id="2">
+   <properties>
+    <property name="dst" value="no"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="dst" value="yes"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="dst" value="100"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="dst" value="no"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="dst" value="100"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="dst" value="1"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="dst" value="2"/>
+   </properties>
+  </tile>
  </tileset>
- <layer height="20" name="background" width="30">
+ <layer height="200" name="background" width="300">
   <data compression="zlib" encoding="base64">
-   eJxjZWBgYB3Fo3iEY2YCmBS1o3gUj+Khh1nIwANhJzXcNJzsJcYt9LIXHQMAlzcJAg==
+   eJzt1EEKg0AQRNG5Q3SZ+18zuBWk7SGOFLwHtav138cY+wsD6HqjVXoFzNArIIVeASn0CkihV0CK2d58i1VfgK6qO1f7FKu+AF1Vd54aQJdeASn0CkihV0AKvQJS6BWQQq+AFEc7tonpFbDaTKv+0TKALr0CUjzRqzsNA+ha1avzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWOMHG4wvrg==
   </data>
  </layer>
- <layer height="20" name="destroyable" width="30">
+ <layer height="200" name="destroyable" width="300">
   <data compression="zlib" encoding="base64">
-   eJxjYBgFo2AUMBHApKgdxbTD3KN4FNMI85CBB8JOarhpONlLjFvoZS86BgA/SQ4i
+   eJzt2sFKIwEURNF8w7gK+v/fKdKb2Timm7yUr+YcuDsJbUEeIn27AQAAAAAAAPzbnx8687P/U8B1V79jvrfAq129L+4V8GpuDLDF+8kAUs7eq2cFcJZ7BWzhXgFbuFfAFl+34+NC7hXwaldu1TNuGcBZ7hWwxcS9eiSAs+6hAADo539rwCZuFrCNuwVs42YBm/hbC9jG+67ARt7ZBzZzvwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4HneJNXXIr2jpPlapHeUNF+L9I6S5muR3lHSfC3SO0qar0V6R0nztUjvKGm+FukdJc3XIr2jpPlapHeUNF+L9I6S5muR3lHSfC3SO0qar0V6R0nztUjvKGm+FukdJc3XIr2jpPlapHeUNF+L9I6S5muR3lHSfC3SO0qar0V6R0nztUjvKGm+FukdJc3XIr2jpPlapHeUNF+L9I6S5muR3lFH73+Vfhb11SK9o47cK03WIr2jjtwrTdYivaOO3CtN1iK9o47cK03WIr2jjtwrTdYivaOk+Vqkd5Q0X4v0jpLma5HeUdJ8LdI7SpqvRXpHSfO1SO8oab4W6R0lzdcivaOk+Vqkd5Q0HwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAb3ZPPwDAg9wrYIv7zc0C9nCvgC3cK2ATNwvYwr0CNnGzgC3cK2AL9wrYwr0CtvDuKLCJewVs4V7R7v5Nv8l3z3imqc/Va3qG9O8gSY/2CegOhmQ=
   </data>
  </layer>
- <layer height="20" name="collision" opacity="0.48" width="30">
+ <layer height="200" name="collision" opacity="0.21" visible="0" width="300">
   <data compression="zlib" encoding="base64">
-   eJxjYBgFo2AUMBLApKgdxaN4FI/iUTyKAQIDAZQ=
+   eJzt10EKwCAMRUF7/0t7ghpjQfhlBtwZlw8zBgAAAAAAAMDaU5zqLkBX1Z23tuzMdd8EWDnti14Bt2kMkMK/CEjxda+zDwK36BWQQq+AFHoFpNArIIVeASn0CkihV0AKvQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPi3CWV4AWY=
   </data>
  </layer>
- <layer height="20" name="foreground" width="30">
+ <layer height="200" name="foreground" width="300">
   <data compression="zlib" encoding="base64">
-   eJztwTEBAAAAwqD1T20JT6AAAHgaCWAAAQ==
+   eJztziERAEAIAEE60An5/eN8ARQMbledvAgAAAAAAAAAAAAA6NWw8+wIoPcWDQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADsfZtqAvg=
+  </data>
+ </layer>
+ <layer height="200" name="enemies" width="300">
+  <data compression="zlib" encoding="base64">
+   eJztzjENAAAMA6Bm/kVPRI8+oIAEAAAAAABYu3UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoPzbYAAw==
   </data>
  </layer>
 </map>

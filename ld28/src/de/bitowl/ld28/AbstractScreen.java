@@ -12,8 +12,8 @@ public abstract class AbstractScreen implements Screen{
 	
 	// letterbox camera
 	Rectangle viewport;
-	float virtualWidth=1280;
-	float virtualHeight=720;
+	float virtualWidth=800;
+	float virtualHeight=480;
 	float virtualAspectRatio=virtualWidth/virtualHeight;
 	
 	public AbstractScreen(LDGame pGame){
