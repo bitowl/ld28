@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="20" orientation="orthogonal" tileheight="32" tilewidth="32" version="1.0" width="30"><properties><property name="atlas" value="tileset/packed.atlas"/><property name="blended tiles" value=""/></properties>
- <tileset firstgid="1" name="tileset" tileheight="32" tilewidth="32">
+ <tileset firstgid="1" name="collision" tileheight="32" tilewidth="32">
+  <image height="32" source="collision.png" width="32"/>
+ </tileset>
+ <tileset firstgid="2" name="tileset" tileheight="32" tilewidth="32">
   <image height="256" source="tileset.png" width="256"/>
   <tile id="0">
    <properties>
@@ -12,9 +15,24 @@
    </properties>
   </tile>
  </tileset>
- <layer height="20" name="Kachelebene 1" width="30">
+ <layer height="20" name="background" width="30">
   <data compression="zlib" encoding="base64">
-   eJxjYWBgYBnFo3iEY0YCmBS1o5h4zIQDk6qemnig7B3FA4uZycADYSc13DSc7CXGLfSyFx0DAGYUBkQ=
+   eJxjZWBgYB3Fo3iEY2YCmBS1o3gUj+Khh1nIwANhJzXcNJzsJcYt9LIXHQMAlzcJAg==
+  </data>
+ </layer>
+ <layer height="20" name="destroyable" width="30">
+  <data compression="zlib" encoding="base64">
+   eJxjYBgFo2AUMBHApKgdxbTD3KN4FNMI85CBB8JOarhpONlLjFvoZS86BgA/SQ4i
+  </data>
+ </layer>
+ <layer height="20" name="collision" opacity="0.48" width="30">
+  <data compression="zlib" encoding="base64">
+   eJxjYBgFo2AUMBLApKgdxaN4FI/iUTyKAQIDAZQ=
+  </data>
+ </layer>
+ <layer height="20" name="foreground" width="30">
+  <data compression="zlib" encoding="base64">
+   eJztwTEBAAAAwqD1T20JT6AAAHgaCWAAAQ==
   </data>
  </layer>
 </map>

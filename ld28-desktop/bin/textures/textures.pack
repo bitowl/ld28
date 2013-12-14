@@ -6,7 +6,7 @@ repeat: none
 player
   rotate: false
   xy: 1, 1
-  size: 32, 32
-  orig: 32, 32
+  size: 20, 40
+  orig: 20, 40
   offset: 0, 0
   index: -1

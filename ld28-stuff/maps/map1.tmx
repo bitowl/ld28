@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="tileset" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="collision" tilewidth="32" tileheight="32">
+  <image source="collision.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="2" name="tileset" tilewidth="32" tileheight="32">
   <image source="tileset.png" width="256" height="256"/>
   <tile id="0">
    <properties>
@@ -13,9 +16,24 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Kachelebene 1" width="30" height="20">
+ <layer name="background" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYWBgYBnFo3iEY0YCmBS1o5h4zIQDk6qemnig7B3FA4uZycADYSc13DSc7CXGLfSyFx0DAGYUBkQ=
+   eJxjZWBgYB3Fo3iEY2YCmBS1o3gUj+Khh1nIwANhJzXcNJzsJcYt9LIXHQMAlzcJAg==
+  </data>
+ </layer>
+ <layer name="destroyable" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUMBHApKgdxbTD3KN4FNMI85CBB8JOarhpONlLjFvoZS86BgA/SQ4i
+  </data>
+ </layer>
+ <layer name="collision" width="30" height="20" opacity="0.48">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUMBLApKgdxaN4FI/iUTyKAQIDAZQ=
+  </data>
+ </layer>
+ <layer name="foreground" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20JT6AAAHgaCWAAAQ==
   </data>
  </layer>
 </map>
