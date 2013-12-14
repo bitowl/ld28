@@ -1,11 +1,9 @@
 package de.bitowl.ld28;
 
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 public class GameObject extends Image{
 	IngameScreen screen;
@@ -25,6 +23,7 @@ public class GameObject extends Image{
 	float gravity=10f;
 	
 	boolean onGround;
+	boolean onLadder;
 	
 	boolean doNotStopOnWalls;
 	
@@ -37,7 +36,9 @@ public class GameObject extends Image{
 		super.act(delta);
 		
 		// apply a very simple gravity
-		speedY -= gravity*delta;
+		if(!onLadder){
+			speedY -= gravity*delta;	
+		}
 		
 		// which tiles this object standing on after this frame
 		int xtile=(int) ( (getX()+ speedX * speedFactorX * delta) /screen.colLayer.getTileWidth());
@@ -47,6 +48,9 @@ public class GameObject extends Image{
 		
 			getMyCorners(getX(),getY()+speedY * speedFactorY * delta);
 	
+			if(speedY>=0 && onLadder&&notOnLadder()){// we moved away from the ladder
+				onLadder=false;
+			}
 			if(speedY>0){
 				if(upleft&&upright){
 					setY(getY()+speedY * speedFactorY * delta);
@@ -54,15 +58,28 @@ public class GameObject extends Image{
 					setY( (ytile+1)*screen.colLayer.getTileHeight()-getHeight()%screen.colLayer.getTileHeight());
 					speedY = 0;
 				}
+
 			}else if(speedY<0){
-				if(downleft&&downright){
-					setY(getY()+speedY * speedFactorY * delta);
-					onGround = false;
-				}else{
-					setY( (ytile+1)*screen.colLayer.getTileHeight());
-					onGround = true;
-					speedY = 0;
-				}
+					if(downleft&&downright){
+						if(notOnLadder()){
+							setY(getY()+speedY * speedFactorY * delta);
+							onGround = false;
+							onLadder=false;
+						}else{
+							if(!onLadder){ // first time hit on the ladder
+								speedY=0;
+							}
+							onLadder=true;
+							setY(getY()+speedY * speedFactorY * delta);
+							//  onGround=true;
+							
+						}
+					}else{
+						setY( (ytile+1)*screen.colLayer.getTileHeight());
+						onGround = true;
+						speedY = 0;
+					}
+				
 			}
 		
 		}else{
@@ -113,6 +130,7 @@ public class GameObject extends Image{
 		}
 	}
 	
+
 	boolean upleft,downleft,upright,downright,midleft, midright;
 
 	/**
@@ -174,9 +192,35 @@ public class GameObject extends Image{
 		return (screen.destLayer.getCell(pX, pY) == null);
 	}
 	
+	public boolean notOnLadder() {
+		for(Actor actor:screen.ladders.getChildren().items){
+			if(actor == null){
+				continue;
+			}
+			Ladder ladder=(Ladder)actor;
+			if(ladder != this &&getRectangle().overlaps(ladder.getRectangle())&& getY()> ladder.getY()){
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+
+	
 	
 	// TODO only build when it changes?
 	public Rectangle getRectangle(){
 		return new Rectangle(getX(),getY(),getWidth(),getHeight());
 	}
+	
+	public void addDamage(float pDamage){
+		life -= pDamage;
+		if(life < 0 ){ // dis thing is dead
+			remove();
+		}
+	}
+	
+	
+	
 }

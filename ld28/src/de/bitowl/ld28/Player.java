@@ -13,6 +13,8 @@ public class Player extends GameObject{
 	boolean isFlipped;
 	public int max_life=10;
 	
+	float SWORD_DAMAGE=3;
+	
 	public Player(IngameScreen pScreen){
 		super(pScreen,pScreen.atlas.findRegion("player"));
 		life = 5.5f;
@@ -25,15 +27,37 @@ public class Player extends GameObject{
 		sword = new AnimAction(new Animation(0.05f,screen.atlas.findRegions("sword")));
 		dig = new AnimAction(new Animation(0.05f,screen.atlas.findRegions("dig")));
 		
-		setOriginX(getWidth()/2);
+		setOriginX(getWidth()/2); // center point for flipping
 	}
 	
 	public void jump(){
+		if(onLadder){
+			speedY=2;
+			return;
+		}
 		if(onGround){
 			speedY = JUMP_CONST;
 			onGround = false;
 		}
 	}
+
+	public void descend() {
+		if(onLadder){
+			speedY=-2;
+			System.out.println("descend read");
+		}
+		System.out.println("descend");
+		
+	}
+
+
+	public void stopClimbing() {
+		if(onLadder){
+			speedY=0;
+		}
+		
+	}
+
 	
 	// what tile the player is standing on
 	public int getStandingX(){
@@ -77,7 +101,7 @@ public class Player extends GameObject{
 					continue;
 				}
 				if(enemy.getRectangle().overlaps(getSwordRectangle())){
-					enemy.remove();
+					enemy.addDamage(SWORD_DAMAGE);
 				}
 			}
 		}

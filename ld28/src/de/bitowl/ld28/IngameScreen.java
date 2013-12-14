@@ -3,8 +3,8 @@ package de.bitowl.ld28;
 import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -41,6 +41,7 @@ public class IngameScreen extends AbstractScreen{
 	int[] destroyable;
 	
 	Group enemies;
+	Group ladders;
 	
 	public IngameScreen(LDGame pGame) {
 		super(pGame);
@@ -57,6 +58,10 @@ public class IngameScreen extends AbstractScreen{
 		
 		bgLayer = (TiledMapTileLayer) map.getLayers().get("background");
 		fgLayer = (TiledMapTileLayer) map.getLayers().get("foreground");
+		
+
+		ladders=new Group(); // ladders should be behind the player
+		stage.addActor(ladders);
 		
 		
 		player = new Player(this);
@@ -75,7 +80,7 @@ public class IngameScreen extends AbstractScreen{
 		
 		
 		int tssize=0;
-		Iterator<TiledMapTile> it = map.getTileSets().getTileSet("tileset").iterator();
+		Iterator<TiledMapTile> it =tileset.iterator();
 		while(it.hasNext()){ // count how many tiles there are
 			TiledMapTile tile =it.next();
 			if(tile.getId()>tssize){
@@ -84,7 +89,7 @@ public class IngameScreen extends AbstractScreen{
 			
 		}
 		destroyable = new int[tssize+1];
-		it = map.getTileSets().getTileSet("tileset").iterator();
+		it = tileset.iterator();
 		
 		while(it.hasNext()){
 			TiledMapTile tile = it.next();
@@ -188,6 +193,9 @@ public class IngameScreen extends AbstractScreen{
 				case Keys.SPACE:
 					player.jump();
 					break;
+				case Keys.DOWN:
+					player.descend();
+					break;
 				case Keys.S: // dig down
 					digTile(player.getStandingX(),player.getStandingY(), 1);
 					player.dig();
@@ -219,6 +227,16 @@ public class IngameScreen extends AbstractScreen{
 					// swing your sword, mighty hero!
 					player.sword();
 					break;
+				case Keys.Y:
+					if(player.onGround || player.onLadder){
+						// place a ladder						
+						Ladder ladder=new Ladder(IngameScreen.this);
+						ladder.setPosition(player.getStandingX()*destLayer.getTileWidth(), player.getMiddleY()*destLayer.getTileHeight());
+						
+						if(ladder.notOnLadder()){ // only place it, if there is no other ladder
+							ladders.addActor(ladder);
+						}
+					}
 			}
 			
 			return super.keyDown(keycode);
@@ -230,6 +248,10 @@ public class IngameScreen extends AbstractScreen{
 				case Keys.RIGHT:
 					player.speedX= Gdx.input.isKeyPressed(Keys.RIGHT)?1:0-(Gdx.input.isKeyPressed(Keys.LEFT)?1:0);
 					player.walk();
+					break;
+				case Keys.UP:
+				case Keys.DOWN:
+					player.stopClimbing();
 					break;
 			}
 			return super.keyUp(keycode);

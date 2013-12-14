@@ -52,142 +52,149 @@ expl
   orig: 50, 50
   offset: 0, 0
   index: 4
-heart_empty
+ladder
   rotate: false
   xy: 365, 31
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-heart_full
+heart_empty
   rotate: false
   xy: 399, 31
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-heart_half
+heart_full
   rotate: false
   xy: 433, 31
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
+heart_half
+  rotate: false
+  xy: 467, 31
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
 player
   rotate: false
-  xy: 467, 23
+  xy: 501, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 player
   rotate: false
-  xy: 489, 23
+  xy: 523, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 sword
   rotate: false
-  xy: 511, 23
+  xy: 545, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
 sword
   rotate: false
-  xy: 533, 23
+  xy: 567, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 4
 sword
   rotate: false
-  xy: 533, 23
+  xy: 567, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 dig
   rotate: false
-  xy: 555, 23
+  xy: 589, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
 dig
   rotate: false
-  xy: 577, 23
+  xy: 611, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 4
 dig
   rotate: false
-  xy: 599, 23
+  xy: 633, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 sword
   rotate: false
-  xy: 621, 23
+  xy: 655, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 player
   rotate: false
-  xy: 643, 23
+  xy: 677, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
 sword
   rotate: false
-  xy: 665, 23
+  xy: 699, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 5
 player
   rotate: false
-  xy: 665, 23
+  xy: 699, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
 sword
   rotate: false
-  xy: 687, 23
+  xy: 721, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
 dig
   rotate: false
-  xy: 709, 23
+  xy: 743, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 5
 dig
   rotate: false
-  xy: 731, 23
+  xy: 765, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
 dig
   rotate: false
-  xy: 753, 23
+  xy: 787, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 enem
   rotate: false
-  xy: 775, 46
+  xy: 809, 46
   size: 30, 17
   orig: 30, 17
   offset: 0, 0
