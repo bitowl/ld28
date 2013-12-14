@@ -20,10 +20,10 @@ public class LifeBar extends Actor{
 		float x = screen.stage.getCamera().position.x - screen.stage.getWidth()/2;
 		float y = screen.stage.getCamera().position.y + screen.stage.getHeight()/2 - 32;
 		
-		for(int i=0;i<screen.player.max_life;i++){
+		for(int i=1;i<=screen.player.max_life;i++){
 			if(i<screen.player.life){
 				batch.draw(heart_full,x,y);
-			}else if(i<=screen.player.life+0.5f){
+			}else if(i-0.5f<=screen.player.life){
 				batch.draw(heart_half,x,y);
 			}else{
 				batch.draw(heart_empty,x,y);

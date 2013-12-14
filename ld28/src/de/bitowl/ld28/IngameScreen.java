@@ -118,7 +118,16 @@ public class IngameScreen extends AbstractScreen{
 		for(int y=0;y<enemyLay.getHeight();y++){
 			for(int x=0;x<enemyLay.getWidth();x++){
 				if(enemyLay.getCell(x, y)!=null){
-					Enemy enemy = new Enemy(this);
+					System.out.println(enemyLay.getCell(x, y).getTile().getId());
+					Enemy enemy;
+					switch(enemyLay.getCell(x, y).getTile().getId()){
+						case 3:
+							enemy = new Worm(this);
+							break;
+						default:
+							enemy = new Enemy(this);
+							break;
+					} 
 					enemy.setPosition(x*enemyLay.getTileWidth(), y*enemyLay.getTileHeight());
 					enemies.addActor(enemy);
 				}
@@ -231,7 +240,7 @@ public class IngameScreen extends AbstractScreen{
 					if(player.onGround || player.onLadder){
 						// place a ladder						
 						Ladder ladder=new Ladder(IngameScreen.this);
-						ladder.setPosition(player.getStandingX()*destLayer.getTileWidth(), player.getMiddleY()*destLayer.getTileHeight());
+						ladder.setPosition(player.getStandingX()*destLayer.getTileWidth(), player.getY()+player.getHeight()/2);
 						
 						if(ladder.notOnLadder()){ // only place it, if there is no other ladder
 							ladders.addActor(ladder);

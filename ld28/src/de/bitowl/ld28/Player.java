@@ -113,7 +113,14 @@ public class Player extends GameObject{
 			return new Rectangle(getX()+13,getY(),15,getHeight());
 		}
 	}
-
+	public Rectangle getFootRectangle(){
+		if(isFlipped){
+			return new Rectangle(getX()+5,getY(),15,9);
+		}else{
+			return new Rectangle(getX(),getY(),15,9);
+		}
+	}
+	
 	public void dig(){
 		if(dig.getActor()==null){
 			dig.reset();
@@ -121,4 +128,5 @@ public class Player extends GameObject{
 
 		}
 	}
+	
 }

@@ -2,13 +2,14 @@ package de.bitowl.ld28;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 
 public class Bomb extends GameObject{
 
 	float bombTimer;
 	float afterExplTimer;
-	float GROUND_FRICTION=3;
-	float AIR_FRICTION=1;
+	float GROUND_FRICTION=4;
+	float AIR_FRICTION=1.5f;
 	
 	public Bomb(IngameScreen pScreen) {
 		super(pScreen, pScreen.atlas.findRegion("bomb"));
@@ -77,6 +78,10 @@ public class Bomb extends GameObject{
 	 */
 	public int dist(int pX1,int pY1, int pX2,int pY2){
 		return 3-(int) ( MathUtils.random(-0.7f,0.7f)+Math.sqrt((pX2-pX1)*(pX2-pX1) + (pY2-pY1)*(pY2-pY1)));
+	}
+	@Override
+	public Rectangle getFootRectangle() {
+		return new Rectangle(); // bombs don't care about ladders
 	}
 	
 }

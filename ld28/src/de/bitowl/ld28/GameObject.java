@@ -77,13 +77,21 @@ public class GameObject extends Image{
 					}else{
 						setY( (ytile+1)*screen.colLayer.getTileHeight());
 						onGround = true;
+						// hit the ground
+						// check on falldamage
+						// TODO tweak numbers
+						if(speedY<-10){
+							System.err.println("too fast: "+speedY);
+							addDamage(-(speedY+9)/3);
+						}
+						
 						speedY = 0;
 					}
 				
 			}
 		
 		}else{
-			if(speedY>0){onGround=true;}
+			if(speedY<=0){onGround=true;}
 			speedY=0;
 		}
 		
@@ -173,9 +181,9 @@ public class GameObject extends Image{
 				continue;
 			}
 			Enemy enemy=(Enemy) actor;
-			if(enemy != this && enemy.getRectangle().overlaps(new Rectangle(pX,pY,getWidth(),getHeight()))){
-				enemy.life -= hitDamage;
-				life -= enemy.hitDamage;
+			if(enemy != this && enemy.getRectangle().overlaps(new Rectangle(pX,pY,getWidth(),getHeight()))){// oh no, we've hit an enemy
+				enemy.addDamage(hitDamage);
+				addDamage(enemy.hitDamage);
 				return false;
 			}
 		}
@@ -198,7 +206,7 @@ public class GameObject extends Image{
 				continue;
 			}
 			Ladder ladder=(Ladder)actor;
-			if(ladder != this &&getRectangle().overlaps(ladder.getRectangle())&& getY()> ladder.getY()){
+			if(ladder != this &&getFootRectangle().overlaps(ladder.getRectangle())&& getY()>= ladder.getY()){
 				return false;
 			}
 		}
@@ -206,6 +214,9 @@ public class GameObject extends Image{
 	}
 
 
+	public Rectangle getFootRectangle(){
+		return getRectangle();
+	}
 
 	
 	
@@ -215,6 +226,7 @@ public class GameObject extends Image{
 	}
 	
 	public void addDamage(float pDamage){
+		System.out.println("damage: "+pDamage);
 		life -= pDamage;
 		if(life < 0 ){ // dis thing is dead
 			remove();
