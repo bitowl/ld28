@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="20" orientation="orthogonal" tileheight="32" tilewidth="32" version="1.0" width="30"><properties><property name="atlas" value="tileset/packed.atlas"/><property name="blended tiles" value=""/></properties>
+ <tileset firstgid="1" name="tileset" tileheight="32" tilewidth="32">
+  <image height="256" source="tileset.png" width="256"/>
+  <tile id="0">
+   <properties>
+    <property name="dst" value="true"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="dst" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer height="20" name="Kachelebene 1" width="30">
+  <data compression="zlib" encoding="base64">
+   eJxjYWBgYBnFo3iEY0YCmBS1o5h4zIQDk6qemnig7B3FA4uZycADYSc13DSc7CXGLfSyFx0DAGYUBkQ=
+  </data>
+ </layer>
+</map>
