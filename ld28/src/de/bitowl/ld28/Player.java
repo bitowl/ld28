@@ -1,11 +1,14 @@
 package de.bitowl.ld28;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Player extends GameObject{
 	public final static float JUMP_CONST=4f;
 	AnimAction walking;
 	AnimAction sword;
+	AnimAction dig;
 	boolean isWalking;
 	boolean isFlipped;
 	
@@ -17,6 +20,7 @@ public class Player extends GameObject{
 		walking = new AnimAction(walk,true);
 		
 		sword = new AnimAction(new Animation(0.05f,screen.atlas.findRegions("sword")));
+		dig = new AnimAction(new Animation(0.05f,screen.atlas.findRegions("dig")));
 		
 		setOriginX(getWidth()/2);
 	}
@@ -61,6 +65,33 @@ public class Player extends GameObject{
 		if(sword.getActor()==null){
 			sword.reset();
 			addAction(sword);
+			
+			// hit anything?
+			for(Actor actor:screen.enemies.getChildren().items){
+				Enemy enemy=(Enemy) actor;
+				if(enemy == null){
+					// this enemy is already deaaaad
+					continue;
+				}
+				if(enemy.getRectangle().overlaps(getSwordRectangle())){
+					enemy.remove();
+				}
+			}
+		}
+	}
+	private Rectangle getSwordRectangle() {
+		if(isFlipped){
+			return new Rectangle(getX()-7,getY(),15,getHeight());
+		}else{
+			return new Rectangle(getX()+13,getY(),15,getHeight());
+		}
+	}
+
+	public void dig(){
+		if(dig.getActor()==null){
+			dig.reset();
+			addAction(dig);
+
 		}
 	}
 }

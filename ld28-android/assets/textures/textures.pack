@@ -5,141 +5,183 @@ filter: Nearest,Nearest
 repeat: none
 expl
   rotate: false
-  xy: 1, 75
+  xy: 1, 1
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 5
 expl
   rotate: false
-  xy: 1, 23
+  xy: 53, 1
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 6
+expl
+  rotate: false
+  xy: 105, 1
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: 0
+expl
+  rotate: false
+  xy: 157, 1
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: 2
+expl
+  rotate: false
+  xy: 209, 1
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: 1
+expl
+  rotate: false
+  xy: 261, 1
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: 3
+expl
+  rotate: false
+  xy: 313, 1
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: 4
+player
+  rotate: false
+  xy: 365, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 2
+player
+  rotate: false
+  xy: 387, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 1
+sword
+  rotate: false
+  xy: 409, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 0
+sword
+  rotate: false
+  xy: 431, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 4
+sword
+  rotate: false
+  xy: 431, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 1
+dig
+  rotate: false
+  xy: 453, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 0
+dig
+  rotate: false
+  xy: 475, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 4
+dig
+  rotate: false
+  xy: 497, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 1
+sword
+  rotate: false
+  xy: 519, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 2
+player
+  rotate: false
+  xy: 541, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 3
+sword
+  rotate: false
+  xy: 563, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 5
+player
+  rotate: false
+  xy: 563, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 0
+sword
+  rotate: false
+  xy: 585, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 3
+dig
+  rotate: false
+  xy: 607, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 5
+dig
+  rotate: false
+  xy: 629, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 3
+dig
+  rotate: false
+  xy: 651, 11
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 2
 enem
   rotate: false
-  xy: 1, 4
+  xy: 673, 34
   size: 30, 17
   orig: 30, 17
   offset: 0, 0
   index: 0
 bomb
   rotate: false
-  xy: 33, 8
+  xy: 673, 19
   size: 13, 13
   orig: 13, 13
   offset: 0, 0
   index: 0
 bomb
   rotate: false
-  xy: 48, 8
+  xy: 705, 38
   size: 13, 13
   orig: 13, 13
   offset: 0, 0
   index: 1
-expl
-  rotate: false
-  xy: 53, 75
-  size: 50, 50
-  orig: 50, 50
-  offset: 0, 0
-  index: 0
-expl
-  rotate: false
-  xy: 53, 23
-  size: 50, 50
-  orig: 50, 50
-  offset: 0, 0
-  index: 2
-expl
-  rotate: false
-  xy: 105, 75
-  size: 50, 50
-  orig: 50, 50
-  offset: 0, 0
-  index: 1
-expl
-  rotate: false
-  xy: 105, 23
-  size: 50, 50
-  orig: 50, 50
-  offset: 0, 0
-  index: 3
-expl
-  rotate: false
-  xy: 157, 75
-  size: 50, 50
-  orig: 50, 50
-  offset: 0, 0
-  index: 4
-player
-  rotate: false
-  xy: 209, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 2
-player
-  rotate: false
-  xy: 231, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 1
-sword
-  rotate: false
-  xy: 209, 43
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 0
-sword
-  rotate: false
-  xy: 231, 43
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 4
-sword
-  rotate: false
-  xy: 231, 43
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 1
-sword
-  rotate: false
-  xy: 157, 33
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 2
-player
-  rotate: false
-  xy: 179, 33
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 3
-sword
-  rotate: false
-  xy: 201, 1
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 5
-player
-  rotate: false
-  xy: 201, 1
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 0
-sword
-  rotate: false
-  xy: 223, 1
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 3

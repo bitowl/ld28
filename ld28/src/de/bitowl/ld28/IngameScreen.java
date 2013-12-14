@@ -184,6 +184,7 @@ public class IngameScreen extends AbstractScreen{
 					break;
 				case Keys.S: // dig down
 					digTile(player.getStandingX(),player.getStandingY(), 1);
+					player.dig();
 					//colLayer.getCell((int)(player.getX()/colLayer.getTileWidth()), (int)(player.getY()/colLayer.getTileHeight())).setTile();
 					break;
 				case Keys.A: // dig left

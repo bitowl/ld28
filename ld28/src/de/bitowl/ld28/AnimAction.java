@@ -44,12 +44,17 @@ public class AnimAction extends Action {
 			System.err
 					.println("trying to animate something that is not an image");
 		}
-		if(isOver()){
-			actor.removeAction(this);
+		if(isOver() && !keepAfterEnd){
+			return true;
+			//actor.removeAction(this);
 		}
 		return false;
 	}
 	public boolean isOver(){
+		if(animation.getPlayMode()==Animation.NORMAL){ 
 		return animation.isAnimationFinished(stateTime);
+		}else{
+			return false;
+		}
 	}
 }

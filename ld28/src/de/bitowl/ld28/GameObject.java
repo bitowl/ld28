@@ -1,6 +1,7 @@
 package de.bitowl.ld28;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
@@ -129,5 +130,11 @@ public class GameObject extends Image{
 	 */
 	public boolean isFree(int pX, int pY){
 		return (screen.destLayer.getCell(pX, pY) == null);
+	}
+	
+	
+	// TODO only build when it changes?
+	public Rectangle getRectangle(){
+		return new Rectangle(getX(),getY(),getWidth(),getHeight());
 	}
 }
