@@ -30,6 +30,21 @@ public class Player extends GameObject{
 		setOriginX(getWidth()/2); // center point for flipping
 	}
 	
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+		// collect ALL the items that we might touch
+		for(Actor actor:screen.items.getChildren().items){
+			if(actor == null){
+				continue;
+			}
+			ItemObject item=(ItemObject)actor;
+			if(getRectangle().overlaps(item.getRectangle())){
+				item.collected();
+			}
+		}
+	}
+	
 	public void jump(){
 		if(onLadder){
 			speedY=2;

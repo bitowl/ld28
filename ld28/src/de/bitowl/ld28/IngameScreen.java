@@ -40,6 +40,7 @@ public class IngameScreen extends AbstractScreen{
 	 */
 	int[] destroyable;
 	
+	Group items;
 	Group enemies;
 	Group ladders;
 	
@@ -62,6 +63,9 @@ public class IngameScreen extends AbstractScreen{
 
 		ladders=new Group(); // ladders should be behind the player
 		stage.addActor(ladders);
+		
+		items = new Group();
+		stage.addActor(items);
 		
 		
 		player = new Player(this);
@@ -124,6 +128,20 @@ public class IngameScreen extends AbstractScreen{
 						case 3:
 							enemy = new Worm(this);
 							break;
+						case 4:
+							enemy = new Slime(this);
+							break;
+						case 5:
+							enemy = new Spider(this);
+							break;
+						case 6:
+							enemy = new Spike(this);
+							break;
+						case 7:
+							Chest chest=new Chest(this);
+							chest.setPosition(x*enemyLay.getTileWidth(), y*enemyLay.getTileHeight());
+							items.addActor(chest);
+							continue;
 						default:
 							enemy = new Enemy(this);
 							break;

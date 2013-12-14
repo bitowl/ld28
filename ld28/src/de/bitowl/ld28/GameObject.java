@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class GameObject extends Image{
 	IngameScreen screen;
+
+	
 	public GameObject(IngameScreen pScreen) {
 		screen = pScreen;
 	}
@@ -217,7 +219,6 @@ public class GameObject extends Image{
 	public Rectangle getFootRectangle(){
 		return getRectangle();
 	}
-
 	
 	
 	// TODO only build when it changes?
