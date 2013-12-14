@@ -227,7 +227,7 @@ public class GameObject extends Image{
 	}
 	
 	public void addDamage(float pDamage){
-		System.out.println("damage: "+pDamage);
+	//	System.out.println("damage: "+pDamage);
 		life -= pDamage;
 		if(life < 0 ){ // dis thing is dead
 			remove();

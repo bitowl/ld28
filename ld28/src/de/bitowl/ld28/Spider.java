@@ -65,7 +65,7 @@ public class Spider extends Enemy {
 			remove();
 		}
 		
-		System.out.println(Math.sqrt((screen.player.getX()-getX())*(screen.player.getX()-getX()) + (screen.player.getY()-getY())*(screen.player.getY()-getY())));
+		// System.out.println(Math.sqrt((screen.player.getX()-getX())*(screen.player.getX()-getX()) + (screen.player.getY()-getY())*(screen.player.getY()-getY())));
 		
 		switch(state){
 			case GODOWN:

@@ -80,135 +80,149 @@ chest
   orig: 32, 32
   offset: 0, 0
   index: 0
-heart_full
+jug
   rotate: false
   xy: 501, 31
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+jug
+  rotate: false
+  xy: 535, 31
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+heart_full
+  rotate: false
+  xy: 569, 31
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 heart_half
   rotate: false
-  xy: 535, 31
+  xy: 603, 31
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 player
   rotate: false
-  xy: 569, 23
+  xy: 637, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 player
   rotate: false
-  xy: 591, 23
+  xy: 659, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 sword
   rotate: false
-  xy: 613, 23
+  xy: 681, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
 sword
   rotate: false
-  xy: 635, 23
+  xy: 703, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 4
 sword
   rotate: false
-  xy: 635, 23
+  xy: 703, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 dig
   rotate: false
-  xy: 657, 23
+  xy: 725, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
 dig
   rotate: false
-  xy: 679, 23
+  xy: 747, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 4
 dig
   rotate: false
-  xy: 701, 23
+  xy: 769, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 sword
   rotate: false
-  xy: 723, 23
+  xy: 791, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 player
   rotate: false
-  xy: 745, 23
+  xy: 813, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
 sword
   rotate: false
-  xy: 767, 23
+  xy: 835, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 5
 player
   rotate: false
-  xy: 767, 23
+  xy: 835, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
 sword
   rotate: false
-  xy: 789, 23
+  xy: 857, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
 dig
   rotate: false
-  xy: 811, 23
+  xy: 879, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 5
 dig
   rotate: false
-  xy: 833, 23
+  xy: 901, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
 dig
   rotate: false
-  xy: 855, 23
+  xy: 923, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 enem
   rotate: false
-  xy: 877, 46
+  xy: 945, 46
   size: 30, 17
   orig: 30, 17
   offset: 0, 0
@@ -222,14 +236,14 @@ worm
   index: 3
 worm
   rotate: false
-  xy: 909, 48
+  xy: 977, 48
   size: 32, 15
   orig: 32, 15
   offset: 0, 0
   index: 0
 worm
   rotate: false
-  xy: 909, 48
+  xy: 977, 48
   size: 32, 15
   orig: 32, 15
   offset: 0, 0
@@ -243,98 +257,98 @@ worm
   index: 1
 spikes
   rotate: false
-  xy: 877, 29
+  xy: 945, 29
   size: 26, 15
   orig: 26, 15
   offset: 0, 0
   index: -1
 spider
   rotate: false
-  xy: 943, 47
+  xy: 433, 13
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 8
 spider
   rotate: false
-  xy: 943, 47
+  xy: 433, 13
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 6
 spider
   rotate: false
-  xy: 943, 47
+  xy: 433, 13
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 4
 spider
   rotate: false
-  xy: 943, 47
+  xy: 433, 13
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 3
-spider
-  rotate: false
-  xy: 943, 47
-  size: 21, 16
-  orig: 21, 16
-  offset: 0, 0
-  index: 5
-spider
-  rotate: false
-  xy: 943, 47
-  size: 21, 16
-  orig: 21, 16
-  offset: 0, 0
-  index: 7
-spider
-  rotate: false
-  xy: 966, 47
-  size: 21, 16
-  orig: 21, 16
-  offset: 0, 0
-  index: 2
-spider
-  rotate: false
-  xy: 989, 47
-  size: 21, 16
-  orig: 21, 16
-  offset: 0, 0
-  index: 1
 spider
   rotate: false
   xy: 433, 13
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
+  index: 5
+spider
+  rotate: false
+  xy: 433, 13
+  size: 21, 16
+  orig: 21, 16
+  offset: 0, 0
+  index: 7
+spider
+  rotate: false
+  xy: 456, 13
+  size: 21, 16
+  orig: 21, 16
+  offset: 0, 0
+  index: 2
+spider
+  rotate: false
+  xy: 479, 13
+  size: 21, 16
+  orig: 21, 16
+  offset: 0, 0
+  index: 1
+spider
+  rotate: false
+  xy: 502, 13
+  size: 21, 16
+  orig: 21, 16
+  offset: 0, 0
   index: 0
 slime
   rotate: false
-  xy: 456, 13
+  xy: 525, 13
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
   index: 1
 slime
   rotate: false
-  xy: 478, 13
+  xy: 547, 13
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
   index: 2
 slime
   rotate: false
-  xy: 500, 13
+  xy: 569, 13
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
   index: 3
 slime
   rotate: false
-  xy: 522, 13
+  xy: 591, 13
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
@@ -348,14 +362,14 @@ web
   index: -1
 bomb
   rotate: false
-  xy: 544, 16
+  xy: 613, 16
   size: 13, 13
   orig: 13, 13
   offset: 0, 0
   index: 0
 bomb
   rotate: false
-  xy: 544, 1
+  xy: 613, 1
   size: 13, 13
   orig: 13, 13
   offset: 0, 0

@@ -15,6 +15,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Group;
 
 public class IngameScreen extends AbstractScreen{
@@ -122,7 +123,7 @@ public class IngameScreen extends AbstractScreen{
 		for(int y=0;y<enemyLay.getHeight();y++){
 			for(int x=0;x<enemyLay.getWidth();x++){
 				if(enemyLay.getCell(x, y)!=null){
-					System.out.println(enemyLay.getCell(x, y).getTile().getId());
+					// System.out.println(enemyLay.getCell(x, y).getTile().getId());
 					Enemy enemy;
 					switch(enemyLay.getCell(x, y).getTile().getId()){
 						case 3:
@@ -142,6 +143,11 @@ public class IngameScreen extends AbstractScreen{
 							chest.setPosition(x*enemyLay.getTileWidth(), y*enemyLay.getTileHeight());
 							items.addActor(chest);
 							continue;
+						case 8:
+							Jug jug = new Jug(this);
+							jug.setPosition(x*enemyLay.getTileWidth(), y*enemyLay.getTileHeight());
+							items.addActor(jug);
+							continue;							
 						default:
 							enemy = new Enemy(this);
 							break;
@@ -282,6 +288,44 @@ public class IngameScreen extends AbstractScreen{
 					break;
 			}
 			return super.keyUp(keycode);
+		}
+		
+		@Override
+		public boolean touchDown(int screenX, int screenY, int pointer,
+				int button) {
+			
+			if(Gdx.input.getX()>viewport.x&&Gdx.input.getX()<viewport.x+viewport.width&&Gdx.input.getY()>viewport.y&&Gdx.input.getY()<viewport.y+viewport.height){
+				Vector3 touchPos = new Vector3();
+				touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+				stage.getCamera().unproject(touchPos,viewport.x,viewport.y,viewport.width,viewport.height);
+
+				System.out.println("touch: "+touchPos.x+","+touchPos.y);
+				System.out.println("playa: "+player.getX()+","+player.getY());
+				
+				int digX=player.getStandingX();
+				int digY=player.getMiddleY();
+				
+				float SPAN_X=40;
+				float SPAN_Y=40;
+				
+				if(touchPos.x<player.getX() - SPAN_X){
+					digX=player.getStandingX()-1;
+				}else if(touchPos.x>player.getX()+player.getWidth() + SPAN_X){
+					digX=player.getStandingX()+1;
+				}
+				
+				if(touchPos.y<player.getY() - SPAN_Y){
+					digY=player.getStandingY();
+				}else if(touchPos.y>player.getY()+player.getHeight() + SPAN_Y){
+					digY=player.getMiddleY()+1;
+				}
+				
+				
+				digTile(digX,digY, 1);
+				player.dig();
+				
+			}
+			return false;
 		}
 	}
 	
