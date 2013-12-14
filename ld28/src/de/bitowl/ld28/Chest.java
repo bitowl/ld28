@@ -9,11 +9,14 @@ public class Chest extends ItemObject{
 	}
 
 	@Override
-	public void collected() {
-		if(!open){
-			// open the chest :)
-			setDrawable(new TextureRegionDrawable(screen.atlas.findRegion("chest", 1)));
-			open = true;
+	public void hitBy(GameObject gameObject) {
+		if(gameObject instanceof Player){
+			if(!open){
+				// open the chest :)
+				setDrawable(new TextureRegionDrawable(screen.atlas.findRegion("chest", 1)));
+				open = true;
+				collidable=false;
+			}	
 		}
-	}	
+	}
 }

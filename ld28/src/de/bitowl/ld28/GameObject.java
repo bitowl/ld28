@@ -32,6 +32,8 @@ public class GameObject extends Image{
 	public float life=1;
 	public float hitDamage=2;
 	
+	boolean collidable = true;
+	
 	
 	@Override
 	public void act(float delta) {
@@ -183,11 +185,26 @@ public class GameObject extends Image{
 				continue;
 			}
 			Enemy enemy=(Enemy) actor;
-			if(enemy != this && enemy.getRectangle().overlaps(new Rectangle(pX,pY,getWidth(),getHeight()))){// oh no, we've hit an enemy
+			if(enemy != this && enemy.collidable && enemy.getRectangle().overlaps(new Rectangle(pX,pY,getWidth(),getHeight()))){// oh no, we've hit an enemy
 				enemy.addDamage(hitDamage);
 				addDamage(enemy.hitDamage);
 				return false;
 			}
+		}
+		
+		// we can as well hit on items...
+		for(Actor actor:screen.items.getChildren().items){
+			if(actor == null){
+				continue;
+			}
+			ItemObject item=(ItemObject) actor;
+			if(item != this && item.collidable && item.getRectangle().overlaps(new Rectangle(pX,pY,getWidth(),getHeight()))){// we've hit an item
+				item.hitBy(this);
+				if(item.collidable){ // if the item was not used by us, so we don't run against it anymore
+					return false;
+				}
+			}
+			
 		}
 		return true;
 	}

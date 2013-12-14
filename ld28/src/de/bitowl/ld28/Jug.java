@@ -8,13 +8,17 @@ public class Jug extends ItemObject{
 		super(pScreen,pScreen.atlas.findRegion("jug"));
 	}
 
+	
 	@Override
-	public void collected() {
-	// 	System.out.println("SMACK JUG");
-		if(!destroyed){
-			// destroy dat jug
-			setDrawable(new TextureRegionDrawable(screen.atlas.findRegion("jug", 1)));
-			destroyed = true;
+	public void hitBy(GameObject gameObject) {
+		if(gameObject instanceof Player || gameObject instanceof Arrow){
+			// collect
+			if(!destroyed){
+				// destroy dat jug
+				setDrawable(new TextureRegionDrawable(screen.atlas.findRegion("jug", 1)));
+				destroyed = true;
+				collidable=false;
+			}
 		}
-	}	
+	}
 }
