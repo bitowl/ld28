@@ -5,182 +5,203 @@ filter: Nearest,Nearest
 repeat: none
 expl
   rotate: false
-  xy: 1, 1
+  xy: 1, 13
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 5
 expl
   rotate: false
-  xy: 53, 1
+  xy: 53, 13
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 6
 expl
   rotate: false
-  xy: 105, 1
+  xy: 105, 13
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 0
 expl
   rotate: false
-  xy: 157, 1
+  xy: 157, 13
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 2
 expl
   rotate: false
-  xy: 209, 1
+  xy: 209, 13
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 1
 expl
   rotate: false
-  xy: 261, 1
+  xy: 261, 13
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 3
 expl
   rotate: false
-  xy: 313, 1
+  xy: 313, 13
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: 4
+heart_empty
+  rotate: false
+  xy: 365, 31
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+heart_full
+  rotate: false
+  xy: 399, 31
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+heart_half
+  rotate: false
+  xy: 433, 31
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
 player
   rotate: false
-  xy: 365, 11
+  xy: 467, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 player
   rotate: false
-  xy: 387, 11
+  xy: 489, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 sword
   rotate: false
-  xy: 409, 11
+  xy: 511, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
 sword
   rotate: false
-  xy: 431, 11
+  xy: 533, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 4
 sword
   rotate: false
-  xy: 431, 11
+  xy: 533, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 dig
   rotate: false
-  xy: 453, 11
+  xy: 555, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
 dig
   rotate: false
-  xy: 475, 11
+  xy: 577, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 4
 dig
   rotate: false
-  xy: 497, 11
+  xy: 599, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 1
 sword
   rotate: false
-  xy: 519, 11
+  xy: 621, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 player
   rotate: false
-  xy: 541, 11
+  xy: 643, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
 sword
   rotate: false
-  xy: 563, 11
+  xy: 665, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 5
 player
   rotate: false
-  xy: 563, 11
+  xy: 665, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
 sword
   rotate: false
-  xy: 585, 11
+  xy: 687, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
 dig
   rotate: false
-  xy: 607, 11
+  xy: 709, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 5
 dig
   rotate: false
-  xy: 629, 11
+  xy: 731, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
 dig
   rotate: false
-  xy: 651, 11
+  xy: 753, 23
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 enem
   rotate: false
-  xy: 673, 34
+  xy: 775, 46
   size: 30, 17
   orig: 30, 17
   offset: 0, 0
   index: 0
 bomb
   rotate: false
-  xy: 673, 19
+  xy: 365, 16
   size: 13, 13
   orig: 13, 13
   offset: 0, 0
   index: 0
 bomb
   rotate: false
-  xy: 705, 38
+  xy: 365, 1
   size: 13, 13
   orig: 13, 13
   offset: 0, 0

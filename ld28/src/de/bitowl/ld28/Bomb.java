@@ -59,8 +59,10 @@ public class Bomb extends GameObject{
 				int deployX=(int) (getX()/screen.colLayer.getTileWidth());
 				int deployY=(int) (getY()/screen.colLayer.getTileHeight());
 				
-				for(int y = deployY - 3;y<=deployY+3;y++){
-					for(int x = deployX-3;x<=deployX+3;x++){
+				int RADIUS=4;
+				
+				for(int y = deployY - RADIUS;y<=deployY+RADIUS;y++){
+					for(int x = deployX-RADIUS;x<=deployX+RADIUS;x++){
 						screen.digTile(x, y, dist(x,y,deployX,deployY));
 						//screen.digTile(x,y,MathUtils.random(1,5));
 					}

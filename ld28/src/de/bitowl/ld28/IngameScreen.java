@@ -121,6 +121,12 @@ public class IngameScreen extends AbstractScreen{
 		}
 		
 		stage.addActor(enemies);
+		
+		
+		
+		// HUD
+		LifeBar lifebar=new LifeBar(this);
+		stage.addActor(lifebar);
 
 	}
 	@Override

@@ -11,9 +11,12 @@ public class Player extends GameObject{
 	AnimAction dig;
 	boolean isWalking;
 	boolean isFlipped;
+	public int max_life=10;
 	
 	public Player(IngameScreen pScreen){
 		super(pScreen,pScreen.atlas.findRegion("player"));
+		life = 5.5f;
+		hitDamage=0;
 		doNotStopOnWalls = true; // so we can smoothly jump, when we stand at a wall
 		Animation walk=new Animation(0.1f,screen.atlas.findRegions("player"));
 		//walk.setPlayMode(Animation.LOOP_PINGPONG);

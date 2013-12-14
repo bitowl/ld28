@@ -1,7 +1,9 @@
 package de.bitowl.ld28;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
@@ -26,6 +28,9 @@ public class GameObject extends Image{
 	
 	boolean doNotStopOnWalls;
 	
+	public float life=1;
+	public float hitDamage=2;
+	
 	
 	@Override
 	public void act(float delta) {
@@ -38,48 +43,58 @@ public class GameObject extends Image{
 		int xtile=(int) ( (getX()+ speedX * speedFactorX * delta) /screen.colLayer.getTileWidth());
 		int ytile=(int) ( (getY()+ speedY * speedFactorY * delta) /screen.colLayer.getTileHeight());		
 
-		getMyCorners(getX(),getY()+speedY * speedFactorY * delta);
-
-		if(speedY>0){
-			if(upleft&&upright){
-				setY(getY()+speedY * speedFactorY * delta);
-			}else{
-				setY( (ytile+2)*screen.colLayer.getTileHeight()-getHeight());
-				speedY = 0;
+		if(noEnemies(getX(),getY()+speedY * speedFactorY * delta)){
+		
+			getMyCorners(getX(),getY()+speedY * speedFactorY * delta);
+	
+			if(speedY>0){
+				if(upleft&&upright){
+					setY(getY()+speedY * speedFactorY * delta);
+				}else{
+					setY( (ytile+1)*screen.colLayer.getTileHeight()-getHeight()%screen.colLayer.getTileHeight());
+					speedY = 0;
+				}
+			}else if(speedY<0){
+				if(downleft&&downright){
+					setY(getY()+speedY * speedFactorY * delta);
+					onGround = false;
+				}else{
+					setY( (ytile+1)*screen.colLayer.getTileHeight());
+					onGround = true;
+					speedY = 0;
+				}
 			}
-		}else if(speedY<0){
-			if(downleft&&downright){
-				setY(getY()+speedY * speedFactorY * delta);
-				onGround = false;
-			}else{
-				setY( (ytile+1)*screen.colLayer.getTileHeight());
-				onGround = true;
-				speedY = 0;
-			}
+		
+		}else{
+			if(speedY>0){onGround=true;}
+			speedY=0;
 		}
 		
 		
-		getMyCorners(getX() + speedX*speedFactorX*delta, getY());
-
-		if(speedX<0){
-			if(downleft && upleft && midleft){
-				setX(getX() + speedX*speedFactorX*delta);
-			}else{
-				setX( (xtile+1)*screen.colLayer.getTileWidth());
-				if(!doNotStopOnWalls){speedX=0;}
+		if(noEnemies(getX() + speedX*speedFactorX*delta, getY())){
+			getMyCorners(getX() + speedX*speedFactorX*delta, getY());
+	
+			if(speedX<0){
+				if(downleft && upleft && midleft){
+					setX(getX() + speedX*speedFactorX*delta);
+				}else{
+					setX( (xtile+1)*screen.colLayer.getTileWidth());
+					if(!doNotStopOnWalls){speedX=0;}
+				}
+			}else if(speedX>0){
+				if(downright && upright && midright){
+					setX(getX() + speedX*speedFactorX*delta);
+					
+				}else{
+					setX( (xtile+1)*screen.colLayer.getTileWidth()-getWidth() );
+					if(!doNotStopOnWalls){speedX=0;}
+					
+				}
 			}
-		}else if(speedX>0){
-			if(downright && upright && midright){
-				setX(getX() + speedX*speedFactorX*delta);
-				
-			}else{
-				setX( (xtile+1)*screen.colLayer.getTileWidth()-getWidth() );
-				if(!doNotStopOnWalls){speedX=0;}
-				
-			}
+		
+		}else{
+			speedX=0;
 		}
-		
-		
 		
 		// don't leave the map
 		if(getX() < 0){
@@ -122,6 +137,33 @@ public class GameObject extends Image{
 		midleft=isFree(leftX,midY);
 		midright=isFree(rightX,midY);
 	}
+	
+	
+	/**
+	 * this move would not hit any enemies?
+	 * @param pX
+	 * @param pY
+	 * @return
+	 */
+	public boolean noEnemies(float pX, float pY){
+		if(speedX>0){pX++;}else if(speedX<0){pX--;}
+		// if(speedY>0){pY++;}else if(speedY<0){pY--;}
+		
+		
+		for(Actor actor:screen.enemies.getChildren().items){
+			if(actor == null){
+				continue;
+			}
+			Enemy enemy=(Enemy) actor;
+			if(enemy != this && enemy.getRectangle().overlaps(new Rectangle(pX,pY,getWidth(),getHeight()))){
+				enemy.life -= hitDamage;
+				life -= enemy.hitDamage;
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	/**
 	 * 
 	 * @param pX
