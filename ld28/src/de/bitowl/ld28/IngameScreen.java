@@ -17,6 +17,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class IngameScreen extends AbstractScreen{
 
@@ -45,6 +46,15 @@ public class IngameScreen extends AbstractScreen{
 	Group enemies;
 	Group ladders;
 	
+	enum Weapon{
+		SWORD, SHOVEL, PICKAXE, BOMBS, BOW
+	}
+	Weapon weapon;
+	
+
+	
+	WeaponBar weaponbar;
+	
 	public IngameScreen(LDGame pGame) {
 		super(pGame);
 		
@@ -72,7 +82,9 @@ public class IngameScreen extends AbstractScreen{
 		player = new Player(this);
 		player.setY(colLayer.getHeight()*colLayer.getTileHeight()-player.getHeight());
 		stage.addActor(player);
-		
+
+		weapon = Weapon.SHOVEL;
+
 			
 		// handle input
 		Gdx.input.setInputProcessor(new GameInputProcessor());
@@ -147,7 +159,12 @@ public class IngameScreen extends AbstractScreen{
 							Jug jug = new Jug(this);
 							jug.setPosition(x*enemyLay.getTileWidth(), y*enemyLay.getTileHeight());
 							items.addActor(jug);
-							continue;							
+							continue;
+						case 9:
+							HealthBottle hb = new HealthBottle(this);
+							hb.setPosition(x*enemyLay.getTileWidth()+4, y*enemyLay.getTileHeight());
+							items.addActor(hb);		
+							continue;
 						default:
 							enemy = new Enemy(this);
 							break;
@@ -165,7 +182,11 @@ public class IngameScreen extends AbstractScreen{
 		// HUD
 		LifeBar lifebar=new LifeBar(this);
 		stage.addActor(lifebar);
-
+		
+		weaponbar = new WeaponBar(this);
+		stage.addActor(weaponbar);
+		
+		
 	}
 	@Override
 	public void render(float delta) {
@@ -214,22 +235,30 @@ public class IngameScreen extends AbstractScreen{
 	}
 	
 	class GameInputProcessor extends InputAdapter{
+		
+		// is the weaponbar openend
+		boolean weaponBarOpen;
+		
 		@Override
 		public boolean keyDown(int keycode) {
 			switch(keycode){
 				case Keys.LEFT:
 				case Keys.RIGHT:
-					player.speedX= Gdx.input.isKeyPressed(Keys.RIGHT)?1:0-(Gdx.input.isKeyPressed(Keys.LEFT)?1:0);
+				case Keys.A:
+				case Keys.D:
+					player.speedX= Gdx.input.isKeyPressed(Keys.RIGHT)?1:0-(Gdx.input.isKeyPressed(Keys.LEFT)?1:0)+(Gdx.input.isKeyPressed(Keys.D)?1:0)-(Gdx.input.isKeyPressed(Keys.A)?1:0);
 					player.walk();
 					break;
 				case Keys.UP:
 				case Keys.SPACE:
+				case Keys.W:
 					player.jump();
 					break;
 				case Keys.DOWN:
+				case Keys.S:
 					player.descend();
 					break;
-				case Keys.S: // dig down
+			/*	case Keys.S: // dig down
 					digTile(player.getStandingX(),player.getStandingY(), 1);
 					player.dig();
 					//colLayer.getCell((int)(player.getX()/colLayer.getTileWidth()), (int)(player.getY()/colLayer.getTileHeight())).setTile();
@@ -246,16 +275,7 @@ public class IngameScreen extends AbstractScreen{
 					bomb.speedX = player.speedX*2;
 					bomb.speedY = player.speedY;
 					stage.addActor(bomb);
-				/*	// Boombs
-					int deployX=player.getStandingX();
-					int deployY=player.getStandingY();
-					
-					for(int y = deployY - 2;y<=deployY+2;y++){
-						for(int x = deployX-2;x<deployX+3;x++){
-							digTile(x,y);
-						}
-					}*/
-					break;
+	*/
 				case Keys.E:
 					// swing your sword, mighty hero!
 					player.sword();
@@ -279,11 +299,15 @@ public class IngameScreen extends AbstractScreen{
 			switch(keycode){
 				case Keys.LEFT:
 				case Keys.RIGHT:
-					player.speedX= Gdx.input.isKeyPressed(Keys.RIGHT)?1:0-(Gdx.input.isKeyPressed(Keys.LEFT)?1:0);
+				case Keys.A:
+				case Keys.D:
+					player.speedX= Gdx.input.isKeyPressed(Keys.RIGHT)?1:0-(Gdx.input.isKeyPressed(Keys.LEFT)?1:0)+(Gdx.input.isKeyPressed(Keys.D)?1:0)-(Gdx.input.isKeyPressed(Keys.A)?1:0);
 					player.walk();
 					break;
 				case Keys.UP:
 				case Keys.DOWN:
+				case Keys.W:
+				case Keys.S:
 					player.stopClimbing();
 					break;
 			}
@@ -292,37 +316,86 @@ public class IngameScreen extends AbstractScreen{
 		
 		@Override
 		public boolean touchDown(int screenX, int screenY, int pointer,
-				int button) {
+				int button) {		
 			
 			if(Gdx.input.getX()>viewport.x&&Gdx.input.getX()<viewport.x+viewport.width&&Gdx.input.getY()>viewport.y&&Gdx.input.getY()<viewport.y+viewport.height){
 				Vector3 touchPos = new Vector3();
 				touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
 				stage.getCamera().unproject(touchPos,viewport.x,viewport.y,viewport.width,viewport.height);
 
+				
+				
+				
+				if(touchPos.x>stage.getCamera().position.x + stage.getWidth()/2 - 64){
+					if(weaponBarOpen){
+						weaponbar.select(touchPos.y-stage.getCamera().position.y-stage.getHeight()/2);
+						weaponbar.close();
+						weaponBarOpen=false;
+					}else{
+						weaponbar.open();
+						weaponBarOpen=true;
+					}
+					return false;
+				}
+				if(weaponBarOpen){ // the user clicked somewhere else
+					weaponbar.close();
+					weaponBarOpen=false;
+				}
+				
+				
+				
 				System.out.println("touch: "+touchPos.x+","+touchPos.y);
 				System.out.println("playa: "+player.getX()+","+player.getY());
-				
-				int digX=player.getStandingX();
-				int digY=player.getMiddleY();
-				
 				float SPAN_X=40;
 				float SPAN_Y=40;
 				
-				if(touchPos.x<player.getX() - SPAN_X){
-					digX=player.getStandingX()-1;
-				}else if(touchPos.x>player.getX()+player.getWidth() + SPAN_X){
-					digX=player.getStandingX()+1;
+				switch (weapon){
+					case SHOVEL:
+						int digX=player.getStandingX();
+						int digY=player.getMiddleY();
+						
+	
+						if(touchPos.x<player.getX() - SPAN_X){
+							digX=player.getStandingX()-1;
+						}else if(touchPos.x>player.getX()+player.getWidth() + SPAN_X){
+							digX=player.getStandingX()+1;
+						}
+						
+						if(touchPos.y<player.getY() - SPAN_Y){
+							digY=player.getStandingY();
+						}else if(touchPos.y>player.getY()+player.getHeight() + SPAN_Y){
+							digY=player.getMiddleY()+1;
+						}
+						
+						
+						digTile(digX,digY, 1);
+						player.dig();
+					break;
+					case BOMBS:
+						Bomb bomb =new Bomb(IngameScreen.this);
+						bomb.setPosition(player.getX()+player.getWidth()/2-bomb.getWidth()/2, player.getY()+player.getHeight()/2-bomb.getHeight()/2);
+						bomb.speedX = 0;
+						bomb.speedY = 0;
+						
+						if(touchPos.x<player.getX() - SPAN_X){
+							bomb.speedX=-2;
+						}else if(touchPos.x>player.getX()+player.getWidth() + SPAN_X){
+							bomb.speedX=2;
+						}
+						
+						if(touchPos.y<player.getY() - SPAN_Y){
+							bomb.speedY=-3;
+						}else if(touchPos.y>player.getY()+player.getHeight() + SPAN_Y){
+							bomb.speedY=3;
+						}
+								
+						stage.addActor(bomb);
+						break;
+					case SWORD:
+						player.sword();
+						break;
+				
 				}
-				
-				if(touchPos.y<player.getY() - SPAN_Y){
-					digY=player.getStandingY();
-				}else if(touchPos.y>player.getY()+player.getHeight() + SPAN_Y){
-					digY=player.getMiddleY()+1;
-				}
-				
-				
-				digTile(digX,digY, 1);
-				player.dig();
 				
 			}
 			return false;
@@ -343,6 +416,7 @@ public class IngameScreen extends AbstractScreen{
 					System.out.println(it.next());
 				}*/
 				if(destroyable[tile.getId()]>power){
+					// dah. we don't have enough power
 					return;
 				}
 				
