@@ -1,8 +1,6 @@
 package de.bitowl.ld28;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.maps.tiled.TiledMapTile;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -19,6 +17,8 @@ public class Player extends GameObject{
 	
 	float SWORD_DAMAGE=3;
 	
+	int gold;
+	
 	public Player(IngameScreen pScreen){
 		super(pScreen,pScreen.atlas.findRegion("player"));
 		life = 5.5f;
@@ -33,6 +33,8 @@ public class Player extends GameObject{
 		bow = new AnimAction(new Animation(0.05f,screen.atlas.findRegions("bow")));
 		
 		setOriginX(7); // center point for flipping
+		
+		gold = 1; // you only get one
 	}
 
 	public void jump(){

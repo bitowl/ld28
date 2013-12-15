@@ -21,6 +21,7 @@ public class LDGame extends Game {
 		assets.load("maps/map1.tmx",TiledMap.class);
 		assets.load("textures/textures.pack",TextureAtlas.class);
 		assets.load("fonts/numbers.fnt",BitmapFont.class);
+		assets.load("fonts/dialog.fnt",BitmapFont.class);
 	}
 	
 	public void render() {

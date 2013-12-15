@@ -15,10 +15,8 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class IngameScreen extends AbstractScreen{
 
@@ -50,6 +48,7 @@ public class IngameScreen extends AbstractScreen{
 	Weapon weapon;
 	
 	WeaponBar weaponbar;
+	DialogLine dialogLine;
 	
 	public IngameScreen(LDGame pGame) {
 		super(pGame);
@@ -178,11 +177,19 @@ public class IngameScreen extends AbstractScreen{
 		
 		
 		// HUD
+
+		dialogLine = new DialogLine(this);
+		stage.addActor(dialogLine);
+		
+		GoldBar goldbar = new GoldBar(this);
+		stage.addActor(goldbar);
+		
 		LifeBar lifebar=new LifeBar(this);
 		stage.addActor(lifebar);
 		
 		weaponbar = new WeaponBar(this);
 		stage.addActor(weaponbar);
+		
 		
 		
 	}
@@ -355,10 +362,8 @@ public class IngameScreen extends AbstractScreen{
 				
 				
 				
-				System.out.println("touch: "+touchPos.x+","+touchPos.y);
-				System.out.println("playa: "+player.getX()+","+player.getY());
-				float SPAN_X=0;
-				float SPAN_Y=0;
+				// System.out.println("touch: "+touchPos.x+","+touchPos.y);
+				// System.out.println("playa: "+player.getX()+","+player.getY());
 				
 				weapon.use(touchPos.x, touchPos.y);
 		

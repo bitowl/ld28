@@ -16,6 +16,8 @@ public class Chest extends ItemObject{
 				setDrawable(new TextureRegionDrawable(screen.atlas.findRegion("chest", 1)));
 				open = true;
 				collidable=false;
+				screen.player.gold+=5;
+				screen.dialogLine.display("You found 5 gold!", 1);
 			}	
 		}
 	}

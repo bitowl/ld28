@@ -18,6 +18,8 @@ public class Jug extends ItemObject{
 				setDrawable(new TextureRegionDrawable(screen.atlas.findRegion("jug", 1)));
 				destroyed = true;
 				collidable=false;
+				screen.player.gold+=1;
+				screen.dialogLine.display("You found 1 gold.", 0.5f);
 			}
 		}
 	}

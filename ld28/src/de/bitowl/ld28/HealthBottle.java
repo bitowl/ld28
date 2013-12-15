@@ -1,6 +1,5 @@
 package de.bitowl.ld28;
 
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class HealthBottle extends ItemObject{
 	boolean consumed;
@@ -21,6 +20,7 @@ public class HealthBottle extends ItemObject{
 				}
 				consumed = true;
 				collidable=false;
+				screen.dialogLine.display("Some of you health is restored.", 0.5f);
 			}	
 		}
 	}

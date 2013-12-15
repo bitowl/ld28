@@ -1,7 +1,6 @@
 package de.bitowl.ld28;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Worm extends Enemy{
 
