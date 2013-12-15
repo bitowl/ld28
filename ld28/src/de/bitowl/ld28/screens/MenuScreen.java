@@ -40,7 +40,7 @@ public class MenuScreen extends AbstractScreen{
 		credits.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				// TODO go to credits screen
+				game.setScreen(new CreditsScreen(game));
 			}
 		});
 		table.add(credits).pad(10).row();
