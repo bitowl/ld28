@@ -46,13 +46,12 @@ public class Player extends GameObject{
 		setOriginX(7); // center point for flipping
 		
 		gold = 1; // you only get one
+		speedFactorX=270;
 	}
 
 	@Override
 	public void act(float delta) {
 		boolean og=onGround;
-		life -= delta/3;
-		System.out.println(life);
 		super.act(delta);
 		if(!og&&onGround){ // we landed on the ground on this frame
 			screen.ground.play();

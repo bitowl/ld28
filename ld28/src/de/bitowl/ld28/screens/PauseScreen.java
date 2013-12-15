@@ -21,7 +21,7 @@ public class PauseScreen extends AbstractScreen{
 		Table table = new Table();
 		table.setSize(stage.getWidth(), stage.getHeight());
 		
-		Image title = new Image(screen.atlas.findRegion("shop"));
+		Image title = new Image(screen.atlas.findRegion("title_break"));
 		table.add(title).pad(30).row();
 		
 		Image continueB = new Image(screen.atlas.findRegion("button_continue"));

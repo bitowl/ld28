@@ -35,6 +35,7 @@ import de.bitowl.ld28.objects.HealthBottle;
 import de.bitowl.ld28.objects.HeartContainer;
 import de.bitowl.ld28.objects.Jug;
 import de.bitowl.ld28.objects.Player;
+import de.bitowl.ld28.objects.Skeleton;
 import de.bitowl.ld28.objects.Slime;
 import de.bitowl.ld28.objects.Spider;
 import de.bitowl.ld28.objects.Spike;
@@ -208,7 +209,9 @@ public class IngameScreen extends AbstractScreen{
 							System.out.println("TRIGGER AT "+x+","+y);
 							trigger.put(new Point(x,y), new ShopEvent());
 						}else if(tileID==eventStartID+2){
-							// NOT YET USED
+							// BOSS BATTLE
+							trigger.put(new Point(x,y), Event.BOSS_SPAWN_EVENT);
+							
 						}else	if(tileID-eventStartID-2<Event.events.length){
 							trigger.put(new Point(x,y),Event.events[tileID-eventStartID-2]);
 						}else{
@@ -307,6 +310,7 @@ public class IngameScreen extends AbstractScreen{
 		pause = new PauseScreen(game, this);
 		
 		
+
 		
 		
 	}
@@ -350,7 +354,7 @@ public class IngameScreen extends AbstractScreen{
 		}
 		
 		
-		viewRect=new Rectangle(stage.getCamera().position.x-stage.getWidth()/2,stage.getCamera().position.y-stage.getHeight()/2,stage.getCamera().position.x+stage.getWidth(),stage.getCamera().position.y+stage.getHeight());
+		viewRect=new Rectangle(stage.getCamera().position.x-stage.getWidth(),stage.getCamera().position.y-stage.getHeight(),stage.getWidth()*4,stage.getHeight()*4);
 		
 		// move all the stuff around and stuff
 		stage.act(delta);

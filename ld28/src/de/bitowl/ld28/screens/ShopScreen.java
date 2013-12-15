@@ -2,6 +2,7 @@ package de.bitowl.ld28.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -23,6 +24,11 @@ public class ShopScreen extends AbstractScreen {
 
 	IngameScreen screen;
 	DialogLine line;
+	
+	Sound bought;
+	Sound shop;
+	Sound no_money;
+	Sound no_need;
 	public ShopScreen(LDGame pGame, IngameScreen pScreen) {
 		super(pGame);
 		screen = pScreen;
@@ -42,7 +48,7 @@ public class ShopScreen extends AbstractScreen {
 		
 		
 		Table table = new Table();
-		table.debug();
+		// table.debug();
 		table.setSize(stage.getWidth(), stage.getHeight());
 		
 		Image title = new Image(screen.atlas.findRegion("shop"));
@@ -77,6 +83,10 @@ public class ShopScreen extends AbstractScreen {
 		stage.addActor(line);
 		
 		
+		bought = game.assets.get("audio/bought.ogg",Sound.class);
+		shop = game.assets.get("audio/shop.ogg",Sound.class);;
+		no_money = game.assets.get("audio/no_money.ogg",Sound.class);;
+		no_need = game.assets.get("audio/no_need.ogg",Sound.class);;
 	}
 	
 	
@@ -87,7 +97,7 @@ public class ShopScreen extends AbstractScreen {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		super.render(delta);
-		Table.drawDebug(stage);
+	// 	Table.drawDebug(stage);
 	}
 
 	@Override
@@ -107,6 +117,9 @@ public class ShopScreen extends AbstractScreen {
 		screen.player.speedX=0.00001f;
 		screen.player.speedY=0;
 		screen.player.walk();
+		screen.player.speedX=0f;
+		screen.player.walk();
+		shop.play();
 	}
 	
 	@Override
@@ -134,17 +147,21 @@ public class ShopScreen extends AbstractScreen {
 				public void clicked(InputEvent event, float x, float y) {
 					if(screen.player.gold >= weapon.ammoCost){
 						if(weapon.curAmmo == weapon.maxAmmo){
-							line.display("You have enough of this.", 1f);
+							line.display("You have enough of this.", 1.5f);
+							no_need.play();
 							return;
 						}
-						line.display("You bought ", 1f);
+						line.display("Thank you!", 1f);
+						bought.play();
 						screen.player.gold -= weapon.ammoCost;
 						weapon.curAmmo += weapon.ammoAmount;
 						if(weapon.curAmmo>weapon.maxAmmo){
 							weapon.curAmmo = weapon.maxAmmo;
 						}
 					}else{
-						line.display("You do not have enough money!", 1f);
+						line.display("You do not have enough money!", 2f);
+						no_money.play();
+						
 					}
 				}
 			});

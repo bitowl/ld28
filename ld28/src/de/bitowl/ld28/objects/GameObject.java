@@ -94,7 +94,7 @@ public class GameObject extends Image{
 						// TODO tweak numbers
 						if(speedY<-10){
 							System.err.println("too fast: "+speedY);
-							addDamage(-(speedY+9)/3);
+							addDamage(-(speedY+9)/2);
 						}
 						
 						speedY = 0;
@@ -254,11 +254,18 @@ public class GameObject extends Image{
 	
 	public void addDamage(float pDamage){
 		life -= pDamage;
-		if(life < 0 ){ // dis thing is dead
+		if(life <= 0 ){ // dis thing is dead
 			remove();
 		}
 	}
 	
+	
+	public float getCenterX(){
+		return getX()+getWidth()/2;
+	}
+	public float getCenterY(){
+		return getY()+getHeight()/2;
+	}
 	
 	
 }

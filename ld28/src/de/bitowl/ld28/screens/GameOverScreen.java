@@ -22,7 +22,7 @@ public class GameOverScreen extends AbstractScreen{
 		Table table = new Table();
 		table.setSize(stage.getWidth(), stage.getHeight());
 		
-		Image title = new Image(atlas.findRegion("shop"));
+		Image title = new Image(atlas.findRegion("title_gameover"));
 		table.add(title).pad(30).row();
 		
 		Image restart = new Image(atlas.findRegion("button_restart"));

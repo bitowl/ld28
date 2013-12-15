@@ -22,14 +22,14 @@ public abstract class Weapon{
 	public int ammoCost;
 	public int ammoAmount;
 	
-	public final static Weapon SWORD = new Weapon(100,0.3f,0.5f,  20,2 ){
+	public final static Weapon SWORD = new Weapon(1000,0.3f,0.5f,  20,2 ){
 		@Override
 		public boolean doSth(float pX, float pY) {
 			player.sword(pX<player.getX()+player.getWidth()/2);
 			return true;
 		}
 	};
-	public final static Weapon SHOVEL = new Weapon(50,0.5f,0.8f, 30,1 ){
+	public final static Weapon SHOVEL = new Weapon(1000,0.5f,0.8f, 20,1 ){
 		@Override
 		public boolean doSth(float pX, float pY) {
 
@@ -42,7 +42,7 @@ public abstract class Weapon{
 			return false;
 		}
 	};
-	public final static Weapon PICKAXE = new Weapon(40,0.2f,0.4f, 20,20){
+	public final static Weapon PICKAXE = new Weapon(500,0.2f,0.4f, 20,20){
 		@Override
 		public boolean doSth(float pX, float pY) {
 			Point digPos=convertToTile(pX,pY);
@@ -55,7 +55,7 @@ public abstract class Weapon{
 			return false;
 		}
 	};
-	public final static Weapon BOMBS = new Weapon(40,0.5f,0.9f, 10,20){
+	public final static Weapon BOMBS = new Weapon(300,0.5f,0.9f, 10,20){
 		@Override
 		public boolean doSth(float pX, float pY) {
 			Bomb bomb =new Bomb(screen);
@@ -86,7 +86,7 @@ public abstract class Weapon{
 			return true;
 		}
 	};
-	public final static Weapon BOW = new Weapon(30,0.15f,0.4f, 50,10){
+	public final static Weapon BOW = new Weapon(1000,0.15f,0.4f, 50, 5){
 		public boolean doSth(float pX, float pY) {
 			player.bow(pX<player.getX()+player.getWidth()/2);
 			
@@ -102,7 +102,7 @@ public abstract class Weapon{
 			return true;
 		};
 	};
-	public final static Weapon LADDER = new Weapon(10,0.3f,0.5f, 1,3){
+	public final static Weapon LADDER = new Weapon(500,0.3f,0.5f, 5, 1){
 		@Override
 		public boolean doSth(float pX, float pY) {
 			if(player.onGround || player.onLadder){
@@ -128,7 +128,7 @@ public abstract class Weapon{
 		idC++;
 		maxAmmo=pMaxAmmo;
 		// curAmmo=maxAmmo;
-		curAmmo = 1000; // you only get one
+		curAmmo = 1000; //  //you only get one
 		cooldown = pCooldown;
 		wait = pWait;
 		ammoAmount=pAmount;
