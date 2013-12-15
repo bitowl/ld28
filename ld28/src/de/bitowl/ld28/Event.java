@@ -1,7 +1,5 @@
 package de.bitowl.ld28;
 
-import java.util.Queue;
-
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.scenes.scene2d.Action;

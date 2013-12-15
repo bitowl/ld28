@@ -35,7 +35,6 @@ import de.bitowl.ld28.objects.HealthBottle;
 import de.bitowl.ld28.objects.HeartContainer;
 import de.bitowl.ld28.objects.Jug;
 import de.bitowl.ld28.objects.Player;
-import de.bitowl.ld28.objects.Skeleton;
 import de.bitowl.ld28.objects.Slime;
 import de.bitowl.ld28.objects.Spider;
 import de.bitowl.ld28.objects.Spike;
@@ -394,6 +393,16 @@ public class IngameScreen extends AbstractScreen{
 		renderer.setView((OrthographicCamera)stage.getCamera());
 	}
 	
+	public void cheatMode(){
+		Weapon.BOMBS.cheat();
+		Weapon.BOW.cheat();
+		Weapon.PICKAXE.cheat();
+		Weapon.LADDER.cheat();
+		Weapon.SHOVEL.cheat();
+		Weapon.SWORD.cheat();
+		player.cheat();
+	}
+	
 	class GameInputProcessor extends InputAdapter{
 				
 		@Override
@@ -416,6 +425,9 @@ public class IngameScreen extends AbstractScreen{
 				case Keys.S:
 					player.descend();
 					break;
+				case Keys.F1:
+					cheatMode();
+					break;
 			//	case Keys.E:
 				//	game.setScreen(shop); // TODO only when going into house
 					//break;
@@ -425,7 +437,7 @@ public class IngameScreen extends AbstractScreen{
 					//colLayer.getCell((int)(player.getX()/colLayer.getTileWidth()), (int)(player.getY()/colLayer.getTileHeight())).setTile();
 					break;
 				case Keys.A: // dig left
-					digTile(player.getStandingX()-1,player.getMiddleY(), 1);
+					diplaygTile(player.getStandingX()-1,player.getMiddleY(), 1);
 					break;
 				case Keys.D: // dig right
 					digTile(player.getStandingX()+1,player.getMiddleY(), 1);
@@ -616,6 +628,20 @@ public class IngameScreen extends AbstractScreen{
 		game.assets.unload("maps/map1.tmx");
 		game.assets.load("maps/map1.tmx", TiledMap.class); // undo all the destruction the player has done :P
 		game.assets.finishLoading();
+		
+		// trigger
+		Event.BOSS_SPAWN_EVENT.happend = false;
+		for(int i=0; i<Event.events.length;i++){
+			Event.events[i].happend=false;
+		}
+		// weapons
+		Weapon.BOMBS.reset();
+		Weapon.BOW.reset();
+		Weapon.LADDER.reset();
+		Weapon.PICKAXE.reset();
+		Weapon.SHOVEL.reset();
+		Weapon.SWORD.reset();
+		
 	}
 	
 }

@@ -183,4 +183,10 @@ public class Player extends GameObject{
 		super.addDamage(pDamage);
 		screen.hit.play();
 	}
+
+	public void cheat() {
+		life=20;
+		max_life=20;
+		
+	}
 }

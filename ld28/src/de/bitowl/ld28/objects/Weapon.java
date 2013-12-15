@@ -22,6 +22,8 @@ public abstract class Weapon{
 	public int ammoCost;
 	public int ammoAmount;
 	
+	int INITIAL_MAX_AMMO;
+	
 	public final static Weapon SWORD = new Weapon(1000,0.3f,0.5f,  20,2 ){
 		@Override
 		public boolean doSth(float pX, float pY) {
@@ -127,8 +129,9 @@ public abstract class Weapon{
 		ID = idC;
 		idC++;
 		maxAmmo=pMaxAmmo;
+		INITIAL_MAX_AMMO=pMaxAmmo;
 		// curAmmo=maxAmmo;
-		curAmmo = 1000; //  //you only get one
+		curAmmo = 0; //  //you only get None
 		cooldown = pCooldown;
 		wait = pWait;
 		ammoAmount=pAmount;
@@ -171,25 +174,6 @@ public abstract class Weapon{
 				}
 			}
 		}
-	/*	int digX=player.getStandingX();
-		int digY=player.getMiddleY();
-		
-
-		if(pX<player.getX()){
-			digX=player.getStandingX()-1;
-		}else if(pX>player.getX()+player.getWidth()){
-			digX=player.getStandingX()+1;
-		}
-		
-		if(pY<player.getY()){
-			digY=player.getStandingY();
-		}else if(pY>player.getY()+player.getHeight()){
-			digY=player.getMiddleY()+1;
-		}
-		return new Point(digX, digY);*/
-		
-		// int x = (int) (pX/screen.destLayer.getTileWidth());
-		// int y = (int) (pY/screen.destLayer.getTileHeight());
 		return new Point(digX, digY);
 	}
 	
@@ -206,5 +190,17 @@ public abstract class Weapon{
 		float degree = MathUtils.atan2(ydiff, xdiff);
 		float dist=(float) Math.sqrt(xdiff*xdiff + ydiff*ydiff);
 		return new Vector2(degree, dist);
+	}
+
+	public void reset() {
+		curAmmo = 0;
+		wait=0;
+		cooldown=0;
+		maxAmmo=INITIAL_MAX_AMMO;
+	}
+
+	public void cheat() {
+		curAmmo=9999;
+		maxAmmo=9999;
 	}
 }
