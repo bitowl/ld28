@@ -53,8 +53,8 @@ public class GameObject extends Image{
 		}
 		
 		// which tiles this object standing on after this frame
-		int xtile=(int) ( (getX()+ speedX * speedFactorX * delta) /screen.colLayer.getTileWidth());
-		int ytile=(int) ( (getY()+ speedY * speedFactorY * delta) /screen.colLayer.getTileHeight());		
+		int xtile=(int) ( (getX()+ speedX * speedFactorX * delta) /screen.bgLayer.getTileWidth());
+		int ytile=(int) ( (getY()+ speedY * speedFactorY * delta) /screen.bgLayer.getTileHeight());		
 
 		if(noEnemies(getX(),getY()+speedY * speedFactorY * delta)){
 		
@@ -67,7 +67,7 @@ public class GameObject extends Image{
 				if(upleft&&upright){
 					setY(getY()+speedY * speedFactorY * delta);
 				}else{
-					setY( (ytile+1)*screen.colLayer.getTileHeight()-getHeight()%screen.colLayer.getTileHeight());
+					setY( (ytile+1)*screen.bgLayer.getTileHeight()-getHeight()%screen.bgLayer.getTileHeight());
 					speedY = 0;
 				}
 
@@ -87,7 +87,7 @@ public class GameObject extends Image{
 							
 						}
 					}else{
-						setY( (ytile+1)*screen.colLayer.getTileHeight());
+						setY( (ytile+1)*screen.bgLayer.getTileHeight());
 						onGround = true;
 						// hit the ground
 						// check on falldamage
@@ -115,7 +115,7 @@ public class GameObject extends Image{
 				if(downleft && upleft && midleft){
 					setX(getX() + speedX*speedFactorX*delta);
 				}else{
-					setX( (xtile+1)*screen.colLayer.getTileWidth());
+					setX( (xtile+1)*screen.bgLayer.getTileWidth());
 					if(!doNotStopOnWalls){speedX=0;}
 				}
 			}else if(speedX>0){
@@ -123,7 +123,7 @@ public class GameObject extends Image{
 					setX(getX() + speedX*speedFactorX*delta);
 					
 				}else{
-					setX( (xtile+1)*screen.colLayer.getTileWidth()-getWidth() );
+					setX( (xtile+1)*screen.bgLayer.getTileWidth()-getWidth() );
 					if(!doNotStopOnWalls){speedX=0;}
 					
 				}
@@ -142,11 +142,11 @@ public class GameObject extends Image{
 			onGround = true;
 			// TODO maybe fall into eternity instead?
 		}
-		if(getX() > screen.colLayer.getWidth()*screen.colLayer.getTileWidth() - getWidth()){
-			setX(screen.colLayer.getWidth()*screen.colLayer.getTileWidth() - getWidth());
+		if(getX() > screen.bgLayer.getWidth()*screen.bgLayer.getTileWidth() - getWidth()){
+			setX(screen.bgLayer.getWidth()*screen.bgLayer.getTileWidth() - getWidth());
 		}
-		if(getY() > screen.colLayer.getHeight()*screen.colLayer.getTileHeight() - getHeight()){
-			setY(screen.colLayer.getHeight()*screen.colLayer.getTileHeight() - getHeight());
+		if(getY() > screen.bgLayer.getHeight()*screen.bgLayer.getTileHeight() - getHeight()){
+			setY(screen.bgLayer.getHeight()*screen.bgLayer.getTileHeight() - getHeight());
 		}
 	}
 	
@@ -161,11 +161,11 @@ public class GameObject extends Image{
 	public void getMyCorners(float pX,float pY){
 
 		// calculate corner coordinates
-		int downY=(int) Math.floor((pY)/screen.colLayer.getTileHeight());
-		int midY=(int) Math.floor((pY+getHeight()/2)/screen.colLayer.getTileHeight());
-		int upY=(int) Math.floor((pY+getHeight()-1)/screen.colLayer.getTileHeight());
-		int leftX=(int) Math.floor((pX)/screen.colLayer.getTileWidth());
-		int rightX=(int) Math.floor((pX+getWidth()-1)/screen.colLayer.getTileWidth());
+		int downY=(int) Math.floor((pY)/screen.bgLayer.getTileHeight());
+		int midY=(int) Math.floor((pY+getHeight()/2)/screen.bgLayer.getTileHeight());
+		int upY=(int) Math.floor((pY+getHeight()-1)/screen.bgLayer.getTileHeight());
+		int leftX=(int) Math.floor((pX)/screen.bgLayer.getTileWidth());
+		int rightX=(int) Math.floor((pX+getWidth()-1)/screen.bgLayer.getTileWidth());
 		
 		// check if the in the corner is a wall
 		upleft=isFree(leftX,upY);
@@ -194,8 +194,11 @@ public class GameObject extends Image{
 			}
 			Enemy enemy=(Enemy) actor;
 			if(enemy != this && enemy.collidable && enemy.getRectangle().overlaps(new Rectangle(pX,pY,getWidth(),getHeight()))){// oh no, we've hit an enemy
-				enemy.addDamage(hitDamage);
-				addDamage(enemy.hitDamage);
+				
+				if(!(this instanceof Enemy)){ // enemies don't attack enemies
+					enemy.addDamage(hitDamage);
+					addDamage(enemy.hitDamage);
+				}
 				return false;
 			}
 		}

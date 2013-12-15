@@ -12,7 +12,7 @@ public class Slime extends Enemy {
 		Animation wobble=new Animation(0.08f, screen.atlas.findRegions("slime"));
 		wobble.setPlayMode(Animation.LOOP_PINGPONG);
 		addAction(new AnimAction(wobble));
-		speedX=-0.2f;
+		defSpeedX=-0.2f;
 	}
 
 }

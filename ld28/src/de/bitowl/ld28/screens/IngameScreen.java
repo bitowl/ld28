@@ -6,6 +6,7 @@ import java.util.Iterator;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.OrderedMap;
@@ -30,12 +32,12 @@ import de.bitowl.ld28.WeaponBar;
 import de.bitowl.ld28.objects.Chest;
 import de.bitowl.ld28.objects.Enemy;
 import de.bitowl.ld28.objects.HealthBottle;
+import de.bitowl.ld28.objects.HeartContainer;
 import de.bitowl.ld28.objects.Jug;
 import de.bitowl.ld28.objects.Player;
 import de.bitowl.ld28.objects.Slime;
 import de.bitowl.ld28.objects.Spider;
 import de.bitowl.ld28.objects.Spike;
-import de.bitowl.ld28.objects.Trigger;
 import de.bitowl.ld28.objects.Weapon;
 import de.bitowl.ld28.objects.Worm;
 
@@ -47,12 +49,12 @@ public class IngameScreen extends AbstractScreen{
 	// map stuff
 	TiledMap map;
 	OrthogonalTiledMapRenderer renderer;
-	public TiledMapTileLayer colLayer;
+	// public TiledMapTileLayer colLayer;
 	public TiledMapTileLayer destLayer; // layer that is containing destroyable stuff
 	public TiledMapTileLayer blkbgLayer;
 	
 	TiledMapTileLayer fgLayer;
-	TiledMapTileLayer bgLayer;
+	public TiledMapTileLayer bgLayer;
 	
 	OrderedMap<TiledMapTile, TiledMapTile> topTiles; // tiles that are on the blkbglayer on top of the "real" one
 	
@@ -84,6 +86,10 @@ public class IngameScreen extends AbstractScreen{
 	PauseScreen pause;
 	
 	public OrderedMap<Point, Event> trigger;
+
+	public Rectangle viewRect;
+	
+	Sound bow,dig,explode;
 	
 	public IngameScreen(LDGame pGame) {
 		super(pGame);
@@ -95,12 +101,9 @@ public class IngameScreen extends AbstractScreen{
 		
 		renderer = new OrthogonalTiledMapRenderer(map);
 		renderer.setView((OrthographicCamera) stage.getCamera());
-		colLayer = (TiledMapTileLayer) map.getLayers().get("collision");
-		// colLayer.setVisible(false);
+		
 		destLayer = (TiledMapTileLayer) map.getLayers().get("destroyable");
-		
 		blkbgLayer = (TiledMapTileLayer) map.getLayers().get("blockbg");
-		
 		bgLayer = (TiledMapTileLayer) map.getLayers().get("background");
 		fgLayer = (TiledMapTileLayer) map.getLayers().get("foreground");
 		
@@ -114,13 +117,20 @@ public class IngameScreen extends AbstractScreen{
 		
 		player = new Player(this);
 		
-		player.setY(colLayer.getHeight()*colLayer.getTileHeight()-player.getHeight());
+		player.setY(bgLayer.getHeight()*bgLayer.getTileHeight()-player.getHeight());
 		stage.addActor(player);
 
 		weapon = Weapon.SHOVEL;
 		Weapon.player = player;
 		Weapon.screen = this;
 			
+		
+		
+		
+		// load audio
+		
+		
+		
 		
 		
 		
@@ -224,6 +234,11 @@ public class IngameScreen extends AbstractScreen{
 							hb.setPosition(x*enemyLay.getTileWidth()+4, y*enemyLay.getTileHeight());
 							items.addActor(hb);		
 							continue;
+						case 10:
+							HeartContainer hc = new HeartContainer(this);
+							hc.setPosition(x*enemyLay.getTileWidth()+4, y*enemyLay.getTileHeight());
+							items.addActor(hc);
+							continue;
 						default:
 							enemy = new Enemy(this);
 							break;
@@ -318,6 +333,8 @@ public class IngameScreen extends AbstractScreen{
 			}
 		}
 		
+		
+		viewRect=new Rectangle(stage.getCamera().position.x-stage.getWidth()/2,stage.getCamera().position.y-stage.getHeight()/2,stage.getCamera().position.x+stage.getWidth(),stage.getCamera().position.y+stage.getHeight());
 		
 		// move all the stuff around and stuff
 		stage.act(delta);

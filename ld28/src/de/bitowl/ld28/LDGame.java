@@ -3,6 +3,7 @@ package de.bitowl.ld28;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.AtlasTmxMapLoader;
@@ -26,6 +27,12 @@ public class LDGame extends Game {
 		assets.load("textures/textures.pack",TextureAtlas.class);
 		assets.load("fonts/numbers.fnt",BitmapFont.class);
 		assets.load("fonts/dialog.fnt",BitmapFont.class);
+		
+		// audio
+		assets.load("audio/bow.ogg",Sound.class);
+		assets.load("audio/explode.ogg",Sound.class);
+		assets.load("audio/dig.ogg",Sound.class);
+		
 	}
 	
 	public void render() {

@@ -96,13 +96,13 @@ public class Player extends GameObject{
 	
 	// what tile the player is standing on
 	public int getStandingX(){
-		return (int)( (getX() +getWidth()/2)/screen.colLayer.getTileWidth());
+		return (int)( (getX() +getWidth()/2)/screen.bgLayer.getTileWidth());
 	}
 	public int getStandingY(){
-		return (int)(getY()/screen.colLayer.getTileHeight())-1;
+		return (int)(getY()/screen.bgLayer.getTileHeight())-1;
 	}
 	public int getMiddleY(){
-		return (int)((getY()+getHeight()/2)/screen.colLayer.getTileHeight());
+		return (int)((getY()+getHeight()/2)/screen.bgLayer.getTileHeight());
 	}
 
 	public void walk() {

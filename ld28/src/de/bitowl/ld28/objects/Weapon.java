@@ -127,7 +127,7 @@ public abstract class Weapon{
 		idC++;
 		maxAmmo=pMaxAmmo;
 		// curAmmo=maxAmmo;
-		curAmmo = 1; // you only get one
+		curAmmo = 1000; // you only get one
 		cooldown = pCooldown;
 		wait = pWait;
 		ammoAmount=pAmount;

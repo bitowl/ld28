@@ -62,8 +62,8 @@ public class Bomb extends GameObject{
 			if(afterExplTimer<0){ // the explosion REALLY STARTS
 				remove(); // remove the bomb from screen
 				// do some damage on terrain
-				int deployX=(int) (getX()/screen.colLayer.getTileWidth());
-				int deployY=(int) (getY()/screen.colLayer.getTileHeight());
+				int deployX=(int) (getX()/screen.bgLayer.getTileWidth());
+				int deployY=(int) (getY()/screen.bgLayer.getTileHeight());
 				
 				int RADIUS=4;
 				
