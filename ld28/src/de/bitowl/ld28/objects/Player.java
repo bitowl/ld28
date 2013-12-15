@@ -1,5 +1,7 @@
 package de.bitowl.ld28.objects;
 
+import java.awt.Point;
+
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -45,6 +47,17 @@ public class Player extends GameObject{
 		gold = 1; // you only get one
 	}
 
+	@Override
+	public void act(float delta) {
+		super.act(delta);
+		
+		System.out.println(getStandingX()+", "+getStandingY());
+		// standing on a trigger?
+		if(screen.trigger.containsKey(new Point(getStandingX(),getMiddleY()))){
+			screen.trigger.get(new Point(getStandingX(),getMiddleY())).happen(screen);
+		}
+	}
+	
 	public void jump(){
 		if(onLadder){
 			speedY=2;

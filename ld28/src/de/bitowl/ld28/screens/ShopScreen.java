@@ -101,7 +101,11 @@ public class ShopScreen extends AbstractScreen {
 				return false;
 			}
 		});
-		resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		// resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		screen.player.setX(screen.player.getX()+32);
+		screen.player.speedX=0;
+		screen.player.speedY=0;
 	}
 	
 	@Override

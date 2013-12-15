@@ -111,7 +111,7 @@ public abstract class Weapon{
 				Ladder ladder=new Ladder(screen);
 				ladder.setPosition(ladderPos.x*screen.destLayer.getTileWidth(), ladderPos.y*screen.destLayer.getTileHeight());
 				
-				if(ladder.notOnLadder()){ // only place it, if there is no other ladder
+				if(player.isFree(ladderPos.x,ladderPos.y) && ladder.notOnLadder()){ // only place it, if there is no other ladder
 					screen.ladders.addActor(ladder);
 					return true;
 				}

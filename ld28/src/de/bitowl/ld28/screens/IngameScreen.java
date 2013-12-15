@@ -1,5 +1,6 @@
 package de.bitowl.ld28.screens;
 
+import java.awt.Point;
 import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
@@ -20,9 +21,11 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.utils.OrderedMap;
 
 import de.bitowl.ld28.DialogLine;
+import de.bitowl.ld28.Event;
 import de.bitowl.ld28.GoldBar;
 import de.bitowl.ld28.LDGame;
 import de.bitowl.ld28.LifeBar;
+import de.bitowl.ld28.ShopEvent;
 import de.bitowl.ld28.WeaponBar;
 import de.bitowl.ld28.objects.Chest;
 import de.bitowl.ld28.objects.Enemy;
@@ -32,6 +35,7 @@ import de.bitowl.ld28.objects.Player;
 import de.bitowl.ld28.objects.Slime;
 import de.bitowl.ld28.objects.Spider;
 import de.bitowl.ld28.objects.Spike;
+import de.bitowl.ld28.objects.Trigger;
 import de.bitowl.ld28.objects.Weapon;
 import de.bitowl.ld28.objects.Worm;
 
@@ -76,8 +80,10 @@ public class IngameScreen extends AbstractScreen{
 	float cooldownTime;
 	float waitTime;
 	
-	ShopScreen shop;
+	public ShopScreen shop;
 	PauseScreen pause;
+	
+	public OrderedMap<Point, Event> trigger;
 	
 	public IngameScreen(LDGame pGame) {
 		super(pGame);
@@ -141,6 +147,7 @@ public class IngameScreen extends AbstractScreen{
 				System.out.println(tile.getId()+": "+properties.get("dst"));
 				try{
 					destroyable[tile.getId()]=Integer.parseInt((String) properties.get("dst"));
+					System.out.println("DEST: "+destroyable[tile.getId()]);
 				}catch(NumberFormatException e){
 					destroyable[tile.getId()]=1;
 				}
@@ -154,6 +161,7 @@ public class IngameScreen extends AbstractScreen{
 		}
 		
 		
+		trigger = new OrderedMap<Point,  Event>();
 		enemies=new Group();
 		
 		// place enemies
@@ -161,9 +169,34 @@ public class IngameScreen extends AbstractScreen{
 		for(int y=0;y<enemyLay.getHeight();y++){
 			for(int x=0;x<enemyLay.getWidth();x++){
 				if(enemyLay.getCell(x, y)!=null){
+					
+					int eventStartID=82;
+					
+					int tileID=enemyLay.getCell(x, y).getTile().getId();
+					if(tileID>=eventStartID){
+						System.err.println(tileID);
+						// it's a trigger
+						if(tileID==eventStartID){ // start pos
+							player.setPosition(x*destLayer.getTileWidth(), y*destLayer.getTileHeight()+player.getHeight()-32);
+						}else if(tileID==eventStartID+1){
+							System.out.println("TRIGGER AT "+x+","+y);
+							trigger.put(new Point(x,y), new ShopEvent());
+						}else if(tileID==eventStartID+2){
+							// NOT YET USED
+						}else	if(tileID-eventStartID-2<Event.events.length){
+							trigger.put(new Point(x,y),Event.events[tileID-eventStartID-2]);
+						}else{
+							System.err.println("event "+(tileID-eventStartID-2)+" not defined");
+						}
+						continue;
+					}
+					
+					
+					
+					
 					// System.out.println(enemyLay.getCell(x, y).getTile().getId());
 					Enemy enemy;
-					switch(enemyLay.getCell(x, y).getTile().getId()){
+					switch(tileID){
 						case 3:
 							enemy = new Worm(this);
 							break;

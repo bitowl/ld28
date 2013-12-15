@@ -20,7 +20,7 @@ public class GameObject extends Image{
 	}
 	
 	public float speedX;
-	float speedY;
+	public float speedY;
 	float speedFactorX=180;
 	float speedFactorY=100;
 	float gravity=10f;
