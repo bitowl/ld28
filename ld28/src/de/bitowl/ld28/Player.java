@@ -68,7 +68,12 @@ public class Player extends GameObject{
 		}
 		
 	}
-
+	@Override
+	public boolean remove() {
+		// the player died
+		screen.game.setScreen(new GameOverScreen(screen.game));
+		return super.remove();
+	}
 	
 	// what tile the player is standing on
 	public int getStandingX(){

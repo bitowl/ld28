@@ -11,6 +11,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 public class LDGame extends Game {
 	AssetManager assets;
 	boolean assetsLoaded;
+	boolean mapUsed;
+	
 	
 	@Override
 	public void create() {
@@ -29,7 +31,7 @@ public class LDGame extends Game {
 			super.render();
 		}else{
 			if(assets.update()){
-				setScreen(new IngameScreen(this));
+				setScreen(new GameOverScreen(this));
 				assetsLoaded=true;
 				System.out.println("finished loading");
 			}else{

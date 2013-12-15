@@ -57,12 +57,14 @@ public class IngameScreen extends AbstractScreen{
 	float waitTime;
 	
 	ShopScreen shop;
+	PauseScreen pause;
 	
 	public IngameScreen(LDGame pGame) {
 		super(pGame);
 		
 		
 		map = game.assets.get("maps/map1.tmx",TiledMap.class);
+		game.mapUsed = true; // before the next game is started, we should reset the map, so that all the destroyed things are back complete
 		atlas = game.assets.get("textures/textures.pack", TextureAtlas.class);
 		
 		renderer = new OrthogonalTiledMapRenderer(map);
@@ -198,7 +200,7 @@ public class IngameScreen extends AbstractScreen{
 		
 		
 		shop = new ShopScreen(game, this);
-		
+		pause = new PauseScreen(game, this);
 		
 	}
 	
@@ -353,12 +355,10 @@ public class IngameScreen extends AbstractScreen{
 					weaponbar.selectId(5);
 					break;
 				case Keys.ESCAPE:
-					Gdx.app.exit();
+					game.setScreen(pause);
 					break;
 				case Keys.R:
-					game.assets.unload("maps/map1.tmx");
-					game.assets.load("maps/map1.tmx", TiledMap.class); // undo all the destruction the player has done :P
-					game.assets.finishLoading();
+					resetMap(game);
 					game.setScreen(new IngameScreen(game));
 					break;
 			}
@@ -465,6 +465,12 @@ public class IngameScreen extends AbstractScreen{
 		colLayer.setCell(x, y, null);
 		destLayer.setCell(x, y, null);
 		return true;
+	}
+
+	public static void resetMap(LDGame game) {
+		game.assets.unload("maps/map1.tmx");
+		game.assets.load("maps/map1.tmx", TiledMap.class); // undo all the destruction the player has done :P
+		game.assets.finishLoading();
 	}
 	
 }

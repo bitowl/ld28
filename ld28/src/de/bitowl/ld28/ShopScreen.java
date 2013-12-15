@@ -94,7 +94,7 @@ public class ShopScreen extends AbstractScreen {
 
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(new ShopInputProcessor(){
+		Gdx.input.setInputProcessor(new StageInputProcessor(this){
 			@Override
 			public boolean keyDown(int keycode) {
 				if(keycode==Keys.ESCAPE){
@@ -184,34 +184,5 @@ public class ShopScreen extends AbstractScreen {
 	
 	
 	
-	/**
-	 * input processor that does only care about ClickListeners
-	 * and projects the touch position correctly with the letterbox 
-	 * 
-	 * @author bitowl
-	 *
-	 */
-	class ShopInputProcessor extends InputAdapter{
-		@Override
-		public boolean touchDown(int screenX, int screenY, int pointer,
-				int button) {
-			
-			// project the touch position
-			Vector3 touchPos = new Vector3();
-			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-			stage.getCamera().unproject(touchPos,viewport.x,viewport.y,viewport.width,viewport.height);
-			
-			Actor hit= stage.hit(touchPos.x, touchPos.y, true);
-			if(hit!=null){
-				for(EventListener listener:hit.getListeners()){
-					if(listener instanceof ClickListener){
-						((ClickListener)listener).clicked(null, touchPos.x, touchPos.y);
-					}
-				}
-			}
 
-			
-			return false;
-		}
-	}
 }
