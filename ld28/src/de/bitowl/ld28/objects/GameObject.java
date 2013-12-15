@@ -116,6 +116,7 @@ public class GameObject extends Image{
 					setX(getX() + speedX*speedFactorX*delta);
 				}else{
 					setX( (xtile+1)*screen.bgLayer.getTileWidth());
+					hitLeft();
 					if(!doNotStopOnWalls){speedX=0;}
 				}
 			}else if(speedX>0){
@@ -124,6 +125,7 @@ public class GameObject extends Image{
 					
 				}else{
 					setX( (xtile+1)*screen.bgLayer.getTileWidth()-getWidth() );
+					hitRight();
 					if(!doNotStopOnWalls){speedX=0;}
 					
 				}
@@ -150,6 +152,11 @@ public class GameObject extends Image{
 		}
 	}
 	
+
+	public void hitRight() {		
+	}
+	public void hitLeft() {
+	}
 
 	boolean upleft,downleft,upright,downright,midleft, midright;
 

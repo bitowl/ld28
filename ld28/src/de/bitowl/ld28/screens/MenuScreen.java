@@ -21,7 +21,7 @@ public class MenuScreen extends AbstractScreen{
 		Table table = new Table();
 		table.setSize(stage.getWidth(), stage.getHeight());
 		
-		Image title = new Image(atlas.findRegion("shop"));
+		Image title = new Image(atlas.findRegion("title_main"));
 		table.add(title).pad(30).row();
 		
 		Image start = new Image(atlas.findRegion("button_start"));

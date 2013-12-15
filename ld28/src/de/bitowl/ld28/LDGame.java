@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.AtlasTmxMapLoader;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
+import de.bitowl.ld28.screens.MenuScreen;
 import de.bitowl.ld28.screens.WinScreen;
 
 public class LDGame extends Game {
@@ -87,7 +88,7 @@ public class LDGame extends Game {
 			super.render();
 		}else{
 			if(assets.update()){
-				setScreen(new WinScreen(this));
+				setScreen(new MenuScreen(this));
 				assetsLoaded=true;
 				System.out.println("finished loading");
 				
