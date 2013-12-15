@@ -7,13 +7,17 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class Player extends GameObject{
 	public final static float JUMP_CONST=4f;
+	/**
+	 * how far away tiles the player can reach
+	 */
+	public static final int REACH = 2;
 	AnimAction walking;
 	AnimAction sword;
 	AnimAction dig;
 	AnimAction bow;
 	boolean isWalking;
 	boolean isFlipped;
-	public int max_life=10;
+	public int max_life=1;
 	
 	float SWORD_DAMAGE=3;
 	
@@ -21,7 +25,7 @@ public class Player extends GameObject{
 	
 	public Player(IngameScreen pScreen){
 		super(pScreen,pScreen.atlas.findRegion("player"));
-		life = 5.5f;
+		life = max_life;
 		hitDamage=0;
 		doNotStopOnWalls = true; // so we can smoothly jump, when we stand at a wall
 		Animation walk=new Animation(0.1f,screen.atlas.findRegions("player"));

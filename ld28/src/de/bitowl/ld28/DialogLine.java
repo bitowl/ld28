@@ -1,6 +1,7 @@
 package de.bitowl.ld28;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -17,10 +18,14 @@ public class DialogLine extends Actor{
 	String text;
 	float textTime;
 	
+	Camera camera;
+	
+	
 	public DialogLine(IngameScreen pScreen){
 		screen=pScreen;
 		font = screen.game.assets.get("fonts/dialog.fnt",BitmapFont.class);
 		font.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		camera= pScreen.stage.getCamera();
 	}
 	@Override
 	public void act(float delta) {
@@ -41,8 +46,8 @@ public class DialogLine extends Actor{
 		if(screen.viewport.y>35){ // if the letterbox creates free space below the image, put the dialog lines there
 			Gdx.gl.glViewport((int)screen.viewport.x,(int)screen.viewport.y-35,(int)screen.viewport.width,(int)screen.viewport.height);//Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 		}
-		float x = screen.stage.getCamera().position.x - screen.stage.getWidth()/2;
-		float y = screen.stage.getCamera().position.y - screen.stage.getHeight()/2;
+		float x = camera.position.x - screen.stage.getWidth()/2;
+		float y = camera.position.y - screen.stage.getHeight()/2;
 		batch.setTransformMatrix(batch.getTransformMatrix().trn(new Vector3(x,y,0)));
 
 		font.drawWrapped(batch, text, 30,30, screen.stage.getWidth(), HAlignment.CENTER);

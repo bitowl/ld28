@@ -50,6 +50,14 @@ public class IngameScreen extends AbstractScreen{
 	WeaponBar weaponbar;
 	DialogLine dialogLine;
 	
+	
+	// touch down
+	boolean usingWeapon;
+	float cooldownTime;
+	float waitTime;
+	
+	ShopScreen shop;
+	
 	public IngameScreen(LDGame pGame) {
 		super(pGame);
 		
@@ -83,9 +91,6 @@ public class IngameScreen extends AbstractScreen{
 		Weapon.player = player;
 		Weapon.screen = this;
 			
-		// handle input
-		Gdx.input.setInputProcessor(new GameInputProcessor());
-		
 		
 		
 		
@@ -192,6 +197,17 @@ public class IngameScreen extends AbstractScreen{
 		
 		
 		
+		shop = new ShopScreen(game, this);
+		
+		
+	}
+	
+	@Override
+	public void show() {
+
+		// handle input
+		Gdx.input.setInputProcessor(new GameInputProcessor());
+		
 	}
 	@Override
 	public void render(float delta) {
@@ -202,6 +218,28 @@ public class IngameScreen extends AbstractScreen{
 			resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 			resized++;
 		}
+		
+		if(cooldownTime>0){
+			cooldownTime-=delta;
+		}
+		// the user still presses on the screen
+		if(usingWeapon){
+			if(waitTime>0){
+				waitTime-=delta;
+			}else{
+				if(Gdx.input.getX()>viewport.x&&Gdx.input.getX()<viewport.x+viewport.width&&Gdx.input.getY()>viewport.y&&Gdx.input.getY()<viewport.y+viewport.height){
+					Vector3 touchPos = new Vector3();
+					touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+					stage.getCamera().unproject(touchPos,viewport.x,viewport.y,viewport.width,viewport.height);
+
+					if(weapon.use(touchPos.x, touchPos.y)){
+						cooldownTime=weapon.cooldown; 
+						waitTime=weapon.wait;
+					}
+				}
+			}
+		}
+		
 		
 		// move all the stuff around and stuff
 		stage.act(delta);
@@ -260,6 +298,9 @@ public class IngameScreen extends AbstractScreen{
 				case Keys.S:
 					player.descend();
 					break;
+				case Keys.E:
+					game.setScreen(shop); // TODO only when going into house
+					break;
 			/*	case Keys.S: // dig down
 					digTile(player.getStandingX(),player.getStandingY(), 1);
 					player.dig();
@@ -308,8 +349,17 @@ public class IngameScreen extends AbstractScreen{
 				case Keys.NUM_5:
 					weaponbar.selectId(4);
 					break;
+				case Keys.NUM_6:
+					weaponbar.selectId(5);
+					break;
 				case Keys.ESCAPE:
 					Gdx.app.exit();
+					break;
+				case Keys.R:
+					game.assets.unload("maps/map1.tmx");
+					game.assets.load("maps/map1.tmx", TiledMap.class); // undo all the destruction the player has done :P
+					game.assets.finishLoading();
+					game.setScreen(new IngameScreen(game));
 					break;
 			}
 			
@@ -345,6 +395,7 @@ public class IngameScreen extends AbstractScreen{
 				stage.getCamera().unproject(touchPos,viewport.x,viewport.y,viewport.width,viewport.height);
 
 				
+				usingWeapon = true;
 				
 				
 				if(touchPos.x>stage.getCamera().position.x + stage.getWidth()/2 - 64){
@@ -365,11 +416,22 @@ public class IngameScreen extends AbstractScreen{
 				// System.out.println("touch: "+touchPos.x+","+touchPos.y);
 				// System.out.println("playa: "+player.getX()+","+player.getY());
 				
-				weapon.use(touchPos.x, touchPos.y);
+				if(cooldownTime<=0&&weapon.use(touchPos.x, touchPos.y)){
+					cooldownTime=weapon.cooldown;
+					waitTime=weapon.wait;
+				}else{
+					waitTime=cooldownTime;
+				}
 		
 				
 			}
 			return false;
+		}
+		
+		@Override
+		public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+			usingWeapon=false;
+			return super.touchUp(screenX, screenY, pointer, button);
 		}
 	
 	}

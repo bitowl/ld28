@@ -12,15 +12,23 @@ public abstract class Weapon{
 	int maxAmmo;
 	int curAmmo;
 	boolean bought;
+
+	float cooldown=0.3f;
+	// if you keep the mouse pressed, when will the next use happen
+	float wait=0.5f;
 	
-	public final static Weapon SWORD = new Weapon(100){
+	// buy new ammo
+	int ammoCost;
+	int ammoAmount;
+	
+	public final static Weapon SWORD = new Weapon(100,0.3f,0.5f,  20,2 ){
 		@Override
 		public boolean doSth(float pX, float pY) {
 			player.sword(pX<player.getX()+player.getWidth()/2);
 			return true;
 		}
 	};
-	public final static Weapon SHOVEL = new Weapon(50){
+	public final static Weapon SHOVEL = new Weapon(50,0.5f,0.8f, 30,1 ){
 		@Override
 		public boolean doSth(float pX, float pY) {
 
@@ -33,7 +41,7 @@ public abstract class Weapon{
 			return false;
 		}
 	};
-	public final static Weapon PICKAXE = new Weapon(40){
+	public final static Weapon PICKAXE = new Weapon(40,0.2f,0.4f, 20,20){
 		@Override
 		public boolean doSth(float pX, float pY) {
 			Point digPos=convertToTile(pX,pY);
@@ -46,7 +54,7 @@ public abstract class Weapon{
 			return false;
 		}
 	};
-	public final static Weapon BOMBS = new Weapon(40){
+	public final static Weapon BOMBS = new Weapon(40,0.5f,0.9f, 10,20){
 		@Override
 		public boolean doSth(float pX, float pY) {
 			Bomb bomb =new Bomb(screen);
@@ -77,7 +85,7 @@ public abstract class Weapon{
 			return true;
 		}
 	};
-	public final static Weapon BOW = new Weapon(30){
+	public final static Weapon BOW = new Weapon(30,0.15f,0.4f, 50,10){
 		public boolean doSth(float pX, float pY) {
 			player.bow(pX<player.getX()+player.getWidth()/2);
 			
@@ -92,7 +100,7 @@ public abstract class Weapon{
 			return true;
 		};
 	};
-	public final static Weapon LADDER = new Weapon(10){
+	public final static Weapon LADDER = new Weapon(10,0.3f,0.5f, 1,3){
 		@Override
 		public boolean doSth(float pX, float pY) {
 			if(player.onGround || player.onLadder){
@@ -113,11 +121,16 @@ public abstract class Weapon{
 	
 	private static int idC=0;
 	
-	public Weapon(int pMaxAmmo){
+	public Weapon(int pMaxAmmo, float pCooldown, float pWait, int pAmount, int pCost){
 		ID = idC;
 		idC++;
 		maxAmmo=pMaxAmmo;
-		curAmmo=maxAmmo;
+		// curAmmo=maxAmmo;
+		curAmmo = 1; // you only get one
+		cooldown = pCooldown;
+		wait = pWait;
+		ammoAmount=pAmount;
+		ammoCost=pCost;
 	}
 
 	public boolean use(float pX, float pY) {
@@ -133,7 +146,30 @@ public abstract class Weapon{
 	public abstract boolean doSth(float pX, float pY);
 	
 	private static Point convertToTile(float pX, float pY){
+		
 		int digX=player.getStandingX();
+		int digY=player.getMiddleY();
+		
+		for(int i=0;i<Player.REACH;i++){
+			if(i<1 || player.isFree(digX, digY)){
+				if(pX<digX*screen.destLayer.getTileWidth()){
+					digX--;
+				}else if(pX>(digX+1)*screen.destLayer.getTileWidth()){
+					digX++;
+				}
+			}
+		}
+		
+		for(int i=0;i<Player.REACH;i++){
+			if(i<1 || player.isFree(digX, digY)){
+				if(pY<digY*screen.destLayer.getTileHeight()){
+					digY--;
+				}else if(pY>(digY+1)*screen.destLayer.getTileHeight()){
+					digY++;
+				}
+			}
+		}
+	/*	int digX=player.getStandingX();
 		int digY=player.getMiddleY();
 		
 
@@ -148,6 +184,10 @@ public abstract class Weapon{
 		}else if(pY>player.getY()+player.getHeight()){
 			digY=player.getMiddleY()+1;
 		}
+		return new Point(digX, digY);*/
+		
+		// int x = (int) (pX/screen.destLayer.getTileWidth());
+		// int y = (int) (pY/screen.destLayer.getTileHeight());
 		return new Point(digX, digY);
 	}
 	
@@ -158,7 +198,7 @@ public abstract class Weapon{
 	 * @return (angle, distance)
 	 */
 	private static Vector2 convertToAngle(float pX, float pY){
-		float xdiff = pX - player.getX()+player.getHeight()/2;
+		float xdiff = pX - player.getX()+player.getOriginX();
 		float ydiff =pY - player.getY()+player.getHeight()/2;
 		
 		float degree = MathUtils.atan2(ydiff, xdiff);
