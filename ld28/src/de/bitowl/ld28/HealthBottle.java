@@ -11,7 +11,7 @@ public class HealthBottle extends ItemObject{
 	
 	@Override
 	public void hitBy(GameObject gameObject) {
-		if(gameObject instanceof Player || gameObject instanceof Arrow){
+		if(gameObject instanceof Player || gameObject instanceof Arrow || gameObject instanceof Bomb){
 			// consume
 			if(!consumed){
 				remove();

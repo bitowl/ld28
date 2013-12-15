@@ -20,6 +20,7 @@ public class Bomb extends GameObject{
 		
 		bombTimer = 3;
 		afterExplTimer = 0.3f;
+		life = Float.POSITIVE_INFINITY;
 	}
 	
 	@Override

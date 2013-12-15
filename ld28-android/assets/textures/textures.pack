@@ -17,30 +17,37 @@ ui_pickaxe
   orig: 64, 64
   offset: 0, 0
   index: -1
-ui_shovel
+ui_ladder
   rotate: false
   xy: 133, 61
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-ui_bomb
+ui_shovel
   rotate: false
   xy: 199, 61
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-ui_bg
+ui_bomb
   rotate: false
   xy: 265, 61
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-ui_bow
+ui_bg
   rotate: false
   xy: 331, 61
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+ui_bow
+  rotate: false
+  xy: 397, 61
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
@@ -54,7 +61,7 @@ expl
   index: 5
 expl
   rotate: false
-  xy: 397, 75
+  xy: 463, 75
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
@@ -68,7 +75,7 @@ expl
   index: 0
 expl
   rotate: false
-  xy: 449, 75
+  xy: 515, 75
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
@@ -82,7 +89,7 @@ expl
   index: 1
 expl
   rotate: false
-  xy: 501, 75
+  xy: 567, 75
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
@@ -96,7 +103,7 @@ expl
   index: 4
 chest
   rotate: false
-  xy: 553, 93
+  xy: 619, 93
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -110,7 +117,7 @@ ladder
   index: -1
 heart_empty
   rotate: false
-  xy: 587, 93
+  xy: 653, 93
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -124,7 +131,7 @@ chest
   index: 0
 jug
   rotate: false
-  xy: 621, 93
+  xy: 687, 93
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -138,7 +145,7 @@ jug
   index: 1
 heart_full
   rotate: false
-  xy: 655, 93
+  xy: 721, 93
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -152,154 +159,154 @@ heart_half
   index: -1
 player
   rotate: false
-  xy: 689, 85
+  xy: 755, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 player
   rotate: false
-  xy: 711, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 1
-sword
-  rotate: false
-  xy: 733, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 0
-sword
-  rotate: false
-  xy: 755, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 4
-sword
-  rotate: false
-  xy: 755, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 1
-dig
-  rotate: false
   xy: 777, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
-  index: 0
-bow
-  rotate: false
-  xy: 799, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 3
-bow
-  rotate: false
-  xy: 799, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
   index: 1
-dig
+sword
+  rotate: false
+  xy: 799, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 0
+sword
   rotate: false
   xy: 821, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 4
+sword
+  rotate: false
+  xy: 821, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 1
 dig
   rotate: false
   xy: 843, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
-  index: 1
-sword
+  index: 0
+bow
   rotate: false
   xy: 865, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
-  index: 2
+  index: 3
 bow
   rotate: false
+  xy: 865, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 1
+dig
+  rotate: false
   xy: 887, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 4
+dig
+  rotate: false
+  xy: 909, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 1
+sword
+  rotate: false
+  xy: 931, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 bow
   rotate: false
-  xy: 909, 85
+  xy: 953, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 2
+bow
+  rotate: false
+  xy: 975, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 0
 bow
   rotate: false
-  xy: 909, 85
+  xy: 975, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 4
 sword
   rotate: false
-  xy: 909, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 5
-player
-  rotate: false
-  xy: 909, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 0
-player
-  rotate: false
-  xy: 931, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 3
-sword
-  rotate: false
-  xy: 953, 85
-  size: 20, 40
-  orig: 20, 40
-  offset: 0, 0
-  index: 3
-dig
-  rotate: false
   xy: 975, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 5
-dig
+player
+  rotate: false
+  xy: 975, 85
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 0
+player
   rotate: false
   xy: 997, 85
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 3
-dig
+sword
   rotate: false
   xy: 345, 19
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 3
+dig
+  rotate: false
+  xy: 367, 19
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 5
+dig
+  rotate: false
+  xy: 389, 19
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: 3
+dig
+  rotate: false
+  xy: 411, 19
   size: 20, 40
   orig: 20, 40
   offset: 0, 0
   index: 2
 worm
   rotate: false
-  xy: 553, 76
+  xy: 619, 76
   size: 32, 15
   orig: 32, 15
   offset: 0, 0
@@ -320,14 +327,14 @@ worm
   index: 2
 worm
   rotate: false
-  xy: 587, 76
+  xy: 653, 76
   size: 32, 15
   orig: 32, 15
   offset: 0, 0
   index: 1
 healthbottle
   rotate: false
-  xy: 367, 32
+  xy: 433, 32
   size: 20, 27
   orig: 20, 27
   offset: 0, 0
@@ -341,7 +348,7 @@ enem
   index: 0
 spikes
   rotate: false
-  xy: 621, 76
+  xy: 687, 76
   size: 26, 15
   orig: 26, 15
   offset: 0, 0
@@ -404,56 +411,56 @@ spider
   index: 1
 spider
   rotate: false
-  xy: 649, 75
+  xy: 715, 75
   size: 21, 16
   orig: 21, 16
   offset: 0, 0
   index: 0
 web
   rotate: false
-  xy: 397, 72
+  xy: 463, 72
   size: 32, 1
   orig: 32, 1
   offset: 0, 0
   index: -1
 slime
   rotate: false
-  xy: 367, 14
+  xy: 433, 14
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
   index: 1
 slime
   rotate: false
-  xy: 397, 54
+  xy: 463, 54
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
   index: 2
 slime
   rotate: false
-  xy: 389, 36
+  xy: 455, 36
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
   index: 3
 slime
   rotate: false
-  xy: 389, 18
+  xy: 455, 18
   size: 20, 16
   orig: 20, 16
   offset: 0, 0
   index: 0
 bomb
   rotate: false
-  xy: 672, 78
+  xy: 738, 78
   size: 13, 13
   orig: 13, 13
   offset: 0, 0
   index: 0
 bomb
   rotate: false
-  xy: 419, 57
+  xy: 485, 57
   size: 13, 13
   orig: 13, 13
   offset: 0, 0

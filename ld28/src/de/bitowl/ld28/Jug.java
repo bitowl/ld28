@@ -11,7 +11,7 @@ public class Jug extends ItemObject{
 	
 	@Override
 	public void hitBy(GameObject gameObject) {
-		if(gameObject instanceof Player || gameObject instanceof Arrow){
+		if(gameObject instanceof Player || gameObject instanceof Arrow || gameObject instanceof Bomb){
 			// collect
 			if(!destroyed){
 				// destroy dat jug

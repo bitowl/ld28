@@ -47,12 +47,7 @@ public class IngameScreen extends AbstractScreen{
 	Group enemies;
 	Group ladders;
 	
-	enum Weapon{
-		SWORD, SHOVEL, PICKAXE, BOMBS, BOW
-	}
 	Weapon weapon;
-	
-
 	
 	WeaponBar weaponbar;
 	
@@ -81,11 +76,13 @@ public class IngameScreen extends AbstractScreen{
 		
 		
 		player = new Player(this);
+		
 		player.setY(colLayer.getHeight()*colLayer.getTileHeight()-player.getHeight());
 		stage.addActor(player);
 
 		weapon = Weapon.SHOVEL;
-
+		Weapon.player = player;
+		Weapon.screen = this;
 			
 		// handle input
 		Gdx.input.setInputProcessor(new GameInputProcessor());
@@ -274,7 +271,7 @@ public class IngameScreen extends AbstractScreen{
 					bomb.speedY = player.speedY;
 					stage.addActor(bomb);
 	*/
-				case Keys.E:
+				/*case Keys.E:
 					// swing your sword, mighty hero!
 					player.sword(player.isFlipped);
 					break;
@@ -287,7 +284,7 @@ public class IngameScreen extends AbstractScreen{
 						if(ladder.notOnLadder()){ // only place it, if there is no other ladder
 							ladders.addActor(ladder);
 						}
-					}
+					}*/
 					
 				case Keys.NUM_1:
 					weaponbar.selectId(0);
@@ -303,6 +300,9 @@ public class IngameScreen extends AbstractScreen{
 					break;
 				case Keys.NUM_5:
 					weaponbar.selectId(4);
+					break;
+				case Keys.ESCAPE:
+					Gdx.app.exit();
 					break;
 			}
 			
@@ -357,80 +357,18 @@ public class IngameScreen extends AbstractScreen{
 				
 				System.out.println("touch: "+touchPos.x+","+touchPos.y);
 				System.out.println("playa: "+player.getX()+","+player.getY());
-				float SPAN_X=40;
-				float SPAN_Y=40;
+				float SPAN_X=0;
+				float SPAN_Y=0;
 				
-				switch (weapon){
-					case SHOVEL:
-						int digX=player.getStandingX();
-						int digY=player.getMiddleY();
-						
-	
-						if(touchPos.x<player.getX() - SPAN_X){
-							digX=player.getStandingX()-1;
-						}else if(touchPos.x>player.getX()+player.getWidth() + SPAN_X){
-							digX=player.getStandingX()+1;
-						}
-						
-						if(touchPos.y<player.getY() - SPAN_Y){
-							digY=player.getStandingY();
-						}else if(touchPos.y>player.getY()+player.getHeight() + SPAN_Y){
-							digY=player.getMiddleY()+1;
-						}
-						
-						
-						digTile(digX,digY, 1);
-						player.dig();
-					break;
-					case BOMBS:
-						Bomb bomb =new Bomb(IngameScreen.this);
-						bomb.setPosition(player.getX()+player.getWidth()/2-bomb.getWidth()/2, player.getY()+player.getHeight()/2-bomb.getHeight()/2);
-						bomb.speedX = 0;
-						bomb.speedY = 0;
-						
-						if(touchPos.x<player.getX() - SPAN_X){
-							bomb.speedX=-2;
-						}else if(touchPos.x>player.getX()+player.getWidth() + SPAN_X){
-							bomb.speedX=2;
-						}
-						
-						if(touchPos.y<player.getY() - SPAN_Y){
-							bomb.speedY=-3;
-						}else if(touchPos.y>player.getY()+player.getHeight() + SPAN_Y){
-							bomb.speedY=3;
-						}
-								
-						stage.addActor(bomb);
-						break;
-					case SWORD:
-						player.sword(touchPos.x<player.getX()+player.getWidth()/2);
-						break;
-					case BOW:
-						player.bow(touchPos.x<player.getX()+player.getWidth()/2);
-						
-						// arrow
-						float xdiff = touchPos.x - player.getX()+player.getHeight()/2;
-						float ydiff =touchPos.y - player.getY()+player.getHeight()/2;
-						
-						float degree = MathUtils.atan2(ydiff, xdiff);
-						float dist=(float) Math.sqrt(xdiff*xdiff + ydiff*ydiff);
-						
-						Arrow arrow= new Arrow(IngameScreen.this);
-						arrow.setPosition(player.getX()+player.getOriginX()-arrow.getWidth()/2, player.getY()+player.getHeight()/2 -arrow.getHeight()/2);
-						float ARROW_SPEED=Math.min(dist/32,5);
-						arrow.speedX = MathUtils.cos(degree)*ARROW_SPEED;
-						arrow.speedY = MathUtils.sin(degree)*ARROW_SPEED;
-						stage.addActor(arrow);
-						break;
-				
-				}
+				weapon.use(touchPos.x, touchPos.y);
+		
 				
 			}
 			return false;
 		}
-	}
 	
-	public void digTile(int x,int y, int power){
+	}
+	public boolean digTile(int x,int y, int power){
 		// TODO ask tile if diggable
 		Cell dst=destLayer.getCell(x, y);
 		if(dst != null){
@@ -445,16 +383,21 @@ public class IngameScreen extends AbstractScreen{
 				}*/
 				if(destroyable[tile.getId()]>power){
 					// dah. we don't have enough power
-					return;
+					return false;
 				}
 				
 				/*if(tile.getProperties().get("dst")!=null && tile.getProperties().get("dst").equals("no")){
 					return;
 				}*/
+			}else{
+				return false;
 			}
+		}else{
+			return false;
 		}
 		colLayer.setCell(x, y, null);
 		destLayer.setCell(x, y, null);
+		return true;
 	}
 	
 }
