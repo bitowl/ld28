@@ -17,6 +17,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.utils.OrderedMap;
 
 import de.bitowl.ld28.DialogLine;
 import de.bitowl.ld28.GoldBar;
@@ -44,9 +45,12 @@ public class IngameScreen extends AbstractScreen{
 	OrthogonalTiledMapRenderer renderer;
 	public TiledMapTileLayer colLayer;
 	public TiledMapTileLayer destLayer; // layer that is containing destroyable stuff
+	public TiledMapTileLayer blkbgLayer;
 	
 	TiledMapTileLayer fgLayer;
 	TiledMapTileLayer bgLayer;
+	
+	OrderedMap<TiledMapTile, TiledMapTile> topTiles; // tiles that are on the blkbglayer on top of the "real" one
 	
 	public Player player;
 	
@@ -86,8 +90,10 @@ public class IngameScreen extends AbstractScreen{
 		renderer = new OrthogonalTiledMapRenderer(map);
 		renderer.setView((OrthographicCamera) stage.getCamera());
 		colLayer = (TiledMapTileLayer) map.getLayers().get("collision");
-		colLayer.setVisible(false);
+		// colLayer.setVisible(false);
 		destLayer = (TiledMapTileLayer) map.getLayers().get("destroyable");
+		
+		blkbgLayer = (TiledMapTileLayer) map.getLayers().get("blockbg");
 		
 		bgLayer = (TiledMapTileLayer) map.getLayers().get("background");
 		fgLayer = (TiledMapTileLayer) map.getLayers().get("foreground");
@@ -198,6 +204,24 @@ public class IngameScreen extends AbstractScreen{
 		stage.addActor(enemies);
 		
 		
+		topTiles = new OrderedMap<TiledMapTile, TiledMapTile>();
+		int topY=blkbgLayer.getHeight()-1;
+		// find top tiles
+		for(int i= 0;i<blkbgLayer.getWidth();i++){
+			System.out.println("try "+i);
+			if(blkbgLayer.getCell(i, topY)!=null){
+				System.out.println("top tile for "+blkbgLayer.getCell(i, topY-1).getTile().getId()+" added");
+				topTiles.put(blkbgLayer.getCell(i, topY-1 ).getTile(), blkbgLayer.getCell(i, topY).getTile());
+				blkbgLayer.setCell(i, topY, null);
+				blkbgLayer.setCell(i, topY-1, null);			
+				
+			}else{
+				// no more tiles have toptiles
+				break;
+			}
+		}
+		
+		
 		
 		// HUD
 
@@ -217,6 +241,9 @@ public class IngameScreen extends AbstractScreen{
 		
 		shop = new ShopScreen(game, this);
 		pause = new PauseScreen(game, this);
+		
+		
+		
 		
 	}
 	
@@ -276,6 +303,7 @@ public class IngameScreen extends AbstractScreen{
 		renderer.getSpriteBatch().begin();
 		renderer.renderTileLayer(bgLayer);
 		renderer.renderTileLayer(destLayer);
+		renderer.renderTileLayer(blkbgLayer);
 		renderer.getSpriteBatch().end();
 		stage.draw();
 		renderer.getSpriteBatch().begin();
@@ -485,8 +513,22 @@ public class IngameScreen extends AbstractScreen{
 		}else{
 			return false;
 		}
-		colLayer.setCell(x, y, null);
+		// colLayer.setCell(x, y, null);
+		blkbgLayer.setCell(x, y+1, null);
 		destLayer.setCell(x, y, null);
+		
+		//place the top tile of the tile below
+		if(destLayer.getCell(x, y-1)!=null && topTiles.containsKey(destLayer.getCell(x, y-1).getTile())){
+			Cell cell=new Cell();
+			cell.setTile(topTiles.get(destLayer.getCell(x, y-1).getTile()));
+			blkbgLayer.setCell(x, y, cell);
+			System.out.println("replace :)");
+		}else{
+			System.err.println("nothing found");
+		}
+		 
+		
+		
 		return true;
 	}
 

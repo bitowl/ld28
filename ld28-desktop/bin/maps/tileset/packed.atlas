@@ -79,14 +79,14 @@ packed
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 50
+  index: 12
 packed
   rotate: false
   xy: 103, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 49
+  index: 23
 packed
   rotate: false
   xy: 103, 69
@@ -100,20 +100,6 @@ packed
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 13
-packed
-  rotate: false
-  xy: 103, 69
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 30
-packed
-  rotate: false
-  xy: 103, 69
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
   index: 72
 packed
   rotate: false
@@ -121,14 +107,7 @@ packed
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 51
-packed
-  rotate: false
-  xy: 103, 69
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 53
+  index: 14
 packed
   rotate: false
   xy: 103, 69
@@ -143,6 +122,20 @@ packed
   orig: 32, 32
   offset: 0, 0
   index: 55
+packed
+  rotate: false
+  xy: 103, 69
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 10
+packed
+  rotate: false
+  xy: 103, 69
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 13
 packed
   rotate: false
   xy: 103, 69
@@ -170,6 +163,13 @@ packed
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
+  index: 49
+packed
+  rotate: false
+  xy: 103, 69
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
   index: 63
 packed
   rotate: false
@@ -177,28 +177,7 @@ packed
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 52
-packed
-  rotate: false
-  xy: 103, 69
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 15
-packed
-  rotate: false
-  xy: 103, 69
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 31
-packed
-  rotate: false
-  xy: 103, 69
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 12
+  index: 51
 packed
   rotate: false
   xy: 103, 69
@@ -233,7 +212,14 @@ packed
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 11
+  index: 50
+packed
+  rotate: false
+  xy: 103, 69
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 52
 packed
   rotate: false
   xy: 103, 69
@@ -241,6 +227,13 @@ packed
   orig: 32, 32
   offset: 0, 0
   index: 56
+packed
+  rotate: false
+  xy: 103, 69
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 11
 packed
   rotate: false
   xy: 103, 69
@@ -261,7 +254,7 @@ packed
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 14
+  index: 15
 packed
   rotate: false
   xy: 103, 69
@@ -275,105 +268,105 @@ packed
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 10
+  index: 16
 packed
   rotate: false
   xy: 103, 35
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 16
+  index: 17
 packed
   rotate: false
   xy: 137, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 17
+  index: 18
 packed
   rotate: false
   xy: 103, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 18
+  index: 19
 packed
   rotate: false
   xy: 137, 35
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 19
+  index: 20
 packed
   rotate: false
   xy: 171, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 20
+  index: 21
 packed
   rotate: false
   xy: 137, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 21
+  index: 22
 packed
   rotate: false
   xy: 171, 35
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 22
+  index: 24
 packed
   rotate: false
   xy: 205, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 23
+  index: 25
 packed
   rotate: false
   xy: 171, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 24
+  index: 26
 packed
   rotate: false
   xy: 205, 35
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 25
+  index: 27
 packed
   rotate: false
   xy: 239, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 26
+  index: 28
 packed
   rotate: false
   xy: 205, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 27
+  index: 29
 packed
   rotate: false
   xy: 239, 35
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 28
+  index: 30
 packed
   rotate: false
   xy: 273, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 29
+  index: 31
 packed
   rotate: false
   xy: 239, 1
@@ -499,73 +492,80 @@ packed
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 54
+  index: 53
 packed
   rotate: false
   xy: 443, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 57
+  index: 54
 packed
   rotate: false
   xy: 477, 35
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 58
+  index: 57
 packed
   rotate: false
   xy: 511, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 59
+  index: 58
 packed
   rotate: false
   xy: 477, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 65
+  index: 59
 packed
   rotate: false
   xy: 511, 35
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 66
+  index: 65
 packed
   rotate: false
   xy: 545, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 69
+  index: 66
 packed
   rotate: false
   xy: 511, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 73
+  index: 69
 packed
   rotate: false
   xy: 545, 35
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 74
+  index: 73
 packed
   rotate: false
   xy: 579, 69
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 77
+  index: 74
 packed
   rotate: false
   xy: 545, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 77
+packed
+  rotate: false
+  xy: 579, 35
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
