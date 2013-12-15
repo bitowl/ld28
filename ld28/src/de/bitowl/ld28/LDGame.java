@@ -8,10 +8,12 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.AtlasTmxMapLoader;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
+import de.bitowl.ld28.screens.GameOverScreen;
+
 public class LDGame extends Game {
-	AssetManager assets;
+	public AssetManager assets;
 	boolean assetsLoaded;
-	boolean mapUsed;
+	public boolean mapUsed;
 	
 	
 	@Override

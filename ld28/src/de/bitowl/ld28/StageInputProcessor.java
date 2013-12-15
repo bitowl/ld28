@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+import de.bitowl.ld28.screens.AbstractScreen;
+
 /**
  * input processor that does only care about ClickListeners
  * and projects the touch position correctly with the letterbox 
@@ -14,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
  * @author bitowl
  *
  */
-class StageInputProcessor extends InputAdapter{
+public class StageInputProcessor extends InputAdapter{
 	AbstractScreen screen;
 	public StageInputProcessor(AbstractScreen pScreen){
 		screen = pScreen;

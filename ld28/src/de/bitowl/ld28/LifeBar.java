@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import de.bitowl.ld28.screens.IngameScreen;
+
 public class LifeBar extends Actor{
 	IngameScreen screen;
 	TextureRegion heart_full,heart_half,heart_empty;

@@ -10,18 +10,20 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import de.bitowl.ld28.screens.AbstractScreen;
+
 public class DialogLine extends Actor{
-	IngameScreen screen;
+	AbstractScreen screen;
 
 	BitmapFont font;
 	
 	String text;
 	float textTime;
 	
-	Camera camera;
+	private  Camera camera;
 	
 	
-	public DialogLine(IngameScreen pScreen){
+	public DialogLine(AbstractScreen pScreen){
 		screen=pScreen;
 		font = screen.game.assets.get("fonts/dialog.fnt",BitmapFont.class);
 		font.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);

@@ -8,6 +8,8 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
+import de.bitowl.ld28.screens.IngameScreen;
+
 /**
  * displays the amount of gold you have in the bottom left corner
  * 
@@ -20,7 +22,7 @@ public class GoldBar extends Actor{
 	
 	BitmapFont font;
 	
-	Camera camera;
+	public Camera camera;
 	
 	public GoldBar(IngameScreen pScreen){
 		screen=pScreen;

@@ -11,6 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.ObjectMap.Entry;
 import com.badlogic.gdx.utils.OrderedMap;
 
+import de.bitowl.ld28.objects.Weapon;
+import de.bitowl.ld28.screens.IngameScreen;
+
 
 public class WeaponBar extends Image{
 	IngameScreen screen;
@@ -18,7 +21,7 @@ public class WeaponBar extends Image{
 	Image ui_bomb;
 	Image ui_sword;
 	
-	boolean open;
+	public boolean open;
 	
 	OrderedMap<Weapon, WeaponBarImage> weapons;
 	public WeaponBar(IngameScreen pScreen){
