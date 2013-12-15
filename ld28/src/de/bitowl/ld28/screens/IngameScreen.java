@@ -170,7 +170,7 @@ public class IngameScreen extends AbstractScreen{
 			for(int x=0;x<enemyLay.getWidth();x++){
 				if(enemyLay.getCell(x, y)!=null){
 					
-					int eventStartID=82;
+					int eventStartID=146;
 					
 					int tileID=enemyLay.getCell(x, y).getTile().getId();
 					if(tileID>=eventStartID){
@@ -321,6 +321,7 @@ public class IngameScreen extends AbstractScreen{
 		
 		// move all the stuff around and stuff
 		stage.act(delta);
+
 		
 		// scroll camera to the player
 		stage.getCamera().position.set(player.getX(),player.getY(),0);
@@ -360,6 +361,7 @@ public class IngameScreen extends AbstractScreen{
 				
 		@Override
 		public boolean keyDown(int keycode) {
+			if(!Event.isEmpty()){return false;}
 			switch(keycode){
 				case Keys.LEFT:
 				case Keys.RIGHT:
@@ -377,9 +379,9 @@ public class IngameScreen extends AbstractScreen{
 				case Keys.S:
 					player.descend();
 					break;
-				case Keys.E:
-					game.setScreen(shop); // TODO only when going into house
-					break;
+			//	case Keys.E:
+				//	game.setScreen(shop); // TODO only when going into house
+					//break;
 			/*	case Keys.S: // dig down
 					digTile(player.getStandingX(),player.getStandingY(), 1);
 					player.dig();
@@ -444,6 +446,7 @@ public class IngameScreen extends AbstractScreen{
 		}
 		@Override
 		public boolean keyUp(int keycode) {
+			
 			switch(keycode){
 				case Keys.LEFT:
 				case Keys.RIGHT:
@@ -465,6 +468,7 @@ public class IngameScreen extends AbstractScreen{
 		@Override
 		public boolean touchDown(int screenX, int screenY, int pointer,
 				int button) {		
+			if(!Event.isEmpty()){return false;}
 			
 			if(Gdx.input.getX()>viewport.x&&Gdx.input.getX()<viewport.x+viewport.width&&Gdx.input.getY()>viewport.y&&Gdx.input.getY()<viewport.y+viewport.height){
 				Vector3 touchPos = new Vector3();

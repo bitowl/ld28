@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
+import de.bitowl.ld28.Event;
 import de.bitowl.ld28.ItemObject;
 import de.bitowl.ld28.screens.IngameScreen;
 
@@ -38,7 +39,13 @@ public class GameObject extends Image{
 	
 	@Override
 	public void act(float delta) {
+
 		super.act(delta);
+		
+		if(!Event.isEmpty()){ // something important is happening
+			// but let Actions that move things go through
+			return;
+		}
 		
 		// apply a very simple gravity
 		if(!onLadder){

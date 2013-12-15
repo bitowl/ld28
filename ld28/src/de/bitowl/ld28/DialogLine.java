@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import de.bitowl.ld28.screens.AbstractScreen;
+import de.bitowl.ld28.screens.IngameScreen;
 
 public class DialogLine extends Actor{
 	AbstractScreen screen;
@@ -21,7 +22,8 @@ public class DialogLine extends Actor{
 	float textTime;
 	
 	private  Camera camera;
-	
+
+	boolean finishEvent;
 	
 	public DialogLine(AbstractScreen pScreen){
 		screen=pScreen;
@@ -31,12 +33,17 @@ public class DialogLine extends Actor{
 	}
 	@Override
 	public void act(float delta) {
+		System.out.println(finishEvent+" "+textTime);
 		super.act(delta);
 		if(text!=null){
 			if(textTime>0){
 				textTime-=delta;
 				if(textTime<=0){
 					text=null;
+					if(finishEvent){
+						finishEvent=false;
+						Event.eventFinished((IngameScreen)screen); // WARNING CRASHES WHEN NOT INGAME, but why would you do that if you're not ingame
+					}
 				}
 			}
 		}
@@ -62,5 +69,10 @@ public class DialogLine extends Actor{
 	public void display(String pText, float pTime){
 		text = pText;
 		textTime = pTime;
+	}
+	public void display(String pText, float pTime, boolean pFinishEvent) {
+		this.display(pText, pTime);
+		finishEvent = pFinishEvent;
+		
 	}
 }

@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 import de.bitowl.ld28.AnimAction;
+import de.bitowl.ld28.Event;
 import de.bitowl.ld28.screens.GameOverScreen;
 import de.bitowl.ld28.screens.IngameScreen;
 
@@ -53,8 +54,9 @@ public class Player extends GameObject{
 		
 		System.out.println(getStandingX()+", "+getStandingY());
 		// standing on a trigger?
-		if(screen.trigger.containsKey(new Point(getStandingX(),getMiddleY()))){
-			screen.trigger.get(new Point(getStandingX(),getMiddleY())).happen(screen);
+		if(screen.trigger.containsKey(new Point(getStandingX(),getMiddleY())) &&
+				!screen.trigger.get(new Point(getStandingX(),getMiddleY())).happend){ // this event can still happen
+			Event.doIt(screen.trigger.get(new Point(getStandingX(),getMiddleY())),screen);
 		}
 	}
 	

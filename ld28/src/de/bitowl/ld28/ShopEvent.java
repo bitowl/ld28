@@ -7,6 +7,7 @@ public class ShopEvent extends Event {
 	@Override
 	public void happen(IngameScreen pScreen) {
 		pScreen.game.setScreen(pScreen.shop);
+		Event.eventFinished(pScreen);
 	}
 
 }
