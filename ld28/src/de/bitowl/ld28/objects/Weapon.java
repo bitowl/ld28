@@ -35,7 +35,7 @@ public abstract class Weapon{
 
 			Point digPos=convertToTile(pX,pY);
 			
-			if(screen.digTile(digPos.x,digPos.y, 1)){
+			if(screen.digTile(digPos.x,digPos.y, 1, true)){
 				player.dig();
 				return true;
 			}
@@ -47,7 +47,7 @@ public abstract class Weapon{
 		public boolean doSth(float pX, float pY) {
 			Point digPos=convertToTile(pX,pY);
 			
-			if(screen.digTile(digPos.x,digPos.y, 3)){
+			if(screen.digTile(digPos.x,digPos.y, 3, true)){
 				player.dig();
 				return true;
 			}
@@ -98,6 +98,7 @@ public abstract class Weapon{
 			arrow.speedX = MathUtils.cos(ang.x)*arrowSpeed;
 			arrow.speedY = MathUtils.sin(ang.x)*arrowSpeed;
 			screen.stage.addActor(arrow);
+			
 			return true;
 		};
 	};

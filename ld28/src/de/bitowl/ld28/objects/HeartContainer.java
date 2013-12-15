@@ -23,6 +23,7 @@ public class HeartContainer extends ItemObject{
 				consumed = true;
 				collidable=false;
 				screen.dialogLine.display("You got one more life.", 0.7f);
+				screen.heart.play();
 			}	
 		}
 	}

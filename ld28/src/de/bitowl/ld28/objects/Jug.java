@@ -22,7 +22,8 @@ public class Jug extends ItemObject{
 				destroyed = true;
 				collidable=false;
 				screen.player.gold+=1;
-				screen.dialogLine.display("You found 1 gold.", 0.5f);
+				screen.dialogLine.display("You found 1 gold.", 0.7f);
+				screen.gold.play();
 			}
 		}
 	}

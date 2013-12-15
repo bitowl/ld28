@@ -50,7 +50,13 @@ public class Player extends GameObject{
 
 	@Override
 	public void act(float delta) {
+		boolean og=onGround;
+		life -= delta/3;
+		System.out.println(life);
 		super.act(delta);
+		if(!og&&onGround){ // we landed on the ground on this frame
+			screen.ground.play();
+		}
 		
 		System.out.println(getStandingX()+", "+getStandingY());
 		// standing on a trigger?
@@ -146,7 +152,9 @@ public class Player extends GameObject{
 		if(bow.getActor()==null){
 			bow.reset();
 			addAction(Actions.sequence(Actions.scaleTo(side?-1:1, 1),bow,Actions.scaleTo(isFlipped?-1:1, 1)));
+			
 		}
+		screen.bow.play();
 	}
 	private Rectangle getSwordRectangle(boolean side) {
 		if(side){
@@ -167,8 +175,13 @@ public class Player extends GameObject{
 		if(dig.getActor()==null){
 			dig.reset();
 			addAction(dig);
-
+			
 		}
+		screen.dig.play();
 	}
-	
+	@Override
+	public void addDamage(float pDamage) {
+		super.addDamage(pDamage);
+		screen.hit.play();
+	}
 }

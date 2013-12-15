@@ -89,7 +89,15 @@ public class IngameScreen extends AbstractScreen{
 
 	public Rectangle viewRect;
 	
-	Sound bow,dig,explode;
+	public Sound bow;
+	public Sound dig;
+	public Sound explode;
+	public Sound gold;
+	public Sound no_dig;
+	public Sound ground;
+	public Sound heart;
+	public Sound bottle;
+	public Sound hit;
 	
 	public IngameScreen(LDGame pGame) {
 		super(pGame);
@@ -128,7 +136,15 @@ public class IngameScreen extends AbstractScreen{
 		
 		
 		// load audio
-		
+		dig = game.assets.get("audio/dig.ogg",Sound.class);
+		explode = game.assets.get("audio/explode.ogg",Sound.class);
+		bow = game.assets.get("audio/bow.ogg",Sound.class);
+		gold = game.assets.get("audio/gold.ogg",Sound.class);
+		no_dig = game.assets.get("audio/no_dig.ogg",Sound.class);
+		ground = game.assets.get("audio/ground.ogg",Sound.class);
+		heart = game.assets.get("audio/heart.ogg",Sound.class);
+		bottle = game.assets.get("audio/bottle.ogg",Sound.class);
+		hit = game.assets.get("audio/hit.ogg",Sound.class);
 		
 		
 		
@@ -541,7 +557,9 @@ public class IngameScreen extends AbstractScreen{
 	 * @return if there was a tile that we could dig
 	 */
 	public boolean digTile(int x,int y, int power){
-		
+		return this.digTile(x,y,power,false);
+	}
+	public boolean digTile(int x,int y, int power, boolean sound){
 		Cell dst=destLayer.getCell(x, y);
 		if(dst != null){
 			TiledMapTile tile = dst.getTile();
@@ -555,6 +573,10 @@ public class IngameScreen extends AbstractScreen{
 				}*/
 				if(destroyable[tile.getId()]>power){
 					// dah. we don't have enough power
+					if(sound){
+						no_dig.play();
+					}
+					
 					return false;
 				}
 				

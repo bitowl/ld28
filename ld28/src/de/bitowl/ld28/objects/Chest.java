@@ -20,7 +20,8 @@ public class Chest extends ItemObject{
 				open = true;
 				collidable=false;
 				screen.player.gold+=5;
-				screen.dialogLine.display("You found 5 gold!", 1);
+				screen.dialogLine.display("You found 5 gold!", 0.7f);
+				screen.gold.play();
 			}	
 		}
 	}

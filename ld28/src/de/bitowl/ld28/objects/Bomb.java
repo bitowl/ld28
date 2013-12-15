@@ -55,15 +55,28 @@ public class Bomb extends GameObject{
 				expl.setX(getX()+getWidth()/2-expl.getWidth()/2);
 				expl.setY(getY()+getHeight()/2-expl.getHeight()/2);
 				screen.stage.addActor(expl);
+				
+				
+				// make less loud if far away
+				float volume=1-distSound(screen.player.getX(),screen.player.getY(),getX(),getY())/600;
+				if(volume>0){
+					if(volume>1){volume=1;}
+					screen.explode.play(volume);
+				}
 			
 			}
 			afterExplTimer -= delta;
 			
 			if(afterExplTimer<0){ // the explosion REALLY STARTS
 				remove(); // remove the bomb from screen
+				
+				
+				
 				// do some damage on terrain
 				int deployX=(int) (getX()/screen.bgLayer.getTileWidth());
 				int deployY=(int) (getY()/screen.bgLayer.getTileHeight());
+				
+			
 				
 				int RADIUS=4;
 				
@@ -96,11 +109,18 @@ public class Bomb extends GameObject{
 		}
 	}
 	
+	
 	/**
 	 * @return the strength that the bomb will have at that distance
 	 */
 	public int dist(int pX1,int pY1, int pX2,int pY2){
-		return 3-(int) ( MathUtils.random(-0.7f,0.7f)+Math.sqrt((pX2-pX1)*(pX2-pX1) + (pY2-pY1)*(pY2-pY1)));
+		int dmg=3-(int) ( MathUtils.random(-0.7f,0.7f)+Math.sqrt((pX2-pX1)*(pX2-pX1) + (pY2-pY1)*(pY2-pY1)));
+		//if(dmg<0){dmg=1;}
+		return dmg;
+	}
+	
+	public float distSound(float pX1,float pY1, float pX2,float pY2){
+		return (float) (Math.sqrt((pX2-pX1)*(pX2-pX1) + (pY2-pY1)*(pY2-pY1)));
 	}
 	@Override
 	public Rectangle getFootRectangle() {

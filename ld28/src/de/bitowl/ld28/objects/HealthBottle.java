@@ -23,7 +23,8 @@ public class HealthBottle extends ItemObject{
 				}
 				consumed = true;
 				collidable=false;
-				screen.dialogLine.display("Some of you health is restored.", 0.5f);
+				screen.dialogLine.display("Some of you health is restored.", 0.7f);
+				screen.bottle.play();
 			}	
 		}
 	}

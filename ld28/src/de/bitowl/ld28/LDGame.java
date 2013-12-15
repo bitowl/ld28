@@ -32,6 +32,12 @@ public class LDGame extends Game {
 		assets.load("audio/bow.ogg",Sound.class);
 		assets.load("audio/explode.ogg",Sound.class);
 		assets.load("audio/dig.ogg",Sound.class);
+		assets.load("audio/gold.ogg",Sound.class);
+		assets.load("audio/no_dig.ogg",Sound.class);
+		assets.load("audio/heart.ogg",Sound.class);
+		assets.load("audio/bottle.ogg",Sound.class);
+		assets.load("audio/ground.ogg",Sound.class);
+		assets.load("audio/hit.ogg",Sound.class);
 		
 	}
 	
