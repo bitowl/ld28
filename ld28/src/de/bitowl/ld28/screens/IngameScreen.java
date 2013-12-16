@@ -60,8 +60,7 @@ public class IngameScreen extends AbstractScreen{
 	
 	public Player player;
 	
-	int resized; //TODO remove this workaround and really fix it (e.g. with a menu :P)
-	
+
 	/**
 	 * how hard is a tile to destroy
 	 */
@@ -323,13 +322,7 @@ public class IngameScreen extends AbstractScreen{
 	}
 	@Override
 	public void render(float delta) {
-		// TODO remove this i3-resize workaround
-		if(resized < 10){
 
-			// resize at the beginning to set the letterbox right
-			resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-			resized++;
-		}
 		
 		if(cooldownTime>0){
 			cooldownTime-=delta;
@@ -364,10 +357,8 @@ public class IngameScreen extends AbstractScreen{
 		stage.getCamera().update();
 		
 		
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		Gdx.gl.glViewport((int) viewport.x, (int) viewport.y,
-                (int) viewport.width, (int) viewport.height);  // TODO move this into an own method in AbstractScreen
+		clear();
+		setViewport();
 		
 		renderer.setView((OrthographicCamera) stage.getCamera());
 		renderer.getSpriteBatch().begin();
@@ -428,41 +419,7 @@ public class IngameScreen extends AbstractScreen{
 				case Keys.F1:
 					cheatMode();
 					break;
-			//	case Keys.E:
-				//	game.setScreen(shop); // TODO only when going into house
-					//break;
-			/*	case Keys.S: // dig down
-					digTile(player.getStandingX(),player.getStandingY(), 1);
-					player.dig();
-					//colLayer.getCell((int)(player.getX()/colLayer.getTileWidth()), (int)(player.getY()/colLayer.getTileHeight())).setTile();
-					break;
-				case Keys.A: // dig left
-					diplaygTile(player.getStandingX()-1,player.getMiddleY(), 1);
-					break;
-				case Keys.D: // dig right
-					digTile(player.getStandingX()+1,player.getMiddleY(), 1);
-					break;
-				case Keys.Q: // deploy a bomb
-					Bomb bomb =new Bomb(IngameScreen.this);
-					bomb.setPosition(player.getX()+player.getWidth()/2-bomb.getWidth()/2, player.getY()+player.getHeight()/2-bomb.getHeight()/2);
-					bomb.speedX = player.speedX*2;
-					bomb.speedY = player.speedY;
-					stage.addActor(bomb);
-	*/
-				/*case Keys.E:
-					// swing your sword, mighty hero!
-					player.sword(player.isFlipped);
-					break;
-				case Keys.Y:
-					if(player.onGround || player.onLadder){
-						// place a ladder						
-						Ladder ladder=new Ladder(IngameScreen.this);
-						ladder.setPosition(player.getStandingX()*destLayer.getTileWidth(), player.getY()+player.getHeight()/2);
-						
-						if(ladder.notOnLadder()){ // only place it, if there is no other ladder
-							ladders.addActor(ladder);
-						}
-					}*/
+		
 					
 				case Keys.NUM_1:
 					weaponbar.selectId(0);

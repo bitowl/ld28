@@ -90,10 +90,8 @@ public class GameObject extends Image{
 						setY( (ytile+1)*screen.bgLayer.getTileHeight());
 						onGround = true;
 						// hit the ground
-						// check on falldamage
-						// TODO tweak numbers
 						if(speedY<-10){
-							System.err.println("too fast: "+speedY);
+							// System.err.println("too fast: "+speedY);
 							addDamage(-(speedY+9)/2);
 						}
 						
@@ -142,7 +140,6 @@ public class GameObject extends Image{
 		if(getY() < 0){
 			setY(0);
 			onGround = true;
-			// TODO maybe fall into eternity instead?
 		}
 		if(getX() > screen.bgLayer.getWidth()*screen.bgLayer.getTileWidth() - getWidth()){
 			setX(screen.bgLayer.getWidth()*screen.bgLayer.getTileWidth() - getWidth());
@@ -254,7 +251,6 @@ public class GameObject extends Image{
 		return getRectangle();
 	}
 	
-	// TODO only build when it changes?
 	public Rectangle getRectangle(){
 		return new Rectangle(getX(),getY(),getWidth(),getHeight());
 	}

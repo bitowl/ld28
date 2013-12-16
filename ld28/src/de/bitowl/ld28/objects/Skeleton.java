@@ -92,7 +92,6 @@ public class Skeleton extends Enemy {
 	}
 	@Override
 	public Rectangle getRectangle() {
-		// 	TODO Auto-generated method stub
 		return new Rectangle(getX()+65,getY(),getWidth()-65-51,getHeight());
 	}
 }

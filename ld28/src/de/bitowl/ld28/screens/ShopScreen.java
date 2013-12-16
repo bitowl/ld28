@@ -94,8 +94,7 @@ public class ShopScreen extends AbstractScreen {
 	@Override
 	public void render(float delta) {
 		System.out.println("in shop :)");
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		clear();
 		super.render(delta);
 	// 	Table.drawDebug(stage);
 	}

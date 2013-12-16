@@ -30,7 +30,7 @@ public class WinScreen extends AbstractScreen  {
 		restart.addListener(new ClickListener(){
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
-				// TODO credits
+				game.setScreen(new CreditsScreen(game));
 			}
 		});
 		table.add(restart).pad(30).row();
@@ -49,8 +49,7 @@ public class WinScreen extends AbstractScreen  {
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		clear();
 		super.render(delta);
 	}
 	@Override

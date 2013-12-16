@@ -194,8 +194,6 @@ public abstract class Weapon{
 
 	public void reset() {
 		curAmmo = 0;
-		wait=0;
-		cooldown=0;
 		maxAmmo=INITIAL_MAX_AMMO;
 	}
 
