@@ -3,9 +3,8 @@ package de.bitowl.ld28;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
 
 import de.bitowl.ld28.objects.Skeleton;
@@ -121,10 +120,7 @@ public class Event {
 			public void happen(final IngameScreen pScreen) {
 				super.happen(pScreen);
 				final Image friend = new Image(pScreen.atlas.findRegion("friend_down"));
-				
-				//friend.setX(pScreen.player.getX()-10*32);
-				//friend.setY(pScreen.player.getY());
-				System.err.println(friend.getX()+","+friend.getY());
+
 				friend.setX(136*32);
 				friend.setY(120*32);
 				pScreen.stage.addActor(friend);
@@ -150,10 +146,6 @@ public class Event {
 						}));
 					}
 				}, pScreen);
-				
-	//			doIt(new DialogEvent("Oh no, the mine collapsed!", 2.3f,"event3_1"),pScreen);
-				//doIt(new DialogEvent("You need something to dig away the dirt.", 2.3f,"event3_2"),pScreen);
-			
 			}
 		},
 		new Event() {
@@ -199,10 +191,7 @@ public class Event {
 		public DialogEvent(String pText, float pTime, String pSound){
 			text = pText;
 			time = pTime;
-			sound = pSound;
-			
-			
-			
+			sound = pSound;		
 		}
 		@Override
 		public void happen(IngameScreen pScreen) {

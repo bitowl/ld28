@@ -1,7 +1,6 @@
 package de.bitowl.ld28.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -31,7 +30,7 @@ public class MenuScreen extends AbstractScreen{
 				if(game.mapUsed){
 					IngameScreen.resetMap(game);
 				}
-				game.setScreen(new IngameScreen(game));
+				game.setScreen(new InstructionsScreen(game));
 			}
 		});
 		table.add(start).pad(30).row();

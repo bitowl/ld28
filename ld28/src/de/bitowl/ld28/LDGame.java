@@ -65,8 +65,6 @@ public class LDGame extends Game {
 		assets.load("audio/event8_2.ogg", Sound.class);
 		assets.load("audio/event9_1.ogg", Sound.class);
 		assets.load("audio/event9_2.ogg", Sound.class);
-
-
 	}
 
 	public void render() {
@@ -81,7 +79,6 @@ public class LDGame extends Game {
 	public void dispose() {
 		super.dispose();
 		assets.dispose();
-
 	}
 
 }

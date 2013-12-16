@@ -32,6 +32,5 @@ public class LifeBar extends Actor{
 			}
 			x += 32;
 		}
-		
 	}
 }

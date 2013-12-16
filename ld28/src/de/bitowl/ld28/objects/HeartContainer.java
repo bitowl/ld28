@@ -9,7 +9,6 @@ public class HeartContainer extends ItemObject{
 	public HeartContainer(IngameScreen pScreen) {
 		super(pScreen,pScreen.atlas.findRegion("heart_full"));
 	}
-
 	
 	@Override
 	public void hitBy(GameObject gameObject) {

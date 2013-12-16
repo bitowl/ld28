@@ -12,9 +12,5 @@ public abstract class ItemObject extends GameObject {
 		hitDamage = 0;
 	}
 
-	// public abstract void collected();
-
-	public void hitBy(GameObject gameObject) {
-		
-	}
+	public void hitBy(GameObject gameObject) {}
 }

@@ -7,7 +7,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapProperties;
@@ -42,8 +41,6 @@ import de.bitowl.ld28.objects.Weapon;
 import de.bitowl.ld28.objects.Worm;
 
 public class IngameScreen extends AbstractScreen{
-
-	
 	public TextureAtlas atlas;
 	
 	// map stuff
@@ -59,7 +56,6 @@ public class IngameScreen extends AbstractScreen{
 	OrderedMap<TiledMapTile, TiledMapTile> topTiles; // tiles that are on the blkbglayer on top of the "real" one
 	
 	public Player player;
-	
 
 	/**
 	 * how hard is a tile to destroy
@@ -74,7 +70,6 @@ public class IngameScreen extends AbstractScreen{
 	
 	WeaponBar weaponbar;
 	public DialogLine dialogLine;
-	
 	
 	// touch down
 	boolean usingWeapon;
@@ -100,8 +95,7 @@ public class IngameScreen extends AbstractScreen{
 	
 	public IngameScreen(LDGame pGame) {
 		super(pGame);
-		
-		
+
 		map = game.assets.get("maps/map1.tmx",TiledMap.class);
 		game.mapUsed = true; // before the next game is started, we should reset the map, so that all the destroyed things are back complete
 		atlas = game.assets.get("textures/textures.pack", TextureAtlas.class);
@@ -114,13 +108,11 @@ public class IngameScreen extends AbstractScreen{
 		bgLayer = (TiledMapTileLayer) map.getLayers().get("background");
 		fgLayer = (TiledMapTileLayer) map.getLayers().get("foreground");
 		
-
 		ladders=new Group(); // ladders should be behind the player
 		stage.addActor(ladders);
 		
 		items = new Group();
 		stage.addActor(items);
-		
 		
 		player = new Player(this);
 		
@@ -131,9 +123,6 @@ public class IngameScreen extends AbstractScreen{
 		Weapon.player = player;
 		Weapon.screen = this;
 			
-		
-		
-		
 		// load audio
 		dig = game.assets.get("audio/dig.ogg",Sound.class);
 		explode = game.assets.get("audio/explode.ogg",Sound.class);
@@ -144,11 +133,7 @@ public class IngameScreen extends AbstractScreen{
 		heart = game.assets.get("audio/heart.ogg",Sound.class);
 		bottle = game.assets.get("audio/bottle.ogg",Sound.class);
 		hit = game.assets.get("audio/hit.ogg",Sound.class);
-		
-		
-		
-		
-		
+
 		// have the tiles properties?
 		TiledMapTileSet tileset=map.getTileSets().getTileSet("tileset");
 		
@@ -177,12 +162,6 @@ public class IngameScreen extends AbstractScreen{
 					destroyable[tile.getId()]=1;
 				}
 			}
-			/*Iterator<String> it =properties.getKeys();
-			System.out.println(tile.getId());
-			while(it.hasNext()){
-				String key=it.next();
-				System.out.println(key+":"+properties.get(key));
-			}*/
 		}
 		
 		
@@ -195,7 +174,7 @@ public class IngameScreen extends AbstractScreen{
 			for(int x=0;x<enemyLay.getWidth();x++){
 				if(enemyLay.getCell(x, y)!=null){
 					
-					int eventStartID=146;
+					int eventStartID=145;
 					
 					int tileID=enemyLay.getCell(x, y).getTile().getId();
 					if(tileID>=eventStartID){
@@ -218,40 +197,36 @@ public class IngameScreen extends AbstractScreen{
 						continue;
 					}
 					
-					
-					
-					
-					// System.out.println(enemyLay.getCell(x, y).getTile().getId());
 					Enemy enemy;
 					switch(tileID){
-						case 3:
+						case 2:
 							enemy = new Worm(this);
 							break;
-						case 4:
+						case 3:
 							enemy = new Slime(this);
 							break;
-						case 5:
+						case 4:
 							enemy = new Spider(this);
 							break;
-						case 6:
+						case 5:
 							enemy = new Spike(this);
 							break;
-						case 7:
+						case 6:
 							Chest chest=new Chest(this);
 							chest.setPosition(x*enemyLay.getTileWidth(), y*enemyLay.getTileHeight());
 							items.addActor(chest);
 							continue;
-						case 8:
+						case 7:
 							Jug jug = new Jug(this);
 							jug.setPosition(x*enemyLay.getTileWidth(), y*enemyLay.getTileHeight());
 							items.addActor(jug);
 							continue;
-						case 9:
+						case 8:
 							HealthBottle hb = new HealthBottle(this);
 							hb.setPosition(x*enemyLay.getTileWidth()+4, y*enemyLay.getTileHeight());
 							items.addActor(hb);		
 							continue;
-						case 10:
+						case 9:
 							HeartContainer hc = new HeartContainer(this);
 							hc.setPosition(x*enemyLay.getTileWidth()+4, y*enemyLay.getTileHeight());
 							items.addActor(hc);
@@ -265,9 +240,8 @@ public class IngameScreen extends AbstractScreen{
 				}
 			}
 		}
-		
 		stage.addActor(enemies);
-		
+
 		
 		topTiles = new OrderedMap<TiledMapTile, TiledMapTile>();
 		int topY=blkbgLayer.getHeight()-1;
@@ -286,10 +260,7 @@ public class IngameScreen extends AbstractScreen{
 			}
 		}
 		
-		
-		
 		// HUD
-
 		dialogLine = new DialogLine(this);
 		stage.addActor(dialogLine);
 		
@@ -301,29 +272,18 @@ public class IngameScreen extends AbstractScreen{
 		
 		weaponbar = new WeaponBar(this);
 		stage.addActor(weaponbar);
-		
-		
-		
+
 		shop = new ShopScreen(game, this);
 		pause = new PauseScreen(game, this);
-		
-		
-
-		
-		
 	}
 	
 	@Override
 	public void show() {
-
 		// handle input
 		Gdx.input.setInputProcessor(new GameInputProcessor());
-		
 	}
 	@Override
 	public void render(float delta) {
-
-		
 		if(cooldownTime>0){
 			cooldownTime-=delta;
 		}
@@ -345,7 +305,6 @@ public class IngameScreen extends AbstractScreen{
 			}
 		}
 		
-		
 		viewRect=new Rectangle(stage.getCamera().position.x-stage.getWidth(),stage.getCamera().position.y-stage.getHeight(),stage.getWidth()*4,stage.getHeight()*4);
 		
 		// move all the stuff around and stuff
@@ -355,7 +314,6 @@ public class IngameScreen extends AbstractScreen{
 		// scroll camera to the player
 		stage.getCamera().position.set(player.getX(),player.getY(),0);
 		stage.getCamera().update();
-		
 		
 		clear();
 		setViewport();
@@ -370,7 +328,6 @@ public class IngameScreen extends AbstractScreen{
 		renderer.getSpriteBatch().begin();
 		renderer.renderTileLayer(fgLayer);
 		renderer.getSpriteBatch().end();
-		// super.render(delta);
 	}
 
 	@Override
@@ -395,7 +352,6 @@ public class IngameScreen extends AbstractScreen{
 	}
 	
 	class GameInputProcessor extends InputAdapter{
-				
 		@Override
 		public boolean keyDown(int keycode) {
 			if(!Event.isEmpty()){return false;}
@@ -416,10 +372,10 @@ public class IngameScreen extends AbstractScreen{
 				case Keys.S:
 					player.descend();
 					break;
+					
 				case Keys.F1:
 					cheatMode();
 					break;
-		
 					
 				case Keys.NUM_1:
 					weaponbar.selectId(0);
@@ -481,9 +437,7 @@ public class IngameScreen extends AbstractScreen{
 				touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
 				stage.getCamera().unproject(touchPos,viewport.x,viewport.y,viewport.width,viewport.height);
 
-				
 				usingWeapon = true;
-				
 				
 				if(touchPos.x>stage.getCamera().position.x + stage.getWidth()/2 - 64){
 					if(weaponbar.open){
@@ -498,19 +452,12 @@ public class IngameScreen extends AbstractScreen{
 					weaponbar.close();
 				}
 				
-				
-				
-				// System.out.println("touch: "+touchPos.x+","+touchPos.y);
-				// System.out.println("playa: "+player.getX()+","+player.getY());
-				
 				if(cooldownTime<=0&&weapon.use(touchPos.x, touchPos.y)){
 					cooldownTime=weapon.cooldown;
 					waitTime=weapon.wait;
 				}else{
 					waitTime=cooldownTime;
 				}
-		
-				
 			}
 			return false;
 		}
@@ -520,7 +467,6 @@ public class IngameScreen extends AbstractScreen{
 			usingWeapon=false;
 			return super.touchUp(screenX, screenY, pointer, button);
 		}
-	
 	}
 	/**
 	 * 
@@ -537,36 +483,23 @@ public class IngameScreen extends AbstractScreen{
 		if(dst != null){
 			TiledMapTile tile = dst.getTile();
 			if(tile != null){
-				System.err.println("tile: "+tile.getId());
-				
-			/*	Iterator<String> it =tile.getProperties().getKeys();
-				
-				while(it.hasNext()){
-					System.out.println(it.next());
-				}*/
 				if(destroyable[tile.getId()]>power){
 					// dah. we don't have enough power
 					if(sound){
 						no_dig.play();
 					}
-					
 					return false;
 				}
-				
-				/*if(tile.getProperties().get("dst")!=null && tile.getProperties().get("dst").equals("no")){
-					return;
-				}*/
 			}else{
 				return false;
 			}
 		}else{
 			return false;
 		}
-		// colLayer.setCell(x, y, null);
 		blkbgLayer.setCell(x, y+1, null);
 		destLayer.setCell(x, y, null);
 		
-		//place the top tile of the tile below
+		// place the top tile of the tile below
 		if(destLayer.getCell(x, y-1)!=null && topTiles.containsKey(destLayer.getCell(x, y-1).getTile())){
 			Cell cell=new Cell();
 			cell.setTile(topTiles.get(destLayer.getCell(x, y-1).getTile()));
@@ -575,8 +508,6 @@ public class IngameScreen extends AbstractScreen{
 		}else{
 			System.err.println("nothing found");
 		}
-		 
-		
 		
 		return true;
 	}
@@ -598,7 +529,5 @@ public class IngameScreen extends AbstractScreen{
 		Weapon.PICKAXE.reset();
 		Weapon.SHOVEL.reset();
 		Weapon.SWORD.reset();
-		
 	}
-	
 }

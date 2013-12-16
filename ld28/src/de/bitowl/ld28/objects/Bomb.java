@@ -70,20 +70,15 @@ public class Bomb extends GameObject{
 			if(afterExplTimer<0){ // the explosion REALLY STARTS
 				remove(); // remove the bomb from screen
 				
-				
-				
 				// do some damage on terrain
 				int deployX=(int) (getX()/screen.bgLayer.getTileWidth());
 				int deployY=(int) (getY()/screen.bgLayer.getTileHeight());
-				
-			
-				
+
 				int RADIUS=4;
 				
 				for(int y = deployY - RADIUS;y<=deployY+RADIUS;y++){
 					for(int x = deployX-RADIUS;x<=deployX+RADIUS;x++){
 						screen.digTile(x, y, dist(x,y,deployX,deployY));
-						//screen.digTile(x,y,MathUtils.random(1,5));
 					}
 				}
 				
@@ -105,7 +100,6 @@ public class Bomb extends GameObject{
 					}
 				}
 			}
-			
 		}
 	}
 	
@@ -115,7 +109,6 @@ public class Bomb extends GameObject{
 	 */
 	public int dist(int pX1,int pY1, int pX2,int pY2){
 		int dmg=3-(int) ( MathUtils.random(-0.7f,0.7f)+Math.sqrt((pX2-pX1)*(pX2-pX1) + (pY2-pY1)*(pY2-pY1)));
-		//if(dmg<0){dmg=1;}
 		return dmg;
 	}
 	

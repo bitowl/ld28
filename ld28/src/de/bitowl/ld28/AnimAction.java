@@ -46,7 +46,6 @@ public class AnimAction extends Action {
 		}
 		if(isOver() && !keepAfterEnd){
 			return true;
-			//actor.removeAction(this);
 		}
 		return false;
 	}

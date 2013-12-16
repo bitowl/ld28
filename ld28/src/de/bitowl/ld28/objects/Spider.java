@@ -37,8 +37,6 @@ public class Spider extends Enemy {
 	}
 	@Override
 	public void setPosition(float x, float y) {
-		// super.setPosition(x, y);
-		
 		// the spider ankers at the block on top of this one
 		anchorX=(int) (x/screen.destLayer.getTileWidth());
 		anchorY=(int) (y/screen.destLayer.getTileHeight())+1;
@@ -50,7 +48,6 @@ public class Spider extends Enemy {
 				break;
 			}
 		}
-
 	}
 	@Override	
 	public void draw(Batch batch, float parentAlpha) {
@@ -67,8 +64,6 @@ public class Spider extends Enemy {
 		if(screen.destLayer.getCell(anchorX, anchorY)==null){
 			remove();
 		}
-		
-		// System.out.println(Math.sqrt((screen.player.getX()-getX())*(screen.player.getX()-getX()) + (screen.player.getY()-getY())*(screen.player.getY()-getY())));
 		
 		switch(state){
 			case GODOWN:

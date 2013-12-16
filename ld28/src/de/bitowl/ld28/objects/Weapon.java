@@ -34,7 +34,6 @@ public abstract class Weapon{
 	public final static Weapon SHOVEL = new Weapon(1000,0.5f,0.8f, 20,1 ){
 		@Override
 		public boolean doSth(float pX, float pY) {
-
 			Point digPos=convertToTile(pX,pY);
 			
 			if(screen.digTile(digPos.x,digPos.y, 1, true)){
@@ -62,21 +61,6 @@ public abstract class Weapon{
 		public boolean doSth(float pX, float pY) {
 			Bomb bomb =new Bomb(screen);
 			bomb.setPosition(player.getX()+player.getWidth()/2-bomb.getWidth()/2, player.getY()+player.getHeight()/2-bomb.getHeight()/2);
-		/*	bomb.speedX = 0;
-			bomb.speedY = 0;
-			
-			if(touchPos.x<player.getX() - SPAN_X){
-				bomb.speedX=-2;
-			}else if(touchPos.x>player.getX()+player.getWidth() + SPAN_X){
-				bomb.speedX=2;
-			}
-			
-			if(touchPos.y<player.getY() - SPAN_Y){
-				bomb.speedY=-3;
-			}else if(touchPos.y>player.getY()+player.getHeight() + SPAN_Y){
-				bomb.speedY=3;
-			}*/
-			// now you can throw bombs in all directions
 
 			Vector2 ang=convertToAngle(pX, pY);
 			

@@ -11,7 +11,6 @@ public class Jug extends ItemObject{
 		super(pScreen,pScreen.atlas.findRegion("jug"));
 	}
 
-	
 	@Override
 	public void hitBy(GameObject gameObject) {
 		if(gameObject instanceof Player || gameObject instanceof Arrow || gameObject instanceof Bomb){

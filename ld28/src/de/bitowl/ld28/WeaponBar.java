@@ -14,7 +14,6 @@ import com.badlogic.gdx.utils.OrderedMap;
 import de.bitowl.ld28.objects.Weapon;
 import de.bitowl.ld28.screens.IngameScreen;
 
-
 public class WeaponBar extends Image{
 	IngameScreen screen;
 	TextureRegion heart_full,heart_half,heart_empty;
@@ -43,7 +42,6 @@ public class WeaponBar extends Image{
 			weapon.value.addAction(Actions.alpha(0));
 		}
 		weapons.get(screen.weapon).addAction(Actions.alpha(1));
-	//	open();
 	}
 	
 	public void createWeaponImg(Weapon pWeapon, String pImg){
@@ -56,7 +54,6 @@ public class WeaponBar extends Image{
 		for(Entry<Weapon, WeaponBarImage> weapon: weapons.entries()){
 			weapon.value.act(delta);
 		}
-		
 	}
 	
 	public void open(){
@@ -83,21 +80,14 @@ public class WeaponBar extends Image{
 	
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
-
-		// setX(screen.stage.getCamera().position.x + screen.stage.getWidth()/2 - getWidth());
-		// setY(screen.stage.getCamera().position.y + screen.stage.getHeight()/2 - getHeight());
-		//batch.setTransformMatrix(Matrix4.)
-		
-	//	System.out.println(prjMat);
 		batch.setTransformMatrix(batch.getTransformMatrix().trn(new Vector3(screen.stage.getCamera().position.x + screen.stage.getWidth()/2 - getWidth(),screen.stage.getCamera().position.y + screen.stage.getHeight()/2 - getHeight(),0)));
-	//	batch.setTransformMatrix(prjMat);
 		
 		super.draw(batch, parentAlpha);
 		for(Entry<Weapon, WeaponBarImage> weapon: weapons.entries()){
 			weapon.value.draw(batch, parentAlpha);
 		}
-		batch.setTransformMatrix(new Matrix4());
 		
+		batch.setTransformMatrix(new Matrix4());
 	}
 	public void select(float f) {
 		System.err.println("select "+f);
@@ -116,18 +106,15 @@ public class WeaponBar extends Image{
 			close();
 		}
 		
-		System.out.println("SELECT "+nr);
 		int i=0;
 		for(Entry<Weapon, WeaponBarImage> weapon: weapons.entries()){
 			if(i==nr && weapon.key!=screen.weapon){
-				
 				for(Entry<Weapon, WeaponBarImage> weapon2: weapons.entries()){
 					if(weapon2.key==screen.weapon){
 						weapon2.value.addAction(Actions.alpha(0,0.5f));
 						break;
 					}
 				}
-				
 				screen.weapon=weapon.key;
 				weapon.value.addAction(Actions.alpha(1,0.5f));
 				break;

@@ -2,7 +2,6 @@ package de.bitowl.ld28.objects;
 
 import de.bitowl.ld28.Event;
 
-
 public class Trigger {
 	public int x, y;
 	public Event event;

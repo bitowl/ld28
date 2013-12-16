@@ -36,7 +36,6 @@ public class Player extends GameObject{
 		hitDamage=0;
 		doNotStopOnWalls = true; // so we can smoothly jump, when we stand at a wall
 		Animation walk=new Animation(0.1f,screen.atlas.findRegions("player"));
-		//walk.setPlayMode(Animation.LOOP_PINGPONG);
 		walking = new AnimAction(walk,true);
 		
 		sword = new AnimAction(new Animation(0.05f,screen.atlas.findRegions("sword")));
@@ -82,7 +81,6 @@ public class Player extends GameObject{
 			System.out.println("descend read");
 		}
 		System.out.println("descend");
-		
 	}
 
 
@@ -90,8 +88,8 @@ public class Player extends GameObject{
 		if(onLadder){
 			speedY=0;
 		}
-		
 	}
+	
 	@Override
 	public boolean remove() {
 		// the player died
@@ -126,7 +124,6 @@ public class Player extends GameObject{
 			setScaleX(1);
 			isFlipped=false;				
 		}
-		
 	}
 	public void sword(boolean side){
 		if(sword.getActor()==null){
@@ -174,7 +171,6 @@ public class Player extends GameObject{
 		if(dig.getActor()==null){
 			dig.reset();
 			addAction(dig);
-			
 		}
 		screen.dig.play();
 	}
@@ -187,6 +183,5 @@ public class Player extends GameObject{
 	public void cheat() {
 		life=20;
 		max_life=20;
-		
 	}
 }

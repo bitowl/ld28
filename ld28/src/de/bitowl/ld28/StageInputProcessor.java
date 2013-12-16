@@ -24,7 +24,6 @@ public class StageInputProcessor extends InputAdapter{
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer,
 			int button) {
-		
 		// project the touch position
 		Vector3 touchPos = new Vector3();
 		touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
@@ -38,8 +37,6 @@ public class StageInputProcessor extends InputAdapter{
 				}
 			}
 		}
-
-		
 		return false;
 	}
 }

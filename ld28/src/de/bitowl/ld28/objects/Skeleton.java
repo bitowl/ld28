@@ -44,7 +44,6 @@ public class Skeleton extends Enemy {
 			bone.setX(getX()+10);
 			bone.setY(getY()+getHeight()/2+10);
 			bone.gravity=0;
-			// bone.defSpeedX=-10;
 			screen.enemies.addActor(bone);
 			
 			if(life>50){
@@ -86,9 +85,7 @@ public class Skeleton extends Enemy {
 			screen.game.setScreen(new WinScreen(screen.game));
 		}
 		System.out.println(life+" GOOOO DOWN");
-		// 
 		return super.remove();
-		
 	}
 	@Override
 	public Rectangle getRectangle() {

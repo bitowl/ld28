@@ -9,7 +9,6 @@ public class HealthBottle extends ItemObject{
 	public HealthBottle(IngameScreen pScreen) {
 		super(pScreen,pScreen.atlas.findRegion("healthbottle"));
 	}
-
 	
 	@Override
 	public void hitBy(GameObject gameObject) {
