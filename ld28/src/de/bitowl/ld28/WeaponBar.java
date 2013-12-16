@@ -90,10 +90,8 @@ public class WeaponBar extends Image{
 		batch.setTransformMatrix(new Matrix4());
 	}
 	public void select(float f) {
-		System.err.println("select "+f);
 		for(Entry<Weapon, WeaponBarImage> weapon: weapons.entries()){
 			if(f>weapon.value.getY()-weapon.value.getHeight()&&f<weapon.value.getY()){
-				System.out.println("HIT"+weapon.key);
 				screen.weapon=weapon.key;
 				return; 
 			}

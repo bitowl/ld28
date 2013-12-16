@@ -56,7 +56,6 @@ public class Player extends GameObject{
 			screen.ground.play();
 		}
 		
-		System.out.println(getStandingX()+", "+getStandingY());
 		// standing on a trigger?
 		if(screen.trigger.containsKey(new Point(getStandingX(),getMiddleY())) &&
 				!screen.trigger.get(new Point(getStandingX(),getMiddleY())).happend){ // this event can still happen
@@ -78,9 +77,7 @@ public class Player extends GameObject{
 	public void descend() {
 		if(onLadder){
 			speedY=-2;
-			System.out.println("descend read");
 		}
-		System.out.println("descend");
 	}
 
 

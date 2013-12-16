@@ -26,10 +26,7 @@ public abstract class AbstractScreen implements Screen{
 	}
 	
 	@Override
-	public void render(float delta) {
-	//	Gdx.gl.glViewport((int) viewport.x, (int) viewport.y,
-      //          (int) viewport.width, (int) viewport.height);
-		
+	public void render(float delta) {		
 		stage.act(delta);
 		stage.draw();	
 	}
@@ -77,7 +74,6 @@ public abstract class AbstractScreen implements Screen{
 	public void dispose() {
 		stage.dispose();
 	}
-	
 	
 	public void setViewport(){
 		Gdx.gl.glViewport((int) viewport.x, (int) viewport.y,

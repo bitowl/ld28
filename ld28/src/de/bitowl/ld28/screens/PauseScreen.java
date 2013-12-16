@@ -54,7 +54,6 @@ public class PauseScreen extends AbstractScreen{
 		Gdx.input.setInputProcessor(new StageInputProcessor(this){
 			@Override
 			public boolean keyDown(int keycode) {
-				System.out.println(keycode +" - "+Keys.ESCAPE);
 				if(keycode == Keys.ESCAPE){
 					game.setScreen(PauseScreen.this.screen);
 				}

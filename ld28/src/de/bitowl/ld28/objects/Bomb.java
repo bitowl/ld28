@@ -19,7 +19,6 @@ public class Bomb extends GameObject{
 		super(pScreen, pScreen.atlas.findRegion("bomb"));
 		Animation anim =new Animation(0.2f, screen.atlas.findRegions("bomb"));
 		anim.setPlayMode(Animation.LOOP);
-		// System.out.println(anim.animationDuration);
 		addAction(new AnimAction(anim)); // fuse lightning
 		
 		bombTimer = 3;

@@ -47,7 +47,6 @@ public class Event {
 	}
 	
 	public static void eventFinished(IngameScreen pScreen){
-		System.err.println("EVENT FINISHED");
 		queue.removeIndex(0);
 		if(!isEmpty()){
 			queue.get(0).happen(pScreen);

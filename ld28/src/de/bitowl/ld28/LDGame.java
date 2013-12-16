@@ -2,7 +2,6 @@ package de.bitowl.ld28;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -25,8 +24,7 @@ public class LDGame extends Game {
 		
 		assets = new AssetManager();
 
-		assets.setLoader(TiledMap.class, new AtlasTmxMapLoader(
-				new InternalFileHandleResolver()));
+		assets.setLoader(TiledMap.class, new AtlasTmxMapLoader());
 
 		assets.load("maps/map1.tmx", TiledMap.class);
 		assets.load("textures/textures.pack", TextureAtlas.class);

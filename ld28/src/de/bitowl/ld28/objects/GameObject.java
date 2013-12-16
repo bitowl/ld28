@@ -91,7 +91,6 @@ public class GameObject extends Image{
 						onGround = true;
 						// hit the ground
 						if(speedY<-10){
-							// System.err.println("too fast: "+speedY);
 							addDamage(-(speedY+9)/2);
 						}
 						

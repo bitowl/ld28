@@ -33,7 +33,6 @@ public class DialogLine extends Actor{
 	}
 	@Override
 	public void act(float delta) {
-		System.out.println(finishEvent+" "+textTime);
 		super.act(delta);
 		if(text!=null){
 			if(textTime>0){

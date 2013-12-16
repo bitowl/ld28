@@ -59,7 +59,6 @@ public class Skeleton extends Enemy {
 			}
 			
 		}
-		System.out.println(life);
 		
 	}
 	@Override
@@ -84,7 +83,6 @@ public class Skeleton extends Enemy {
 		if(getParent()!=null){
 			screen.game.setScreen(new WinScreen(screen.game));
 		}
-		System.out.println(life+" GOOOO DOWN");
 		return super.remove();
 	}
 	@Override

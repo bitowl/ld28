@@ -28,7 +28,6 @@ public class Enemy extends GameObject {
 		}
 		
 		if(screen.viewRect.contains(getRectangle())){
-			System.out.println("move enemy");
 			super.act(delta);
 		}
 	}

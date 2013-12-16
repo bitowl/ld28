@@ -40,9 +40,6 @@ public class AnimAction extends Action {
 			Image img = (Image) actor;
 			TextureRegionDrawable draw = (TextureRegionDrawable) img.getDrawable();
 			draw.setRegion(animation.getKeyFrame(stateTime));
-		} else {
-			System.err
-					.println("trying to animate something that is not an image");
 		}
 		if(isOver() && !keepAfterEnd){
 			return true;

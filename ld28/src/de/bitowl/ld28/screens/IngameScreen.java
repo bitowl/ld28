@@ -154,10 +154,8 @@ public class IngameScreen extends AbstractScreen{
 			TiledMapTile tile = it.next();
 			MapProperties properties = tile.getProperties();
 			if(properties.get("dst")!=null){
-				System.out.println(tile.getId()+": "+properties.get("dst"));
 				try{
 					destroyable[tile.getId()]=Integer.parseInt((String) properties.get("dst"));
-					System.out.println("DEST: "+destroyable[tile.getId()]);
 				}catch(NumberFormatException e){
 					destroyable[tile.getId()]=1;
 				}
@@ -178,12 +176,10 @@ public class IngameScreen extends AbstractScreen{
 					
 					int tileID=enemyLay.getCell(x, y).getTile().getId();
 					if(tileID>=eventStartID){
-						System.err.println(tileID);
 						// it's a trigger
 						if(tileID==eventStartID){ // start pos
 							player.setPosition(x*destLayer.getTileWidth(), y*destLayer.getTileHeight()+player.getHeight()-32);
 						}else if(tileID==eventStartID+1){
-							System.out.println("TRIGGER AT "+x+","+y);
 							trigger.put(new Point(x,y), new ShopEvent());
 						}else if(tileID==eventStartID+2){
 							// BOSS BATTLE
@@ -247,9 +243,7 @@ public class IngameScreen extends AbstractScreen{
 		int topY=blkbgLayer.getHeight()-1;
 		// find top tiles
 		for(int i= 0;i<blkbgLayer.getWidth();i++){
-			System.out.println("try "+i);
 			if(blkbgLayer.getCell(i, topY)!=null){
-				System.out.println("top tile for "+blkbgLayer.getCell(i, topY-1).getTile().getId()+" added");
 				topTiles.put(blkbgLayer.getCell(i, topY-1 ).getTile(), blkbgLayer.getCell(i, topY).getTile());
 				blkbgLayer.setCell(i, topY, null);
 				blkbgLayer.setCell(i, topY-1, null);			
@@ -504,9 +498,6 @@ public class IngameScreen extends AbstractScreen{
 			Cell cell=new Cell();
 			cell.setTile(topTiles.get(destLayer.getCell(x, y-1).getTile()));
 			blkbgLayer.setCell(x, y, cell);
-			System.out.println("replace :)");
-		}else{
-			System.err.println("nothing found");
 		}
 		
 		return true;

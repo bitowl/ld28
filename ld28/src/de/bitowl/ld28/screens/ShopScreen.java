@@ -20,7 +20,6 @@ import de.bitowl.ld28.StageInputProcessor;
 import de.bitowl.ld28.objects.Weapon;
 
 public class ShopScreen extends AbstractScreen {
-
 	IngameScreen screen;
 	DialogLine line;
 	
@@ -31,7 +30,6 @@ public class ShopScreen extends AbstractScreen {
 	public ShopScreen(LDGame pGame, IngameScreen pScreen) {
 		super(pGame);
 		screen = pScreen;
-		
 		
 		Image backButton = new Image(screen.atlas.findRegion("button_back"));
 		backButton.setX(stage.getWidth()-backButton.getWidth());
@@ -47,7 +45,6 @@ public class ShopScreen extends AbstractScreen {
 		
 		
 		Table table = new Table();
-		// table.debug();
 		table.setSize(stage.getWidth(), stage.getHeight());
 		
 		Image title = new Image(screen.atlas.findRegion("shop"));
@@ -81,21 +78,16 @@ public class ShopScreen extends AbstractScreen {
 		line = new DialogLine(this);
 		stage.addActor(line);
 		
-		
 		bought = game.assets.get("audio/bought.ogg",Sound.class);
 		shop = game.assets.get("audio/shop.ogg",Sound.class);;
 		no_money = game.assets.get("audio/no_money.ogg",Sound.class);;
 		no_need = game.assets.get("audio/no_need.ogg",Sound.class);;
 	}
 	
-	
-	
 	@Override
 	public void render(float delta) {
-		System.out.println("in shop :)");
 		clear();
 		super.render(delta);
-	// 	Table.drawDebug(stage);
 	}
 
 	@Override
@@ -109,7 +101,6 @@ public class ShopScreen extends AbstractScreen {
 				return false;
 			}
 		});
-		// resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		screen.player.setX(screen.player.getX()+40);
 		screen.player.speedX=0.00001f;
@@ -159,7 +150,6 @@ public class ShopScreen extends AbstractScreen {
 					}else{
 						line.display("You do not have enough money!", 2f);
 						no_money.play();
-						
 					}
 				}
 			});
@@ -176,8 +166,6 @@ public class ShopScreen extends AbstractScreen {
 		public void draw(Batch batch, float parentAlpha) {
 			batch.draw(background, getX(), getY()+font.getLineHeight()*2);
 			batch.draw(((TextureRegionDrawable)getDrawable()).getRegion(),getX(),getY()+font.getLineHeight()*2);
-
-			
 			
 			if(weapon.curAmmo == weapon.maxAmmo){
 				font.setColor(0,1,0,0.7f);
@@ -195,11 +183,7 @@ public class ShopScreen extends AbstractScreen {
 			font.draw(batch, "+"+weapon.ammoAmount, getX()+5, getY()+2*font.getLineHeight());
 			batch.draw(gold,getX()-15,getY()+5);
 			font.draw(batch, ""+weapon.ammoCost, getX()+20, getY()+font.getLineHeight());
-			
 		}
 	}
-	
-	
-	
 
 }

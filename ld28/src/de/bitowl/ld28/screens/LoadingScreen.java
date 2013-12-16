@@ -24,7 +24,6 @@ public class LoadingScreen extends AbstractScreen {
 		batch=(SpriteBatch) stage.getSpriteBatch();
 		// loading bar
 		font = new BitmapFont();
-	//	batch = new SpriteBatch();
 		emptyT = new Texture(Gdx.files.internal("textures/bar.png"));
 		fullT = new Texture(Gdx.files.internal("textures/bar_full.png"));
 		empty = new NinePatch(new TextureRegion(emptyT, 24, 24), 8, 8, 8, 8);
@@ -39,6 +38,7 @@ public class LoadingScreen extends AbstractScreen {
 	public void render(float delta) {
 		clear();
 		setViewport();
+		
 		// workaround 
 		if(resized < 10){
 
@@ -49,16 +49,13 @@ public class LoadingScreen extends AbstractScreen {
 		if (game.assets.update()) {
 			game.setScreen(new MenuScreen(game));
 			game.assetsLoaded = true;
-			System.out.println("finished loading");
 
 			// dispose our loading only stuff
-			//batch.dispose();
 			font.dispose();
 			emptyT.dispose();
 			fullT.dispose();
 		} else {
 			// draw loading bar
-			//batch.setProjectionMatrix(stage.getCamera().combined);
 			batch.begin();
 			
 			empty.draw(batch, 40, 225, 720, 30);
@@ -69,6 +66,5 @@ public class LoadingScreen extends AbstractScreen {
 					+ "% loaded", 400, 247, 0, BitmapFont.HAlignment.CENTER);
 			batch.end();
 		}
-//		super.render(delta);
 	}
 }
